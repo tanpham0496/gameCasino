@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height ,initial-scale=1 maximum-scale=1, user-scalable=0"> <!-- O day -->
+    <title>BLOOD || Odd & Even</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" type="text/css" href="stylesGameNews/style.css">
+    <link rel="stylesheet" type="text/css" href="stylesGameNews/css/all.css">
+    <link rel="stylesheet" type="text/css" href="stylesGameNews/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="stylesGameNews/dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap">
+    
+    <script src="main.js"></script> 
+    <script src="config.js"></script>
+    <script src="js/GameNew/globalFunction.js"></script>
+    <script src="js/GameNew/jquery1.9.1.min.js"></script>
+    <script src="js/GameNew/dataTables.min.js"></script>
+    <script src="js/GameNew/bootstrap.min.js"></script>
+    <script src="js/GameNew/DragDropTouch.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/jquery-1.11.2.min.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script src="main.js"></script>
+
+</head>
+<body>
+    <div id="header">
+        <i class="fas fa-chevron-left" onclick="activePageIndex()"></i>
+        <span onclick="activePageIndex()">Home</span>
+    </div>
+    <div id="main">
+        <audio id="carteSoudCtrl" style="display : none">
+            <source src="./sound/time_clock.mp3" type="audio/mpeg">
+        </audio>
+        <div class="bet-main">
+            <div class="gamelist">
+                <table class="search-table inner">
+                    <thead>
+                        <tr>
+                            <th><span>No</span></th>
+                            <th><span>Bet</span></th>
+                            <th><span>Result</span></th>
+                            <th><span>Hash</span></th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div class="betting">
+                <div id="lineTime"></div>
+                <div class="paginations">
+                    <div>
+                        <div class="bet">
+                            <button class="buttonOdd" onclick="chooseOdd()"></button>
+                            <button class="buttonEven" onclick="chooseEven()"></button> 
+                            <button class="buttonReset" 
+                            ontouchstart="mousedownResetValueTouch(1)"
+                            ontouchend="mouseupResetValue()"
+                            ></button>
+                            <div class="setWidth">
+                                <input id="number" value="0" readonly="true">
+                                <img src="imagesGameNews/ba_pc.png" alt="" id="unit">
+                            </div>
+                            <div class="buttonAmount">
+                                <button class="buttonIncrement"
+                                ontouchstart="mousedownIncrementValueTouch()"
+                                ontouchend="mouseupIncrementValue()"
+                                ></button>
+                                <button class="buttonDecrement"
+                                ontouchstart="mousedownDecrementValueTouch(1)"
+                                ontouchend="mouseupDecrementValue(1)"
+                                ></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="balance">
+                        <table>
+                            <tr>
+                                <th>ID</th>
+                                <th>Balance</th>
+                                <th>Valid Balances</th>
+                            </tr>
+                            <tr>
+                                <td><span id="userId"></span></td>
+                                <td><span id="balance"></span><img src="imagesGameNews/ba_pc.png" alt=""></td>
+                                <td><span id="balanceChange"></span><img src="imagesGameNews/ba_pc.png" alt=""></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="popup-main">
+            <div class="popup-header">
+                <i class="fas fa-chevron-left" onclick="activePageHome(1)"></i>
+                <span onclick="activePageHome(1)">Back</span>
+            </div>
+            <div class="block-transaction">
+                <div class="block">
+                    <table >
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let winRate = 1.9
+        
+        //set button image
+        function getImageBetAndResult(className){
+            const value = document.getElementsByClassName(className)[0].innerHTML
+            if(value == '1'){
+                document.getElementsByClassName(className)[0].innerHTML = ""
+                $(`.${className}`).append( `<img src="imagesGameNews/button_odd.png" alt="">`)
+            } 
+            else if(value == '0'){
+                document.getElementsByClassName(className)[0].innerHTML = ""
+                $(`.${className}`).append( `<img src="imagesGameNews/button_even.png" alt="">`)
+            } 
+            else if(value == 'null'){
+                document.getElementsByClassName(className)[0].innerHTML = ""
+                $(`.${className}`).append( `<img src="imagesGameNews/bet_null.png" alt="">`)
+            }
+        }
+        //checking to user awards(win)
+        function checkWin(item){
+            if(item.BetUser == item.BetResult) return 'style="background: #3B7BA9; color: white;"' 
+            else return ''
+        }
+        //select bet option
+        function chooseOdd() {
+            document.getElementById('valueBet').innerHTML = ""
+            $('#valueBet').append( `<img src="imagesGameNews/button_odd.png" alt="">`)
+            $('#valueBet').attr('data', 1)
+        }
+        function chooseEven() {
+            document.getElementById('valueBet').innerHTML = ""
+            $('#valueBet').append( `<img src="imagesGameNews/button_even.png" alt="">`)
+            $('#valueBet').attr('data', 0)
+        }
+        //checking to last block have result
+        function checkLastBlockWaiting(item){
+            if(item.BetResult === 'null') return 'X'
+                else return checkWinOE(item)
+            }
+        //checking to win reward
+        function checkWinOE(item){
+            if(item.BetResult ==  item.BetUser) return `+ ${formatNumber(item.BetAmount*winRate/1000)}`
+                else return `- ${formatNumber(item.BetAmount/1000)}`
+            }
+        //set data to detail page
+        function setDetail(bet){
+            $(".popup-main >.block-transaction > .block > table > tbody").empty()
+            const indexOfBet = listBet.findIndex(gameIndex => gameIndex.No === bet.No)
+            if(indexOfBet == 0){
+                bet.NextBlock = "#"
+                bet.AmountBetNextBlock = 'X'
+                
+                bet.PreviousBlock = listBet[indexOfBet + 1].Block
+                bet.AmountBetPreviousBlock = listBet[indexOfBet + 1].BetUser === 'null' ? 'X' : checkWinOE(listBet[indexOfBet + 1])
+            } else {
+                bet.NextBlock = listBet[indexOfBet - 1].Block === 'null' ? "#" : listBet[indexOfBet - 1].Block
+                bet.AmountBetNextBlock = listBet[indexOfBet - 1].BetUser === 'null' ? 'X' : checkLastBlockWaiting(listBet[indexOfBet - 1])
+                
+                bet.PreviousBlock = listBet[indexOfBet + 1].Block 
+                bet.AmountBetPreviousBlock = listBet[indexOfBet + 1].BetUser === 'null' ? 'X' : checkWinOE(listBet[indexOfBet + 1])
+            }
+
+            $('.popup-main >.block-transaction > .block > table > tbody').append(` 
+                <tr>
+                <td><img src="imagesGameNews/block.png" alt=""></td>
+                <td><div class='blockData'><span>${bet.Block == "null"? "Waiting": bet.Block}</span></div></td>
+                </tr>
+                <tr>
+                <td><img src="imagesGameNews/hash.png" alt=""></td>
+                <td><div class='blockData'><span>${bet.Hash == "null"? "Waiting": bet.Hash.slice(0, 10)+"···"+bet.Hash.slice(-10)}</span></div></td>
+                </tr>
+                <tr>
+                <td><img src="imagesGameNews/inter.png" alt=""></td>
+                <td><div class='blockData'><span>${bet.IntegerHash == "null"? "Waiting": bet.IntegerHash}</span></div></td>
+                </tr>
+                <tr>
+                <td><img src="imagesGameNews/sipping.png" alt=""></td>
+                <td><div class='blockData'><span>${bet.BetResult == "null"? "Waiting": formatResultBetValue(bet.BetResult)}</span></div></td>
+                </tr>
+                <tr>
+                <td><img src="imagesGameNews/previous_block.png" alt=""></td>
+                <td>
+                <div>
+                <div class="tdTable tdTableFloatLeft"><span>${bet.PreviousBlock}</span></div>
+                <div class="tdTable tdTableFloatRight"><span>${bet.AmountBetPreviousBlock} <img src="imagesGameNews/ba_pc.png" alt=""></span></div>
+                </div>
+                </td>
+                </tr>
+                <tr>
+                <td><img src="imagesGameNews/next_block.png" alt=""></td>
+                <td>
+                <div>
+                <div class="tdTable tdTableFloatLeft"><span>${bet.NextBlock}</span></div>
+                <div class="tdTable tdTableFloatRight"><span>${bet.AmountBetNextBlock} <img src="imagesGameNews/ba_pc.png" alt=""></span></div>
+                </div>    
+                </td>
+                </tr>
+                <tr>
+                <td><img src="imagesGameNews/user_sipping.png" alt=""></td>
+                <td>
+                <div>
+                <div class="tdTable tdTableFloatLeft"><span>${formatResultBetValue(bet.BetUser)}</span></div>
+                <div class="tdTable tdTableFloatRight"><span>${bet.BetAmount == 'null' ? 'X': formatNumber(bet.BetAmount/1000)} <img src="imagesGameNews/ba_pc.png" alt=""></span></div>
+                </div>
+                </td>
+                </tr>
+                <tr>
+                <td><img src="imagesGameNews/cup.png" alt=""></td>
+                <td><div class='blockData'><span>${formatAmountBet(bet.BetResult, bet.BetUser, bet.BetAmount)} <img src="imagesGameNews/ba_pc.png" alt=""></span></div></td>
+                </tr>
+                <tr>
+                <td></td>
+                <td>
+                <p style="color: red;text-align: left;line-height: 20px;">* Win ⇒ x1.9</p>
+                </td>
+                </tr>
+                `)
+        }
+        //change bet option to text
+        function formatResultBetValue(val) {
+            if(val == '0') return "Even"
+                else if(val == '1') return "Odd"
+                    else return "X";
+            }
+        //set reward amount
+        function formatAmountBet(BetResult, BetUser, BetAmount){
+            if(BetResult == 'null') return "Waiting"
+                if(BetAmount == 'null') return "X"
+                    else {
+                        if(BetResult == BetUser) return `Win (+ ${formatNumber(BetAmount*winRate/1000)})`
+                            else return `Lose (- ${formatNumber(BetAmount/1000)})`
+                        }
+                }
+        //  
+        getTimestamp(1)
+        getData(1)
+        getBalnce()
+    </script>
+</body>
+
+</html>

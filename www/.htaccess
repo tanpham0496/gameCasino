@@ -1,0 +1,17 @@
+RewriteEngine on
+Options All -Indexes
+#order allow,deny
+
+RewriteRule ^product/(.*) product/index.html?id=$2
+RewriteRule ^contents/(.*) contents/index.html?id=$2
+RewriteRule ^categories/(.*)/(.*) categories/index.html?id=$2&page=$3
+RewriteRule ^shop/(.*) shop/index.html?id=$2
+RewriteRule ^search/(.*) search/index.html?id=$2
+RewriteRule ^order-detail/(.*) order-detail/index.html?id=$2
+RewriteRule ^products/(.*) products/index.html?id=$2
+
+RewriteRule ^admin/contents/detail/(.*) admin/contents/detail/index.html?id=$2
+RewriteRule ^admin/orders/order-detail/(.*) admin/orders/order-detail/index.html?id=$2
+RewriteRule ^admin/products/page/(.*) admin/products/page/index.html?id=$2
+RewriteRule ^admin/products/images/(.*) admin/products/images/index.html?id=$2
+RewriteRule ^admin/products/detail/(.*) admin/products/detail/index.html?id=$2

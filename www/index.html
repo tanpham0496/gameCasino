@@ -1,0 +1,1653 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height ,initial-scale=1 maximum-scale=1, user-scalable=0"> <!-- O day -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Jinhua Test</title>
+<link rel="stylesheet" href="main.css"/>
+<link rel="stylesheet" href="styles/custom.css"/>
+
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap">
+
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+<script src="config.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="js/jquery-1.11.2.min.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script src="js/hotjs-i18n.js"></script>
+<script src="js/en.lang.js"></script>
+<script src="js/zh.lang.js"></script>
+<script src="main.js"></script>
+</head>
+<body class="bodyHomes">
+    <div class="popup-err">
+        <div class="content">
+            <div class="block container" style="height: 100%;">
+                <div class="header">
+                    <div> Notice </div>
+                </div>
+                <div id="message">
+                </div>
+                <div class="footer">
+                    <button onclick="closeErr()"> Close </button>
+                </div>
+            </div>
+               
+        </div>
+    </div>
+    <div id="roomGame" style="display: none;">
+        <div class="topHomes">
+            <div style="padding-top: 10px; padding-left: 3px;">
+                <span style="color : #ffffff"> Texas Hold’em poker </span>
+            </div>
+            <div id="logoutGame">
+                <img src="images/icon_logout.png" alt="">
+            </div>
+        </div>
+        <div class="line-width"> </div>
+        <div class="boxs-game">
+            <div class="child-box" id='holdem1'>  
+            </div>
+            <div class="child-box" id='holdem2'> 
+            </div>
+            <div class="child-box" id='holdem3'> 
+            </div>
+            <div class="child-box" id='holdem4'> 
+            </div>
+            <div class="child-box" id='holdem5'> 
+            </div>
+            <div class="child-box" id='holdem6'> 
+            </div>
+        </div>
+        <div class="blocks">
+            <div class="block">
+                <div class="paginations" style="margin-bottom: 0;">
+                    <div class="balanceHomes" style='display: flex;'>
+                        <div style="width: 100%;">
+                            <table>
+                               <!--  <tr>
+                                    <th>ID</th>
+                                    <th>Balance</th>
+                                    <th>Valid Balances</th>
+                                </tr> -->
+                                <tr>
+                                    <td id="infoUserNameHomePoker"></td>
+                                    <!-- <td><span id="balanceHomePoker"></span><img src="images/ba_pc.png" alt="" style="max-width: 15px; position: relative; top: 3px; right: -5%;"></td> -->
+                                    <td><span id="balanceChangeHomePoker"></span><img src="images/ba_pc.png" alt="" class="image-blaa"></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="homes">
+        <div class="topHomes">
+            <div style="padding-top: 10px; padding-left: 3px;">
+                <span style="color : #ffffff">GAMES</span>
+            </div>
+            <div class="logout">
+                <img src="images/icon_logout.png" alt="">
+            </div>
+        </div>
+        <div class="line-width"> </div>
+       <div class="boxs">
+            <div id='loaderGame'>
+                <div class="loader"></div>
+            </div>
+            <div class="item-box" >
+                <button id='oddOrEven' onclick="activePageHtml('oddOrEven')" style="display: none;">
+                    <img src="imagesHomes/ood-even.png" alt="">
+                </button>
+            </div>
+            <div class="item-box">
+                <button id='rcissorsRockPaper' onclick="activePageHtml('rcissorsRockPaper')" style="display: none;">
+                    <img src="imagesHomes/rps.png" alt="">
+                </button>
+            </div>
+            <div class="item-box">
+                <button id='300Lotto' onclick="activePageHtml('300Lotto')" style="display: none;">
+                    <img src="imagesHomes/lotto.png" alt="">
+                </button>
+            </div>
+
+             <div class="item-box" id='hwatu'> 
+            </div>
+             <div class="item-box" id="GamePoker">
+                <button id="entergame" arg="holdem1" class="cmd"><img src="imagesHomes/holdem1.png"></button>
+            </div>
+            
+        </div>
+        <div class="blocks">
+            <div class="block">
+                <div class="paginations" style="margin-bottom: 0;">
+                    <div class="balanceHomes" style='display: flex;'>
+                        <div style="width: 100%;">
+                            <table>
+                               <!--  <tr>
+                                    <th>ID</th>
+                                    <th>Balance</th>
+                                    <th>Valid Balances</th>
+                                </tr> -->
+                                <tr>
+                                    <td id="infoUserNameHome"></td>
+                                    <!-- <td><span id="balanceHome"></span><img src="images/ba_pc.png" alt="" style="max-width: 15px; position: relative; top: 3px; right: -5%;"></td> -->
+                                    <td><span id="balanceChangeHome"></span><img src="images/ba_pc.png" alt="" class="image-blaa"></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="popup-join">
+        <div class="content">
+            <div class="resultBlock">
+                <div class="block-transaction">
+                    <div style="height: 195; border: solid 2px white; border-radius: 15px;">
+                        <div style="margin: 10px;">
+                            <div class="notify-content">
+                                <div class="item">
+                                    <span id="nameSender"></span>
+                                </div>
+                                <div class="item">
+                                    <span>Do you want join there ?</span>
+                                    <div id="timeInviteHoldem2">01:00</div>
+                                </div>
+                                <div class="item">
+                                    <button id="JoinRoom">Yes</button>
+                                    <button id="noJoinRoom">No</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="index" style="height: 100%;">
+        <audio id="carteSoudCtrl" style="display : none">
+            <source src="./sound/time_clock.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="carteSoudCtrl1" style="display : none">
+            <source src="./sound/Card_Flip.ogg" type="audio/mpeg">
+        </audio>
+        <audio id="carteSoudCtrl2" style="display : none">
+            <source src="./sound/Win.ogg" type="audio/mpeg">
+        </audio>
+        <audio id="carteSoudCtrl3" style="display : none">
+            <source src="./sound/Btamin_Betting.ogg" type="audio/mpeg">
+        </audio>
+        <div class="blocks" style="height: 100%;">
+            <div class="block" style="height: 100%;">
+                <div class="contents" style="padding-top: 15px;">
+                    <div class="listTop"></div>
+                    <div class="cardsTable" style="position: relative;">
+                        
+                        <div class="sum"></div>
+
+                        <div style="width: 100%; position: absolute; top: 55%; transform: translateY(-50%);">
+                            <div id="sharedcards" class="sharedcards"></div>
+                        </div>
+                    </div>
+                    <div class="listBottom"></div>
+                </div>
+
+                <div id="space"style="background: #E0EFF5;" ></div>
+                <div class="paginations heightTime">
+                    <div class="tip" onclick="openTip()">
+                        <img src="images/tip.png" alt="">
+                    </div>
+                    <div class="bettingValue" style="width: 25%;" id="bettingValue">0</div>
+                    <div class="time" style="width: 50%;">
+                        <div class="titleTime">Time</div>
+                        <div id="lineTime"></div>
+                    </div>
+                </div>
+
+                <div class="paginations heightButtonBet">
+                    <div id="drag" class="drag"></div>
+                    <div class="bet centerElementButton" id="bet">
+                        <div id='cmds' class='inactive'></div>
+                    </div>
+                </div>
+                
+                <div class="paginations" style="margin-bottom: 0;">
+                    <div class="balance" style='display: flex;'>
+                        <div style="width: 100%;">
+                            <table>
+                               <!--  <tr>
+                                    <th>ID</th>
+                                    <th>Balance</th>
+                                    <th>Valid Balances</th>
+                                </tr> -->
+                                <tr>
+                                    <td id="infoUserName"></td>
+                                    <td style="display: none"><span id="balance"></span><img src="images/ba_pc.png" alt="" class="image-blaa"></td>
+                                    <td><span id="balanceChange"></span><img src="images/ba_pc.png" alt="" class="image-blaa"></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <button class="btnInvite" id='listFriend' >Invite Friend</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="popup-tip">
+            <div class="content">
+                <table id="pokerTip" cellspacing="0" cellpadding="1" width="100%">
+                    <thead>
+                        <tr>
+                            <th>
+                                <p>
+                                    <img src="images/imageTip/tip_icon.png">
+                                    <span>TIP</span>
+                                    <button onclick="closeTip()">
+                                        <img src="images/imageTip/close_icon.png">
+                                    </button>
+                                </p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody style="display: inline-block; width: 100%; overflow: auto;">
+                        <tr>
+                            <td>
+                                <div class="treeLeaf">
+                                    <div><span>1</span><span>. Royal Flush</span></div>     
+                                    <div>The cards are homogenous A, K, Q, J, 10.</div>        
+                                    <div class="leafText">
+                                        The 5 most powerful cards <br>
+                                        of all the Straight Flush and <br>
+                                        the strongest in the poker, <br>
+                                        also known as Royal Straight Flush.
+
+                                    </div>
+                                    <img src="images/imageTip/Royal_Flush.png">     
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="treeLeaf">
+                                    <div><span>2</span><span>. Straight Flush</span></div>      
+                                    <div>
+                                        The 5 consecutive cards <br>
+                                        are homogeneous.
+                                    </div>      
+                                    <div class="leafText">
+                                        In Straight Flush,
+                                        <br>
+                                        besides Royal Straight Flush <br>
+                                        which all are called Straight Flush. <br>
+                                        Straight Flush K is the largest. <br>
+                                        Straight Flush 5 is the smallest.
+
+                                    </div>
+                                    <img src="images/imageTip/Straight_Flush.png">      
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="treeLeaf">
+                                    <div><span>3</span><span>. Four of a Kind</span></div>      
+                                    <div>The 4 cards are homogeneous.</div>     
+                                    <div class="leafText">
+                                        4 cards A <br>
+                                        is the largest and <br>
+                                        4 cards 2 is the smallest.
+                                    </div>
+                                    <img src="images/imageTip/Four_of_a_Kind.png">      
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="treeLeaf">
+                                    <div><span>4</span><span>. Full House</span></div>      
+                                    <div>
+                                        Consists of a <br>
+                                        trio and a duo.
+                                    </div>      
+                                    <div class="leafText">In Full House, the one with the highest <b> handle of three numbers </b> that person wins</div>
+                                    <img src="images/imageTip/Full_House.png">      
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="treeLeaf">
+                                    <div><span>5</span><span>. Flush</span></div>       
+                                    <div>The 5 cards are homogeneous.</div>     
+                                    <div class="leafText">
+                                        Flush A (A, K, Q, J, 10) <br>
+                                        is the largest. <br>
+                                        Flush 5 (5, 4, 3, 2, A) <br>
+                                        is the smallest <br>
+                                        In case of the same Flush, <br>
+                                        someone with the card remaining <br>
+                                        bigger than the person wins.
+                                    </div>
+                                    <img src="images/imageTip/Flush.png">       
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="treeLeaf">
+                                    <div><span>6</span><span>. Straight</span></div>        
+                                    <div>5 cards are <br>“consecutive/5 consecutive” ards.</div>        
+                                    <div class="leafText">
+                                        In Straight, Royal Straight <br>
+                                        (A, K, Q, J, 10) is the largest, <br>
+                                        5 Straight (5, 4, 3, 2, A) is the smallest. <br>
+                                        In case of the same Straight, <br>
+                                        someone with the card remaining <br>
+                                        bigger than the person wins.
+                                    </div>
+                                    <img src="images/imageTip/Straight.png">        
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="treeLeaf">
+                                    <div><span>7</span><span>. Three of a Kind</span></div>     
+                                    <div>the same 3 pairs.</div>     
+                                    <div class="leafText">
+                                        A of 3 pairs is the largest, <br>
+                                        3 pairs of 2 is the smallest.
+                                    </div>
+                                    <img src="images/imageTip/Three_of_a_Kind.png">     
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="treeLeaf">
+                                    <div><span>8</span><span>. Two Pair</span></div>        
+                                    <div>
+                                        There are Two pairs in In card game. <br> 
+                                        (Pair: Two cards of the same number). 
+                                    </div>      
+                                    <div class="leafText">
+                                        Two pairs of A + K <br>
+                                        are the largest, two pairs <br>
+                                        of 3 + 2 are the smallest. <br>
+                                        In the case of two pairs <br>
+                                        of the same, players who has an <br>
+                                        odd card is bigger than the person wins.
+                                    </div>
+                                    <img src="images/imageTip/Two_Pair.png">        
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="treeLeaf">
+                                    <div><span>9</span><span>. One Pair</span></div>        
+                                    <div>There are 1 pairs in In card game. <br>
+                                        (Pair: 2 cards of the same number).</div>     
+                                    <div class="leafText">
+                                        A pairs is the largest, <br>
+                                        pairs 2 is the smallest. <br>
+                                        In the case of one pairs of <br>
+                                        the same, players who has an odd <br>
+                                        card is bigger than the person wins.
+                                    </div>
+                                    <img src="images/imageTip/One_Pair.png">        
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="treeLeaf">
+                                    <div><span>10</span><span>. High Card</span></div>      
+                                    <div></div>     
+                                    <div class="leafText">
+                                        A is the largest card, <br>
+                                        the smallest card is 2. <br>
+                                        In case the same highest <br>
+                                        cards are the same, <br>
+                                        it will compare to the next cards.
+                                    </div>
+                                    <img src="images/imageTip/High_Card.png">       
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="popup-tipHwatu">
+            <div class="content">
+                <table id="hwatuTip" cellspacing="0" cellpadding="1" width="100%">
+                    <thead>
+                        <tr>
+                            <th>
+                                <p>
+                                    <img src="imagesHwatu/imageTip/tip_icon.png">
+                                    <span>TIP</span>
+                                    <button onclick="closeTipHwatu()">
+                                        <img src="images/imageTip/close_icon.png">
+                                    </button>
+                                </p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody style="display: inline-block; width: 100%; overflow-y: auto; background: #FFFFFF;">
+                        <tr>
+                            <td>
+                                <div class="item">
+                                    <div class="treeLeaf">
+                                        <div><span>King pair</span></div>
+                                        <div class="title">
+                                            <span></span><span>38 king pair</span>
+                                            <img src="imagesHwatu/imageTip/hoa-ngang.png" class="title-img">
+                                        </div>      
+                                        <div class="leafText">
+                                            <p style="color: red">The highest pair that can <br>
+                                                not destroy by police</p>
+                                            <p>and can not rematch.</p>
+                                        </div>
+                                        <img src="imagesHwatu/imageTip/1.png" class="topFirstImage">        
+                                    </div>
+                                    <div class="treeLeaf">
+                                        <div class="title">
+                                            <span></span><span>18 king pair</span>
+                                            <img src="imagesHwatu/imageTip/hoa-ngang.png" class="title-img">
+                                        </div>      
+                                        <div class="leafText">
+                                            <p>Arrested by police,</p>
+                                            <p style="color: red">It can not rematch.</p>
+                                        </div>
+                                        <img src="imagesHwatu/imageTip/2.png">      
+                                    </div>
+                                    <div class="treeLeaf">
+                                        <div class="title">
+                                            <span></span><span>13 king pair</span>
+                                            <img src="imagesHwatu/imageTip/hoa-ngang.png" class="title-img">
+                                        </div>      
+                                        <div class="leafText">
+                                            <p>Arrested by police,</p>
+                                            <p style="color: red">It can not rematch.</p>
+                                        </div>
+                                        <img src="imagesHwatu/imageTip/3.png">      
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="item">
+                                    <div class="treeLeaf">
+                                        <div><span>Pair</span></div>
+                                        <div class="title">
+                                            <span></span><span>10 Pair</span>
+                                            <img src="imagesHwatu/imageTip/hoa-ngang.png" class="title-img">
+                                        </div>      
+                                        <div class="leafText">
+                                            <p style="color: red">Arrested by slave.</p>
+                                            <p>it can not destroy by slave <br>
+                                                and can not rematch as<br>
+                                                stupid and nothing.</p>
+                                        </div>
+                                        <img src="imagesHwatu/imageTip/4.png" class="topFirstImage">        
+                                    </div>
+                                    <div class="treeLeaf">
+                                        <div class="title">
+                                            <span></span><span>9 Pair</span>
+                                            <img src="imagesHwatu/imageTip/hoa-ngang.png" class="title-img">
+                                        </div>      
+                                        <div class="leafText">
+                                            <p style="color: red">Arrested by slave.</p>
+                                            <p>It only can rematch as <br>
+                                                stupid and nothing.</p>
+                                        </div>
+                                        <img src="imagesHwatu/imageTip/5.png">      
+                                    </div>
+                                    <div class="treeLeaf">
+                                        <div class="title">
+                                            <span></span><span>8 Pair</span>
+                                            <img src="imagesHwatu/imageTip/hoa-ngang.png" class="title-img">
+                                        </div>      
+                                        <div class="leafText">
+                                            <p style="color: red">Arrested by slave.</p>
+                                            <p>It only can rematch as <br>
+                                                stupid and nothing.</p>
+                                        </div>
+                                        <img src="imagesHwatu/imageTip/6.png">      
+                                    </div>
+                                    <div class="treeLeaf">
+                                        <div class="title">
+                                            <span></span><span>7 Pair</span>
+                                            <img src="imagesHwatu/imageTip/hoa-ngang.png" class="title-img">
+                                        </div>      
+                                        <div class="leafText">
+                                            <p style="color: red">Arrested by slave.</p>
+                                            <p>It only can rematch as <br>
+                                                stupid and nothing.</p>
+                                        </div>
+                                        <img src="imagesHwatu/imageTip/7.png">      
+                                    </div>
+                                    <div class="treeLeaf">
+                                        <div class="title">
+                                            <span></span><span>6 Pair</span>
+                                            <img src="imagesHwatu/imageTip/hoa-ngang.png" class="title-img">
+                                        </div>      
+                                        <div class="leafText">
+                                            <p style="color: red">Arrested by slave.</p>
+                                            <p>It only can rematch as <br>
+                                                stupid and nothing.</p>
+                                        </div>
+                                        <img src="imagesHwatu/imageTip/8.png">      
+                                    </div>
+                                    <div class="treeLeaf">
+                                        <div class="title">
+                                            <span></span><span>5 Pair</span>
+                                            <img src="imagesHwatu/imageTip/hoa-ngang.png" class="title-img">
+                                        </div>      
+                                        <div class="leafText">
+                                            <p style="color: red">Arrested by slave.</p>
+                                            <p>It only can rematch as <br>
+                                                stupid and nothing.</p>
+                                        </div>
+                                        <img src="imagesHwatu/imageTip/9.png">      
+                                    </div>
+                                    <div class="treeLeaf">
+                                        <div class="title">
+                                            <span></span><span>4 Pair</span>
+                                            <img src="imagesHwatu/imageTip/hoa-ngang.png" class="title-img">
+                                        </div>      
+                                        <div class="leafText">
+                                            <p style="color: red">Arrested by slave.</p>
+                                            <p>It only can rematch as <br>
+                                                stupid and nothing.</p>
+                                        </div>
+                                        <img src="imagesHwatu/imageTip/10.png">     
+                                    </div>
+                                    <div class="treeLeaf">
+                                        <div class="title">
+                                            <span></span><span>3 Pair</span>
+                                            <img src="imagesHwatu/imageTip/hoa-ngang.png" class="title-img">
+                                        </div>      
+                                        <div class="leafText">
+                                            <p style="color: red">Arrested by slave.</p>
+                                            <p>It only can rematch as <br>
+                                                stupid and nothing.</p>
+                                        </div>
+                                        <img src="imagesHwatu/imageTip/11.png">     
+                                    </div>
+                                    <div class="treeLeaf">
+                                        <div class="title">
+                                            <span></span><span>2 Pair</span>
+                                            <img src="imagesHwatu/imageTip/hoa-ngang.png" class="title-img">
+                                        </div>      
+                                        <div class="leafText">
+                                            <p style="color: red">Arrested by slave.</p>
+                                            <p>It only can rematch as <br>
+                                                stupid and nothing.</p>
+                                        </div>
+                                        <img src="imagesHwatu/imageTip/12.png">     
+                                    </div>
+                                    <div class="treeLeaf">
+                                        <div class="title">
+                                            <span></span><span>1 Pair</span>
+                                            <img src="imagesHwatu/imageTip/hoa-ngang.png" class="title-img">
+                                        </div>      
+                                        <div class="leafText">
+                                            <p style="color: red">Arrested by slave.</p>
+                                            <p>It only can rematch as <br>
+                                                stupid and nothing.</p>
+                                        </div>
+                                        <img src="imagesHwatu/imageTip/13.png">     
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="item">
+                                    <div class="treeLeaf">
+                                        <div><span>Middle pair</span></div>
+                                        <div class="title">
+                                            <span></span><span>Ali</span>
+                                            <img src="imagesHwatu/imageTip/hoa-ngang.png" class="title-img">
+                                        </div>      
+                                        <div class="leafText">
+                                            <p>It cannot rematch <br> as nothing</p>
+                                        </div>
+                                        <img src="imagesHwatu/imageTip/14.png" class="topFirstImage">       
+                                    </div>
+                                    <div class="treeLeaf">
+                                        <div class="title">
+                                            <span></span><span>Docsa</span>
+                                            <img src="imagesHwatu/imageTip/hoa-ngang.png" class="title-img">
+                                        </div>      
+                                        <div class="leafText">
+                                            <p>It cannot rematch <br> as nothing</p>
+                                        </div>
+                                        <img src="imagesHwatu/imageTip/15.png">     
+                                    </div>
+                                    <div class="treeLeaf">
+                                        <div class="title">
+                                            <span></span><span>Guping</span>
+                                            <img src="imagesHwatu/imageTip/hoa-ngang.png" class="title-img">
+                                        </div>      
+                                        <div class="leafText">
+                                            <p>It cannot rematch <br> as nothing</p>
+                                        </div>
+                                        <img src="imagesHwatu/imageTip/16.png">     
+                                    </div>
+                                    <div class="treeLeaf">
+                                        <div class="title">
+                                            <span></span><span>Jangping</span>
+                                            <img src="imagesHwatu/imageTip/hoa-ngang.png" class="title-img">
+                                        </div>      
+                                        <div class="leafText">
+                                            <p>It cannot rematch <br> as nothing</p>
+                                        </div>
+                                        <img src="imagesHwatu/imageTip/17.png">     
+                                    </div>
+                                    <div class="treeLeaf">
+                                        <div class="title">
+                                            <span></span><span>Jangsa</span>
+                                            <img src="imagesHwatu/imageTip/hoa-ngang.png" class="title-img">
+                                        </div>      
+                                        <div class="leafText">
+                                            <p>It cannot rematch <br> as nothing</p>
+                                        </div>
+                                        <img src="imagesHwatu/imageTip/18.png">     
+                                    </div>
+                                    <div class="treeLeaf">
+                                        <div class="title">
+                                            <span></span><span>Seruk</span>
+                                            <img src="imagesHwatu/imageTip/hoa-ngang.png" class="title-img">
+                                        </div>      
+                                        <div class="leafText">
+                                            <p>It cannot rematch <br> as nothing</p>
+                                        </div>
+                                        <img src="imagesHwatu/imageTip/19.png">     
+                                    </div>  
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="item">
+                                    <div class="treeLeaf" style="padding-bottom: 0;">
+                                        <div><span>End</span></div>
+                                        <div class="title">
+                                            <span></span><span>9 end</span>
+                                            <img src="imagesHwatu/imageTip/hoa-ngang.png" class="title-img">
+                                        </div>      
+                                        <div class="leafText" style="padding-bottom: 0;">
+                                            <p>The last number for the <br> February total : 9 of king pair </p>
+                                        </div>
+                                    </div>
+                                    <div class="treeLeaf" style="padding-bottom: 0;">
+                                        <div class="title">
+                                            <span></span><span>8 end</span>
+                                            <img src="imagesHwatu/imageTip/hoa-ngang.png" class="title-img">
+                                        </div>      
+                                        <div class="leafText" style="padding-bottom: 0;">
+                                            <p>The last number for the <br> February total : 8 of king pair </p>
+                                        </div>
+                                    </div>
+                                    <div class="treeLeaf" style="padding-bottom: 0;">
+                                        <div class="title">
+                                            <span></span><span>7 end</span>
+                                            <img src="imagesHwatu/imageTip/hoa-ngang.png" class="title-img">
+                                        </div>      
+                                        <div class="leafText" style="padding-bottom: 0;">
+                                            <p>The last number for the <br> February total : 7 of king pair </p>
+                                        </div>
+                                    </div>
+                                    <div class="treeLeaf" style="padding-bottom: 0;">
+                                        <div class="title">
+                                            <span></span><span>6 end</span>
+                                            <img src="imagesHwatu/imageTip/hoa-ngang.png" class="title-img">
+                                        </div>      
+                                        <div class="leafText" style="padding-bottom: 0;">
+                                            <p>The last number for the <br> February total : 6 of king pair </p>
+                                        </div>
+                                    </div>
+                                    <div class="treeLeaf" style="padding-bottom: 0;">
+                                        <div class="title">
+                                            <span></span><span>5 end</span>
+                                            <img src="imagesHwatu/imageTip/hoa-ngang.png" class="title-img">
+                                        </div>      
+                                        <div class="leafText" style="padding-bottom: 0;">
+                                            <p>The last number for the <br> February total : 5 of king pair </p>
+                                        </div>
+                                    </div>
+                                    <div class="treeLeaf" style="padding-bottom: 0;">
+                                        <div class="title">
+                                            <span></span><span>4 end</span>
+                                            <img src="imagesHwatu/imageTip/hoa-ngang.png" class="title-img">
+                                        </div>      
+                                        <div class="leafText" style="padding-bottom: 0;">
+                                            <p>The last number for the <br> February total : 4 of king pair </p>
+                                        </div>
+                                    </div>
+                                    <div class="treeLeaf" style="padding-bottom: 0;">
+                                        <div class="title">
+                                            <span></span><span>3 end</span>
+                                            <img src="imagesHwatu/imageTip/hoa-ngang.png" class="title-img">
+                                        </div>      
+                                        <div class="leafText" style="padding-bottom: 0;">
+                                            <p>The last number for the <br> February total : 3 of king pair </p>
+                                        </div>
+                                    </div>
+                                    <div class="treeLeaf" style="padding-bottom: 0;">
+                                        <div class="title">
+                                            <span></span><span>2 end</span>
+                                            <img src="imagesHwatu/imageTip/hoa-ngang.png" class="title-img">
+                                        </div>      
+                                        <div class="leafText" style="padding-bottom: 0;">
+                                            <p>The last number for the <br> February total : 2 of king pair </p>
+                                        </div>
+                                    </div>
+                                    <div class="treeLeaf" style="padding-bottom: 0;">
+                                        <div class="title">
+                                            <span></span><span>1 end</span>
+                                            <img src="imagesHwatu/imageTip/hoa-ngang.png" class="title-img">
+                                        </div>      
+                                        <div class="leafText" style="padding-bottom: 0;">
+                                            <p>The last number for the <br> February total : 1 of king pair </p>
+                                        </div>
+                                    </div>
+                                    <div class="treeLeaf">
+                                        <div class="title">
+                                            <span></span><span>0 end</span>
+                                            <img src="imagesHwatu/imageTip/hoa-ngang.png" class="title-img">
+                                        </div>      
+                                        <div class="leafText" style="padding-bottom: 0;">
+                                            <p>The last number for the <br> February total : 0 of king pair </p>
+                                            <p style="color : red"> The smallest pair. </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="item">
+                                    <div class="treeLeaf">
+                                        <div><span>Special pair</span></div>
+                                        <div class="title">
+                                            <span></span><span>Police</span>
+                                            <img src="imagesHwatu/imageTip/hoa-ngang.png" class="title-img">
+                                        </div>      
+                                        <div class="leafText">
+                                            <p>Won 18 king pair and <br>
+                                                13 king pair</p>
+                                            <p style="color: red">(Except 38 king pair).</p>
+                                        </div>
+                                        <img src="imagesHwatu/imageTip/20.png" class="topFirstImage">       
+                                    </div>
+                                    <div class="treeLeaf">
+                                        <div class="title">
+                                            <span></span><span>Slave</span>
+                                            <img src="imagesHwatu/imageTip/hoa-ngang.png" class="title-img">
+                                        </div>      
+                                        <div class="leafText">
+                                            <p>Won 1 pair - 9 pair </p>
+                                            <p style="color: red">(Except 10 pair).</p>
+                                        </div>
+                                        <img src="imagesHwatu/imageTip/21.png">     
+                                    </div>
+                                    <div class="treeLeaf">
+                                        <div class="title">
+                                            <span></span><span>Stupid</span>
+                                            <img src="imagesHwatu/imageTip/hoa-ngang.png" class="title-img">
+                                        </div>      
+                                        <div class="leafText">
+                                            <p>Rematch with pairs</p>
+                                            <p>of 9 pair or less.</p>
+                                        </div>
+                                        <img src="imagesHwatu/imageTip/22.png">     
+                                    </div>
+                                    <div class="treeLeaf">
+                                        <div class="title">
+                                            <span></span><span>Nothing</span>
+                                            <img src="imagesHwatu/imageTip/hoa-ngang.png" class="title-img">
+                                        </div>      
+                                        <div class="leafText">
+                                            <p>Rematch with pairs</p>
+                                            <p>of Ali or less.</p>
+                                        </div>
+                                        <img src="imagesHwatu/imageTip/23.png">     
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="popup-listFriend">
+            <div class="content">
+                <div class="block">
+                    <div style="height: 63px; background: url(images/inviteHead.png) no-repeat; background-size: 100% 100%; position: relative;">
+                        <div style="position: absolute; width: 100%; top: 60%; left: 50%; transform: translate(-50%, -50%);">
+                            <span style="font-size: 20px; font-weight: 600; color: #E5C699;">INVITE FRIEND</span>
+                        </div>
+                        <span style="position: absolute; top: 16%; right: 4%;" onclick="closeListFriend()"><img src="images/x.png" alt=""></span>
+                    </div>
+                    <div class="listFriend">
+                        <div id="listFriend" style="display: inline-block; width: 100%; overflow: auto;">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        #index{
+            display: none;
+        }
+        #indexhwatu{
+            display: none;
+        }
+    </style>
+    <script>
+        var seconds; // var seconds = 20;
+        window.oncontextmenu = (e) => { 
+            e.preventDefault();  // loại bỏ thao tác với chuột phải
+            event.stopPropagation();
+        }
+
+        function locationOfMeIntoCenter(Array, me, listCoins ) {
+            var i,tmp,tmp1, ArrNew;
+            
+            Array = Array.map((item,ind)=>{
+                return { uid : item, seat : ind ,coins : listCoins && listCoins[ind] ? listCoins[ind] : null}
+            })
+            i = Array.findIndex(item => item.uid == me);
+            tmp = Array.slice(0, i);
+            tmp1 = Array.slice(i, Array.length);
+            ArrNew = tmp1.concat(tmp);
+
+            for(let a = 0; a < 2 ; a ++) {
+                const shiftTmp = ArrNew.shift();
+                ArrNew.push(shiftTmp);
+            }
+            return ArrNew;
+        }
+
+        function activePageHtml(item){ 
+            // $.ajax({
+            //     type: 'POST',
+            //     url: `${appLinkApi}/users/userBalance`,
+            //     dataType:"JSON",
+            //     data : {
+            //         // id : 'tanpham',
+            //         // token : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJ0YW5waGFtIiwiaWF0IjoxNTg0NzcyNDE3fQ.BQDplHY_1F7yUq0mh2yWA4PoZkb-BHcXFvXIhB12M50',
+            //         id : localStorage.getItem('userId'),
+            //         token : localStorage.getItem('token')
+            //     },
+            //     success: (data) => { 
+            //         console.log('data', data)
+            //         if(data.status) location.href = `./${item}.html`; 
+            //         else{
+            //             $(".popup-err").toggle()
+            //             $('#message').empty()
+            //             $('#message').append(` 
+            //                     <div class="messagesContent">Invalid User!</div>
+            //             `)
+            //             setTimeout(()=>{ $(".popup-err").hide() }, 5000)
+            //             }
+            //     },
+            //     error: (request, status, error) => {}
+            // });
+        }
+        
+        function handleNewWriteHTML(newClientSeats, client){
+            if(newClientSeats.length !== 0 && client && client.room){
+                $('.listTop').empty()
+                $('.listBottom').empty()
+                for (var i = 0; i < 3; i++) {
+                    $('.listTop').append(`
+                        <div class="${newClientSeats[i].uid !== null ? 'usersTopReady':'usersTop'}" id="active${i}">
+                            <div id="money${newClientSeats[i].seat}" class='moneyUserTop'></div>
+                            <div class="infoTop">
+                                <div class="name">
+                                    <div class="userName yourName${i}" ${newClientSeats[i].uid === client.uid ? 'id="userName"':''}>${newClientSeats[i].uid !== null ? (newClientSeats[i].uid === client.uid ? 'Me' : newClientSeats[i].uid) : ''}</div>
+                                </div>
+                                <div class="card">
+                                    <div class="cardUser" id="${newClientSeats[i].uid === client.uid ? 'mycards': `cards${i}`}">
+                                        
+                                    </div>
+                                </div>
+                                <div class="action">
+                                    <div class="check" id="actionSeat${i}">${newClientSeats[i].uid !== null ? 'Waiting':''}</div>
+                                </div>
+                            </div>
+                            <div class="betValue"><span id="seat${newClientSeats[i].seat}"></span></div>
+                        </div>
+                    `)
+                }
+                for (var i = 3; i < newClientSeats.length ; i++) {
+                    $('.listBottom').append(`
+                        <div class="${newClientSeats[i].uid !== null ? 'usersBottomReady':'usersBottom'}" id="active${i}">
+                            <div class="nameFiveCardsBottom" id="nameFiveCard${newClientSeats[i].seat}"></div>
+                            <div class="betValue" ><span id="seat${newClientSeats[i].seat}"></span></div>
+                            <div class="infoBottom">
+                                <div class="action">
+                                    <div class="check" id="actionSeat${i}">${newClientSeats[i].uid !== null ? 'Waiting':''}</div>
+                                </div>
+                                <div class="card">
+                                    <div class="cardUser" id="${newClientSeats[i].uid === client.uid ? 'mycards': `cards${i}`}">
+                                        
+                                    </div>
+                                </div>
+                                <div class="name">
+                                    <div class="userName yourName${i}" ${newClientSeats[i].uid === client.uid ? 'id="userName"':''}>${newClientSeats[i].uid !== null ? newClientSeats[i].uid === client.uid ? 'Me' : newClientSeats[i].uid :''}</div>
+                                </div>
+                            </div>
+                            <div id="money${newClientSeats[i].seat}" class='moneyUserBottom'></div>
+                        </div>
+                    `)
+                }
+                setCSS()
+            }
+        }
+
+        function handleNewWriteHTML_Hwatu(newClientSeats, client){
+            if(newClientSeats.length !== 0 && client && client.room){
+                $('.listTop').empty()
+                $('.listBottom').empty()
+                for (var i = 0; i < 3; i++) {
+                    $('.listTop').append(`
+                        <div class="${newClientSeats[i].uid !== null ? 'usersTopReadyHwatu':'usersTopHwatu'}" id="active${i}">
+                            <div id="money${newClientSeats[i].seat}" class='moneyUserTopHwatu'></div>
+                            <div class="infoTop">
+                                <div class="name">
+                                    <div class="userName yourName${i}" ${newClientSeats[i].uid === client.uid ? 'id="userName"':''}>${newClientSeats[i].uid !== null ? (newClientSeats[i].uid === client.uid ? 'Me' : newClientSeats[i].uid) : ''}</div>
+                                </div>
+                                <div class="card">
+                                    <div class="cardUser" id="${newClientSeats[i].uid === client.uid ? 'mycards': `cards${i}`}">
+                                        
+                                    </div>
+                                </div>
+                                <div class="action">
+                                    <div class="check" id="actionSeat${i}">${newClientSeats[i].uid !== null ? 'Waiting':''}</div>
+                                </div>
+                            </div>
+                            <div class="betValue"><span id="seat${newClientSeats[i].seat}"></span></div>
+                        </div>
+                    `)
+                }
+                for (var i = 3; i < newClientSeats.length ; i++) {
+                    $('.listBottom').append(`
+                        <div class="${newClientSeats[i].uid !== null ? 'usersBottomReadyHwatu':'usersBottomHwatu'}" id="active${i}">
+                            <div class="nameTwoCardsBottom" id="nameTwoCards${newClientSeats[i].seat}"></div>
+                            <div class="betValue" ><span id="seat${newClientSeats[i].seat}"></span></div>
+                            <div class="infoBottom">
+                                <div class="action">
+                                    <div class="check" id="actionSeat${i}">${newClientSeats[i].uid !== null ? 'Waiting':''}</div>
+                                </div>
+                                <div class="card">
+                                    <div class="cardUser" id="${newClientSeats[i].uid === client.uid ? 'mycards': `cards${i}`}">
+                                        
+                                    </div>
+                                </div>
+                                <div class="name">
+                                    <div class="userName yourName${i}" ${newClientSeats[i].uid === client.uid ? 'id="userName"':''}>${newClientSeats[i].uid !== null ? newClientSeats[i].uid === client.uid ? 'Me' : newClientSeats[i].uid :''}</div>
+                                </div>
+                            </div>
+                            <div id="money${newClientSeats[i].seat}" class='moneyUserBottomHwatu'></div>
+                        </div>
+                    `)
+                }
+                setCSSHwatu()
+            }
+        }
+        
+        //add_new
+        function writeHTMLEndGame(newClientSeats, client, msg, listBettingInGame){
+            var percentReceive = (100 - parseInt(client.profile.gameFeeIdxMS)/10)/100;
+            $('.listTop').empty()
+            $('.listBottom').empty()
+            for (var i = 0; i < 3; i++) {
+                $('.listTop').append(`
+                    <div class="${newClientSeats[i].uid === msg.uid ? 'usersTopWin': newClientSeats[i].uid !== null ? 'usersTopLose':'usersTop'}" id="active${i}">
+                        <div class="infoTop">
+                            <div class="name">
+                                <!-- <div class="userName" ${newClientSeats[i].uid === client.uid ? 'id="userName"':''}>${newClientSeats[i].uid !== null ? newClientSeats[i].uid :''}</div> -->
+                                <div class="userName" ${newClientSeats[i].uid === client.uid ? 'id="userName"':''}>${newClientSeats[i].uid !== null ? (newClientSeats[i].uid === client.uid ? 'Me' : newClientSeats[i].uid) : ''}</div>
+                            </div>
+                            <div class="card">
+                                <div class="cardUser" id="mycards${i}">
+                                    <img src="${newClientSeats[i].uid !== null ? 'imgCards/0_0.png':''}" alt="">
+                                    <img src="${newClientSeats[i].uid !== null ? 'imgCards/0_0.png':''}" alt="">
+                                </div>
+                            </div>
+                            <div class="action">
+                                <div class="check" id="actionSeat${i}"></div>
+                            </div>
+                        </div>
+                        <div class="betValue"><span id="seat${newClientSeats[i].seat}"></span></div>
+                        <div class="totalValueTop">
+                            <span id="totalValueSeat${i}">
+                                ${newClientSeats[i].uid === msg.uid && listBettingInGame.filter(item => item.uid == msg.uid).length !==0
+                                    ? '+' + nFormatter(Number(listBettingInGame.filter(item => item.uid == msg.uid)[0].coins * percentReceive)) : newClientSeats[i].uid === null 
+                                    ? '' : client.room.chips[newClientSeats[i].seat] && listBettingInGame.filter(item => item.uid == newClientSeats[i].uid).length !==0
+                                    ? '-' + nFormatter(Number( listBettingInGame.filter(item => item.uid == newClientSeats[i].uid)[0].coins )) : ''}
+                            </span>
+                        </div>
+                    </div>
+                `)
+            }
+            for (var i = 3; i < newClientSeats.length; i++) {
+                $('.listBottom').append(`
+                    <div class="${newClientSeats[i].uid === msg.uid ? 'usersBottomWin': newClientSeats[i].uid  !== null ? 'usersBottomLose': 'usersBottom'}" id="active${i}">
+                        <div class="totalValueBottom">
+                            <span id="totalValueSeat${i}">
+                                ${newClientSeats[i].uid === msg.uid && listBettingInGame.filter(item => item.uid == msg.uid).length !==0
+                                    ? '+' + nFormatter(Number(listBettingInGame.filter(item => item.uid == msg.uid)[0].coins * percentReceive)) : newClientSeats[i].uid === null 
+                                    ? '' : client.room.chips[newClientSeats[i].seat] && listBettingInGame.filter(item => item.uid == newClientSeats[i].uid).length !==0 
+                                    ? '-' + nFormatter(Number( listBettingInGame.filter(item => item.uid == newClientSeats[i].uid)[0].coins )) : ''}
+                            </span>
+                        </div>
+                        <div class="betValue"><span id="seat${newClientSeats[i].seat}"></span></div>
+                        <div class="infoBottom">
+                            <div class="action">
+                                <div class="check" id="actionSeat${i}"></div>
+                            </div>
+                            <div class="card">
+                                <div class="cardUser" id="mycards${i}">
+                                    <img src="${newClientSeats[i].uid  !== null ? 'imgCards/0_0.png':''}" alt="">
+                                    <img src="${newClientSeats[i].uid  !== null ? 'imgCards/0_0.png':''}" alt="">
+                                </div>
+                            </div>
+                            <div class="name">
+                                <!-- <div class="userName" ${newClientSeats[i].uid === client.uid ? 'id="userName"':''}>${newClientSeats[i].uid !== null ? newClientSeats[i].uid :''}</div> -->
+                                <div class="userName" ${newClientSeats[i].uid === client.uid ? 'id="userName"':''}>${newClientSeats[i].uid !== null ? (newClientSeats[i].uid === client.uid ? 'Me' : newClientSeats[i].uid) :''}</div>
+                            </div>
+                        </div>
+                    </div>
+                `)
+            }
+            setCSS()
+        }
+
+        function writeHTMLEndGame_Hwatu(newClientSeats, client, msg, listBettingInGame){
+            var percentReceive = (100 - parseInt(client.profile.gameFeeIdxMS)/10)/100;
+            $('.listTop').empty()
+            $('.listBottom').empty()
+            for (var i = 0; i < 3; i++) {
+                $('.listTop').append(`
+                    <div class="${newClientSeats[i].uid === msg.uid ? 'usersTopWinHwatu': newClientSeats[i].uid !== null ? 'usersTopLoseHwatu':'usersTopHwatu'}" id="active${i}">
+                        <div class="infoTop">
+                            <div class="name">
+                                <!-- <div class="userName" ${newClientSeats[i].uid === client.uid ? 'id="userName"':''}>${newClientSeats[i].uid !== null ? newClientSeats[i].uid :''}</div> -->
+                                <div class="userName" ${newClientSeats[i].uid === client.uid ? 'id="userName"':''}>${newClientSeats[i].uid !== null ? (newClientSeats[i].uid === client.uid ? 'Me' : newClientSeats[i].uid) : ''}</div>
+                            </div>
+                            <div class="card">
+                                <div class="cardUser" id="mycards${i}">
+                                    <img src="${newClientSeats[i].uid !== null ? 'imgCards_hwatu/0_0.png':''}" alt="">
+                                    <img src="${newClientSeats[i].uid !== null ? 'imgCards_hwatu/0_0.png':''}" alt="">
+                                </div>
+                            </div>
+                            <div class="action">
+                                <div class="check" id="actionSeat${i}"></div>
+                            </div>
+                        </div>
+                        <div class="betValue"><span id="seat${newClientSeats[i].seat}"></span></div>
+                        <div class="totalValueTop">
+                            <span id="totalValueSeat${i}">
+                                ${newClientSeats[i].uid === msg.uid && listBettingInGame.filter(item => item.uid == msg.uid).length !==0
+                                    ? '+' + nFormatter(Number(listBettingInGame.filter(item => item.uid == msg.uid)[0].coins * percentReceive)) : newClientSeats[i].uid === null 
+                                    ? '' : client.room.chips[newClientSeats[i].seat] && listBettingInGame.filter(item => item.uid == newClientSeats[i].uid).length !==0
+                                    ? '-' + nFormatter(Number( listBettingInGame.filter(item => item.uid == newClientSeats[i].uid)[0].coins )) : ''}
+                            </span>
+                        </div>
+                    </div>
+                `)
+            }
+            for (var i = 3; i < newClientSeats.length; i++) {
+                $('.listBottom').append(`
+                    <div class="${newClientSeats[i].uid === msg.uid ? 'usersBottomWinHwatu': newClientSeats[i].uid  !== null ? 'usersBottomLoseHwatu': 'usersBottomHwatu'}" id="active${i}">
+                        <div class="totalValueBottom">
+                            <span id="totalValueSeat${i}">
+                                ${newClientSeats[i].uid === msg.uid && listBettingInGame.filter(item => item.uid == msg.uid).length !==0
+                                    ? '+' + nFormatter(Number(listBettingInGame.filter(item => item.uid == msg.uid)[0].coins * percentReceive)) : newClientSeats[i].uid === null 
+                                    ? '' : client.room.chips[newClientSeats[i].seat] && listBettingInGame.filter(item => item.uid == newClientSeats[i].uid).length !==0 
+                                    ? '-' + nFormatter(Number( listBettingInGame.filter(item => item.uid == newClientSeats[i].uid)[0].coins )) : ''}
+                            </span>
+                        </div>
+                        <div class="betValue"><span id="seat${newClientSeats[i].seat}"></span></div>
+                        <div class="infoBottom">
+                            <div class="action">
+                                <div class="check" id="actionSeat${i}"></div>
+                            </div>
+                            <div class="card">
+                                <div class="cardUser" id="mycards${i}">
+                                    <img src="${newClientSeats[i].uid  !== null ? 'imgCards_hwatu/0_0.png':''}" alt="">
+                                    <img src="${newClientSeats[i].uid  !== null ? 'imgCards_hwatu/0_0.png':''}" alt="">
+                                </div>
+                            </div>
+                            <div class="name">
+                                <!-- <div class="userName" ${newClientSeats[i].uid === client.uid ? 'id="userName"':''}>${newClientSeats[i].uid !== null ? newClientSeats[i].uid :''}</div> -->
+                                <div class="userName" ${newClientSeats[i].uid === client.uid ? 'id="userName"':''}>${newClientSeats[i].uid !== null ? (newClientSeats[i].uid === client.uid ? 'Me' : newClientSeats[i].uid) :''}</div>
+                            </div>
+                        </div>
+                    </div>
+                `)
+            }
+            setCSSHwatu()
+        }
+        
+        function changeImageActive(newClientSeats, msg){
+            // When click play: seat = -1
+            // click play: seat = -1 
+            // Ready game: seat >= 0
+            var seat = msg.args.seat;
+            if( seat >= 0 ) { 
+                var fold = !!localStorage.getItem('fold') ? JSON.parse(localStorage.getItem('fold')) : []
+                var leave = !!localStorage.getItem('leave') ? JSON.parse(localStorage.getItem('leave')) : [];
+
+                for (var i = 0; i < 3; i++) {
+                    $(`#active${i}`).removeClass()
+                    
+                    if(seat === newClientSeats[i].seat) {
+                        $(`#active${i}`).addClass('usersTopActive')
+                    } else {
+                        $(`#active${i}`).addClass(`${newClientSeats[i].uid !== null ? 'usersTopReady':'usersTop'}`)
+                    }
+                }
+                for (var i = 3; i < newClientSeats.length; i++) {
+                    $(`#active${i}`).removeClass()
+                    if(seat === newClientSeats[i].seat) {
+                        $(`#active${i}`).addClass('usersBottomActive')
+                    } else {
+                        $(`#active${i}`).addClass(`${newClientSeats[i].uid !== null ? 'usersBottomReady':'usersBottom'}`)
+                    }
+                }
+                //add_new
+                if(fold != []){
+                    for (var i = 0; i < fold.length; i++) {
+                        var locationFold = newClientSeats.findIndex(item => item.seat === fold[i].seat);
+                        $(`#active${locationFold}`).removeClass()
+                        $(`#active${locationFold}`).addClass(`${ locationFold < 3 ? 'usersTopFold' : 'usersBottomFold'}`)
+                        document.getElementById(`actionSeat${ locationFold }`).innerHTML = 'Fold'
+                    }
+                }
+                if(leave != []){
+                    for (var i = 0; i < leave.length; i++) {
+                        var locationLeave = newClientSeats.findIndex(item => item.seat === leave[i].seat);
+                        $(`#active${locationLeave}`).removeClass()
+                        $(`#active${locationLeave}`).addClass(`${locationLeave < 3 ? 'usersTop':'usersBottom'}`)
+                        document.getElementById(`actionSeat${locationLeave}`).innerHTML = 'Leave'
+                    }
+                }
+            }
+        }
+
+        function changeImageActive_Hwatu(newClientSeats, msg){
+            // When click play: seat = -1
+            // click play: seat = -1 
+            // Ready game: seat >= 0
+            var seat = msg.args.seat;
+            if( seat >= 0 ) { 
+                var fold = !!localStorage.getItem('fold') ? JSON.parse(localStorage.getItem('fold')) : []
+                var leave = !!localStorage.getItem('leave') ? JSON.parse(localStorage.getItem('leave')) : [];
+
+                for (var i = 0; i < 3; i++) {
+                    $(`#active${i}`).removeClass()
+                    if(seat === newClientSeats[i].seat) {
+                        $(`#active${i}`).addClass('usersTopActiveHwatu')
+                    } else {
+                        $(`#active${i}`).addClass(`${newClientSeats[i].uid !== null ? 'usersTopReadyHwatu':'usersTopHwatu'}`)
+                    }
+                }
+                for (var i = 3; i < newClientSeats.length; i++) {
+                    $(`#active${i}`).removeClass()
+                    if(seat === newClientSeats[i].seat) {
+                        $(`#active${i}`).addClass('usersBottomActiveHwatu')
+                    } else {
+                        $(`#active${i}`).addClass(`${newClientSeats[i].uid !== null ? 'usersBottomReadyHwatu':'usersBottomHwatu'}`)
+                    }
+                }
+                //add_new
+                if(fold != []){
+                    for (var i = 0; i < fold.length; i++) {
+                        var locationFold = newClientSeats.findIndex(item => item.seat === fold[i].seat);
+                        $(`#active${locationFold}`).removeClass()
+                        $(`#active${locationFold}`).addClass(`${ locationFold < 3 ? 'usersTopFoldHwatu' : 'usersBottomFoldHwatu'}`)
+                        document.getElementById(`actionSeat${ locationFold }`).innerHTML = 'Fold'
+                    }
+                }
+                if(leave != []){
+                    for (var i = 0; i < leave.length; i++) {
+                         var locationLeave = newClientSeats.findIndex(item => item.seat === leave[i].seat);
+                        $(`#active${locationLeave}`).removeClass()
+                        $(`#active${locationLeave}`).addClass(`${locationLeave < 3 ? 'usersTopHwatu':'usersBottomHwatu'}`)
+                        document.getElementById(`actionSeat${locationLeave}`).innerHTML = 'Leave'
+                    }
+                }
+            }
+        }
+        
+        function changeAction(client, msg){
+            var fold = !!localStorage.getItem('fold') ? JSON.parse(localStorage.getItem('fold')) : []
+            if(msg.e === 'check' || msg.e === 'call' || msg.e === 'raise' || msg.e === 'fold'){
+                var seat = msg.args.seat;
+                var arr = client && client.room && client.room.seats;
+                var listCoins = client && client.room && client.room.listCoins;
+			    const newClientSeats = locationOfMeIntoCenter(arr,client.uid, listCoins);
+                var locationSeat = newClientSeats.findIndex(item =>item.seat === seat) 
+                var text = msg.e.slice(0,1).toUpperCase() + msg.e.slice(1)
+
+                document.getElementById(`actionSeat${locationSeat}`).innerHTML = text == 'Raise' ? 'Bet': text // Change "Raise" => "Bet"
+                localStorage.setItem('msg', JSON.stringify(msg))
+
+                if(msg.e === 'fold') {
+                    fold.push(msg.args)
+                    localStorage.setItem('fold', JSON.stringify(fold))
+                    
+                    /// set empty card for seat action "folded"
+                    var folder = client.room.type == 'hwatu' ? 'imgCards_hwatu' : 'imgCards'
+                    $(`#cards${locationSeat}`).empty()
+                    if(folder == 'imgCards_hwatu'){
+                        var arrCard = client.room.cards[seat]
+                        for(let k = 0; k < arrCard.length; k++){
+                            $(`#cards${locationSeat}`).append(`<img src="${folder}/0_1.png"  alt="">`)
+                        }
+                    } else {
+                        $(`#cards${locationSeat}`).append(`
+                            <img src="${folder}/0_1.png"  alt="">
+                            <img src="${folder}/0_1.png"  alt="">
+                        `)
+                    }
+                } else if(msg.e === 'check') {
+                    document.getElementById('balanceChange').innerHTML = document.getElementById('balance').innerHTML 
+                } 
+            } else if (msg.e === 'deal'){
+                for (var i = 0; i < 6; i++) {
+                    document.getElementById(`actionSeat${i}`).innerHTML = ''
+                }
+            } else if(msg.e === 'leave') {
+                if(msg.args.uid == client.uid) {
+                    localStorage.removeItem("msg");
+                    localStorage.removeItem("fold");
+                    localStorage.removeItem("leave");
+                    $('#homes').css('display', 'block')
+                    $('#index').css('display', 'none')
+
+                   
+                } else {
+                    var arr = client && client.room && client.room.seats;
+                    var listCoins = client && client.room && client.room.listCoins;
+			        var newClientSeats = locationOfMeIntoCenter(arr,client.uid, listCoins);
+                    var leave = !!localStorage.getItem('leave') ? JSON.parse(localStorage.getItem('leave')) : []
+                    if(fold && fold.length > 0){
+                        for (var i = 0; i < fold.length; i++) {
+                            if(fold[i].uid == msg.args.uid){
+                                var locationFold = newClientSeats.findIndex(item => item.seat === fold[i].seat);
+                                $(`#cards${locationFold}`).empty()
+                                document.getElementById(`actionSeat${locationFold}`).innerHTML = 'Leave'
+                                leave.push(fold[i])
+                                localStorage.setItem('leave', JSON.stringify(leave))
+                                
+                                fold.splice(i, 1)
+                                if(fold.length > 0) localStorage.setItem('fold', JSON.stringify(fold))
+                                else localStorage.removeItem("fold")
+                            }
+                        }
+                    } else {
+                        let seat = client.room.seats.indexOf(msg.args.uid);
+                        var locationSeat = newClientSeats.findIndex(item =>item.seat === seat) 
+                        if(locationSeat == -1){ // Waittinng
+                            for(i = 0; i < 6; i++){
+                                var nameUserLeave = $(`.yourName${i}`).text()
+                                if(nameUserLeave == msg.args.uid) {
+                                    $(`.yourName${i}`).text('')
+                                    document.getElementById(`actionSeat${i}`).innerHTML = ''
+
+                                    // New code change image usersTop or usersTopHwatu
+                                    if(client.room.type == 'holdem2'){
+                                        $(`#active${i}`).removeClass().addClass(`${i < 3 ? 'usersTop':'usersBottom'}`)
+                                    } else {
+                                        $(`#active${i}`).removeClass().addClass(`${i < 3 ? 'usersTopHwatu':'usersBottomHwatu'}`)
+                                    }
+                                }
+                            }
+                        } else { // In game
+                            $(`#cards${locationSeat}`).empty()
+                            document.getElementById(`actionSeat${locationSeat}`).innerHTML = 'Leave'
+                            let item = {'seat': seat, 'uid': msg.args.uid}
+                            leave.push(item)
+                            localStorage.setItem('leave', JSON.stringify(leave))
+                        }
+                    }
+                }
+            }
+        }
+
+        function addActionWaiting(client, msg){
+            var seat = msg.args.where
+            document.getElementById(`actionSeat${seat}`).innerHTML = 'Waiting'
+        }
+        
+        function activePageIndex(){ location.href = `${appLink}/index.html`; }
+
+        function setHeightHomes(){
+            var heightHome;
+            var width= $('body').width();
+            if(width >= 600)  heightHome = $('body').height() - 175;
+            else heightHome = $('body').height() - 127;
+            $('.boxs').css('height', heightHome);
+
+            $('.boxs-game').css('height', heightHome)
+        }
+        
+        // function setCSS(){
+        //     var heightTbody;
+        //     var width= $('body').width();
+
+        //     if(width >= 600)  heightTbody = $('body').height() - 238;
+        //     else  heightTbody = $('body').height() - 150;
+
+        //     // background item 3:4
+        //     var widthItem = width/3/3
+        //     var heightItem = widthItem * 4
+            
+        //     var heightItemCard = Number((heightTbody - 60)*0.3)
+        //     var height = heightItemCard > heightItem ? heightItem : heightItemCard
+        //     var bottom = heightItemCard > heightItem ? heightItemCard - heightItem : 0
+        //     $('.blocks > .block > .contents').css('height', `${heightTbody - 50}`)
+        //     $('.blocks > .block > .contents > .listTop').css('height', `${heightItemCard}`)
+        //     $('.blocks > .block > .contents > .listTop > div').css('height', `${height}`)
+        //     $('.blocks > .block > .contents > .listBottom').css('height', `${heightItemCard}`)
+        //     $('.blocks > .block > .contents > .listBottom > div').css({'bottom': `-${bottom}px`, 'height': `${height}`})
+        //     $('.blocks > .block > .contents > .cardsTable').css('height', `${(heightTbody - 60)*0.4}`)
+
+        //     $('.paginations').css('margin', `${5}px auto`)
+        //     $('.paginations:last-child').css('margin', `${0}px auto`)
+        // }
+
+        function setCSS(){
+            // var heightTbody;
+            // var width= $('body').width();
+            // var heightScreen = $('body').height();
+
+            // if(width >= 600) {
+            //     // heightTbody = $('body').height() - 230;
+            //     heightTbody = $('body').height() - 245;
+
+            //     // background item 3:4
+            //     var widthItem = width/3/3
+            //     var heightItem = widthItem * 4
+                
+            //     var heightItemCard = Number((heightTbody - 60)*0.3)
+            //     var height = heightItemCard > heightItem ? heightItem : heightItemCard
+            //     var bottom = heightItemCard > heightItem ? heightItemCard - heightItem : 0
+            //     $('.blocks > .block > .contents').css('height', `${heightTbody - 50}`)
+            //     $('.blocks > .block > .contents > .listTop').css('height', `${heightItemCard}`)
+            //     $('.blocks > .block > .contents > .listTop > div').css('height', `${height}`)
+            //     $('.blocks > .block > .contents > .listBottom').css('height', `${heightItemCard}`)
+            //     $('.blocks > .block > .contents > .listBottom > div').css({'bottom': `-${bottom}px`, 'height': `${height}`})
+            //     $('.blocks > .block > .contents > .cardsTable').css('height', `${(heightTbody - 60)*0.4}`)
+            // }
+            // else {
+            //     // heightTbody = $('body').height() - 142;
+            //     heightTbody = (heightScreen >= 800) ? (heightScreen-210) : (heightScreen- 150)
+                
+            //     var heightItemCard = Number((heightTbody - 60)*0.32)
+            //     var height = heightItemCard > 124 ? 124 : heightItemCard
+            //     var bottom = heightItemCard > 124 ? heightItemCard - 124 : 0
+            //     $('.blocks > .block > .contents').css('height', `${heightTbody - 50}`)
+            //     $('.blocks > .block > .contents > .listTop').css('height', `${heightItemCard}`)
+            //     $('.blocks > .block > .contents > .listTop > div').css('height', `${height}`)
+            //     $('.blocks > .block > .contents > .listBottom').css('height', `${heightItemCard}`)
+            //     $('.blocks > .block > .contents > .listBottom > div').css({'bottom': `-${bottom}px`, 'height': `${height}`})
+            //     $('.blocks > .block > .contents > .cardsTable').css('height', `${(heightTbody - 60)*0.36}`)
+            // }
+            // $('.paginations').css('margin', `${5}px auto`)
+            // $('.paginations:last-child').css('margin', `${0}px auto`)
+            var heightTbody;
+            var width= $('body').width();
+            var heightScreen = $('body').height();
+            
+            if(width >= 600) heightTbody = $('body').height() - 232;
+            else heightTbody = (heightScreen- 147);
+            
+            // background item 3:4
+            var widthItem = width/3/3
+            var heightItem = widthItem * 4
+            
+            var heightItemCustomIphoneX =  (heightScreen >= 800 && heightScreen >= 1000) ? 20 : 0;
+            var heightItemCard = Number((heightTbody - 60)*0.34) ;
+            var height = heightItemCard > heightItem ? heightItem : heightItemCard
+            var bottom = heightItemCard > heightItem ? heightItemCard - heightItem : 0
+            $('.blocks > .block > .contents').css('height', `${heightTbody + ((heightScreen >= 800 && heightScreen >= 1000) ? 35 : 20) - 50}`)
+            $('.blocks > .block > .contents > .listTop').css('height', `${heightItemCard}`)
+            $('.blocks > .block > .contents > .listTop > div').css('height', `${height + Number(heightItemCustomIphoneX)}`)
+            $('.blocks > .block > .contents > .listBottom').css('height', `${heightItemCard}`)
+            $('.blocks > .block > .contents > .listBottom > div').css({'bottom': `-${bottom + Number(heightItemCustomIphoneX)}px`, 'height': `${height + Number(heightItemCustomIphoneX)}`})
+            $('.blocks > .block > .contents > .cardsTable').css('height', `${(heightTbody - 60)*0.32}`)
+            $('.blocks > .block > .contents > .cardsTable > div').css('top', `${(heightScreen >= 800 && heightScreen >= 1000) ? "60%" : "55%"}`)
+
+            $('.paginations').css('margin', `${5}px auto`)
+            $('.paginations:last-child').css('margin', `${0}px auto`)
+        }
+
+        function setCSSHwatu(){
+            var heightTbody;
+            var width= $('body').width();
+            var heightScreen = $('body').height();
+            
+            if(width >= 600) heightTbody = $('body').height() - 232;
+            // else heightTbody = (heightScreen >= 800) ? (heightScreen-210) : (heightScreen- 147);
+            else heightTbody = (heightScreen- 147);
+            
+            // background item 3:4
+            var widthItem = width/3/3
+            var heightItem = widthItem * 4
+            
+            var heightItemCustomIphoneX =  (heightScreen >= 800 && heightScreen >= 1000) ? 20 : 0;
+            var heightItemCard = Number((heightTbody - 60)*0.34) ;
+            var height = heightItemCard > heightItem ? heightItem : heightItemCard
+            var bottom = heightItemCard > heightItem ? heightItemCard - heightItem : 0
+            $('.blocks > .block > .contents').css('height', `${heightTbody + ((heightScreen >= 800 && heightScreen >= 1000) ? 33 : 18) - 50}`)
+            $('.blocks > .block > .contents > .listTop').css('height', `${heightItemCard}`)
+            $('.blocks > .block > .contents > .listTop > div').css('height', `${height + Number(heightItemCustomIphoneX)}`)
+            $('.blocks > .block > .contents > .listBottom').css('height', `${heightItemCard}`)
+            $('.blocks > .block > .contents > .listBottom > div').css({'bottom': `-${bottom + Number(heightItemCustomIphoneX)}px`, 'height': `${height + Number(heightItemCustomIphoneX)}`})
+            $('.blocks > .block > .contents > .cardsTable').css('height', `${(heightTbody - 60)*0.32}`)
+            $('.blocks > .block > .contents > .cardsTable > div').css('top', `${(heightScreen >= 800 && heightScreen >= 1000) ? "60%" : "55%"}`)
+
+            $('.paginations').css('margin', `${5}px auto`)
+            $('.paginations:last-child').css('margin', `${0}px auto`)
+        }
+
+        function setHeightTip(){
+            var heightTbody= $('body').height() - 60;
+            $('#pokerTip tbody').css('height', heightTbody)
+        }
+
+        function setHeightTipHwatu(){
+            var heightTbody= $('body').height() - 60;
+            $('#hwatuTip tbody').css('height', heightTbody)
+        }
+        
+        function increment(){
+            var max = parseInt($('#raise .parentRaiseInput > input').attr('max'))
+            var bettingValue = parseInt($('#raise .parentRaiseInput > input').val())
+            bettingValue = reFormatter(bettingValue)
+            
+            var balance = document.getElementById('balance').innerHTML
+            balance = reFormatNumber(balance)
+
+            if(bettingValue + 1000 > max) bettingValue = bettingValue
+            else  bettingValue += 1000;
+            $('#raise .parentRaiseInput > input').val(bettingValue)
+            document.getElementById('bettingValue').innerHTML = nFormatter(Number(bettingValue));
+            document.getElementById('balanceChange').innerHTML = formatNumber(balance - bettingValue)
+        }
+        
+        function decrement() {
+            var min = parseInt($('.parentRaiseInput > input').attr('min'))
+            var bettingValue = parseInt($('#raise .parentRaiseInput > input').val())
+            bettingValue = reFormatter(bettingValue)
+            
+            var balance = document.getElementById('balance').innerHTML
+            balance = reFormatNumber(balance)
+
+            if(bettingValue - 1000 <= min) bettingValue = min
+            else  bettingValue -= 1000;
+            $('#raise .parentRaiseInput > input').val(bettingValue)
+            document.getElementById('bettingValue').innerHTML = nFormatter(Number(bettingValue));
+            document.getElementById('balanceChange').innerHTML = formatNumber(balance - bettingValue)
+        }
+
+        // format Number to Number of "K"
+        function nFormatter(num) {
+            if (num >= 1000) {
+                let result = (num / 1000).toString()+"K"
+                return result
+            } else return num.toString();
+        }
+        
+        // re Format Number of "K" to Number
+        function reFormatter(text){
+            if(!Number.isInteger(Number(text))){
+                let result = text.split('K')[0]*1000
+                return result
+            } else  return parseInt(text)
+        }
+        
+        // format Number
+        function formatNumber(number) {
+            number = parseInt(number);
+            return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+        
+        // reformat Number
+        function reFormatNumber(text){
+            let result = text.replace(/,/g, '')
+            return parseInt(result)
+        }
+        
+        function writeHtmlTimeLine(seconds){
+            // for (var i = 20; i > 0; i--) { 
+            for (var i = 15; i > 0; i--) { 
+                $('#lineTime').append(` <div class="timecountDown" id="timecountDown${i}"></div>`)
+                $(`#timecountDown${i}`).css('background', `#370B0B`)
+            }
+        }
+        
+        function openTip(){
+            var tipPoker = $('.tip').length
+            var tipHwatu = $('.tipHwatu').length
+            
+            if(tipPoker){
+                $(".popup-tip").toggle()
+                setHeightTip()
+            } else if(tipHwatu){
+                $(".popup-tipHwatu").toggle()
+                setHeightTipHwatu()
+            }
+        }
+        
+        function closeTip(){ $(".popup-tip").hide() }
+
+        function closeTipHwatu(){ $(".popup-tipHwatu").hide() }
+        
+        // function activePage(item){ $(".popup-main").toggle() }
+        
+        function closeErr(){ $(".popup-err").hide() }
+
+        function closeListFriend(){
+            $('.block > #listFriend').empty()
+            $(".popup-listFriend").hide()
+        }
+
+        function closeJoin(){ $(".popup-join").hide() }
+
+        // function activePageHome (){ $(".popup-main").hide() }
+
+        function activeGameAfterChoose(typeGame){
+            $('#homes').css('display', 'none');
+            $('#roomGame').css('display', 'none')
+            $('#index').css('display', 'block')
+            if(typeGame == 'hwatu') {
+                $('body').removeClass().addClass('bodyHwatu');
+                $('.sum').css('color', '#404040')
+                
+                $('.tip').empty().addClass('tipHwatu').removeClass('tip').append("<img src='imagesHwatu/tipHwatu.png'/>")
+                $('.bettingValue').addClass('bettingValueHwatu').removeClass('bettingValue')
+                $('.time').addClass('timeHwatu').removeClass('time')
+                $('.btnInvite').addClass('btnInviteHwatu').removeClass('btnInvite')
+
+                $('.balance').addClass('balanceHwatu').removeClass('balance')
+                $('.balanceHomes').addClass('balanceHwatu').removeClass('balanceHomes')
+            } else {
+                $('body').removeClass().addClass('bodyPoker');
+                $('.sum').css('color', '#ffffff')
+                
+                $('.tipHwatu').empty().addClass('tip').removeClass('tipHwatu').append("<img src='images/tip.png'/>")
+                $('.bettingValueHwatu').addClass('bettingValue').removeClass('bettingValueHwatu')
+                $('.timeHwatu').addClass('time').removeClass('timeHwatu')
+                $('.btnInviteHwatu').addClass('btnInvite').removeClass('btnInviteHwatu')
+
+                $('.balanceHomes').addClass('balance').removeClass('balanceHomes')
+            }
+        }
+        
+        function checkTakeseat(client, msg){
+            var takeseat = !!localStorage.getItem('takeseat') ? JSON.parse(localStorage.getItem('takeseat')) : []
+            if(takeseat.length > 0){
+                const arr = client && client.room && client.room.seats;
+                const listCoins = client && client.room && client.room.listCoins;
+			    const newClientSeats = locationOfMeIntoCenter(arr,client.uid, listCoins);
+                if(client.room.type == 'holdem2'){
+                    handleNewWriteHTML(newClientSeats, client)
+                    changeImageActive(newClientSeats, msg)
+                } else {
+                    handleNewWriteHTML_Hwatu(newClientSeats, client)
+                    changeImageActive_Hwatu(newClientSeats, msg)
+                }
+                localStorage.removeItem("takeseat");
+            }
+        }
+        
+        var countdown;
+        function startTimer(duration) {
+            var timer = duration, minutes, seconds;
+            countdown = setInterval(function () {
+                minutes = parseInt(timer / 60, 10)
+                seconds = parseInt(timer % 60, 10);
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                var time = minutes + ":" + seconds;
+
+                if (--timer < 0) {
+                    clearInterval(countdown)
+                    $('.popup-join').hide()
+                    $('.boxs').css('display', 'block')
+                } else {
+                    document.getElementById('timeInviteHoldem2').innerHTML = time;
+                }
+            }, 1000);
+        }
+        setHeightHomes()
+        writeHtmlTimeLine()
+    </script>
+
+</body>
+</html>

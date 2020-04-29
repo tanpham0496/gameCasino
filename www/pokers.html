@@ -1,0 +1,883 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height ,initial-scale=1 maximum-scale=1, user-scalable=0"> <!-- O day -->
+    <title>BLOOD || LOTO</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" type="text/css" href="stylesGameNews/style.css">
+    <link rel="stylesheet" type="text/css" href="stylesGameNews/css/all.css">
+    <link rel="stylesheet" type="text/css" href="stylesGameNews/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="stylesGameNews/dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap">
+    <script src="main.js"></script>
+    <script src="config.js"></script>
+    <script src="js/GameNew/jquery1.9.1.min.js"></script>
+    <script src="js/GameNew/dataTables.min.js"></script>
+    <script src="js/GameNew/bootstrap.min.js"></script>
+    <script src="js/GameNew/DragDropTouch.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> 
+    
+</head>
+<body>
+    <div id="index">
+        <div class="blocks">
+            <div class="block">
+                <!-- O day -->
+                <div style="padding: 10px; border-bottom: solid 1px #c9c4c4; height: 40px;">
+                    <i class="fas fa-chevron-left"  style="font-size: 20px; float: left; vertical-align: middle;" onclick="activePageIndex()"></i>
+                    <span style="width: 60px; vertical-align: middle; float: left; font-size: 15px;" onclick="activePageIndex()">Back</span>
+                </div>
+                <!-- O day -->
+                <table class="search-table inner">
+                    <thead>
+                        <tr>
+                            <th><span>No</span></th>
+                            <th style="width: 30%;"><span>Bet</span></th>
+                            <th style="width: 30%;"><span>Result</span></th>
+                            <th><span>Hash</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+                <div id="space"style="background: #E0EFF5;" ></div>
+                <div class="paginations" id="lineTime" style="height: 30px; display: block; font-size: 10px;padding: 0;"></div>
+                <div class="paginations" style="margin-bottom: 0;">
+                    <div class="bet">
+                        <div class="inputNumber">
+                            <div>
+                                <i class="up" onclick="chooseUp('inputNumberLeft')"><img src="images/button-left-up.png" alt=""></i>
+                                <input type="number" value="0" readonly="true" class="inputNumberLeft" id="inputNumberLeft">
+                                <i class="down" onclick="chooseDown('inputNumberLeft')"><img src="images/button-left-down.png" alt=""></i>
+                            </div>
+                            <div>
+                                <i class="up" onclick="chooseUp('inputNumberCenter')"><img src="images/button-center-up.png" alt=""></i>
+                                <input type="number" value="0" readonly="true" class="inputNumberCenter" id="inputNumberCenter">
+                                <i class="down" onclick="chooseDown('inputNumberCenter')"><img src="images/button-center-down.png" alt=""></i>
+                            </div>
+                            <div>
+                                <i class="up" onclick="chooseUp('inputNumberRight')"><img src="images/button-right-up.png" alt=""></i>
+                                <input type="number" value="0" readonly="true" class="inputNumberRight" id="inputNumberRight">
+                                <i class="down" onclick="chooseDown('inputNumberRight')"><img src="images/button-right-down.png" alt=""></i>
+                            </div>
+                        </div>
+                        <button class="buttonReset" 
+                            onmousedown="mousedownResetValue(event)"
+                            onmouseup="mouseupResetValue()"
+                            ontouchstart="mousedownResetValueTouch()"
+                            ontouchend="mouseupResetValue()"
+                        ></button>
+                        <div style="display: inline-block; position: relative; top: -48px;" class="setWidth">
+                            <input id="number" value="0" readonly="true">
+                            <img src="images/ba_pc.png" alt="" id="unit">
+                        </div>
+                        <div style="display: inline-block; position: relative; width: 30px; top: -44px;">
+                            <button class="buttonDecrement"
+                                onclick="decrementValue()" 
+                                ontouchstart="mousedownDecrementValueTouch()"
+                                ontouchend="mouseupDecrementValue()"
+                            ></button>
+                            <button class="buttonIncrement"
+                                onclick="incrementValue()" 
+                                ontouchstart="mousedownIncrementValueTouch()"
+                                ontouchend="mouseupIncrementValue()"
+                            ></button>
+                        </div>
+                    </div>
+                    <div class="balance">
+                        <div style="width: 80%;">
+                            <table>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Balance</th>
+                                    <th>Valid Balances</th>
+                                </tr>
+                                <tr>
+                                    <td>Shin Shin</td>
+                                    <td><span id="balance"></span><img src="images/ba_pc.png" alt="" style="max-width: 15px; position: relative; top: -2px; right: -5%;"></td>
+                                    <td><span id="balanceChange"></span><img src="images/ba_pc.png" alt="" style="max-width: 15px; position: relative; top: -2px; right: -5%;"></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div style="width: 18%; ">
+                            <button class="buttonTopUp">TOP UP</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="popup-main">
+            <div class="content">
+                <div class="resultBlock">
+                    <div class="block-transaction">
+                        <div class="block" style="padding: 0 10px;">
+                            <!-- <div style="padding: 15px 0; border-bottom: solid 2px #c9c4c4;">
+                                <span style="float: left;" class="back" onclick="activePageHome()">
+                                    <i class="fas fa-chevron-left" onclick="activePageHome()"></i>
+                                </span>
+                                <span style="display: block; width: 100px; padding: 0; margin: 0 auto;">Hash</span>
+                            </div> -->
+                            <div style="padding: 10px 0; border-bottom: solid 1px #c9c4c4; height: 40px;">
+                                <i class="fas fa-chevron-left"  style="font-size: 20px; float: left; vertical-align: middle;" onclick="activePageHome()"></i>
+                                <span style="width: 60px; vertical-align: middle; float: left; font-size: 15px;" onclick="activePageHome()">Hash</span>
+                            </div>
+                            <div style="margin: 3px auto;"></div>
+                            <table >
+                                <tbody >
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        .buttonValue{
+            color:white; 
+            font-weight: 600; 
+            background-repeat: no-repeat;
+            background-size: cover;
+            border: none !important;
+            width: 23px;
+            height: 23px;
+        }
+        .resultBlock .block-transaction .block table tr td div {
+            width: 95%;
+            vertical-align: middle;
+            line-height: 35px;
+            border: solid 1px #DEE7E4;
+            background: #DEE7E4;
+            border-radius: 15px;
+            position: relative;
+        }
+        .width30{
+            width: 30%;
+        }
+    </style>
+    <script>
+        
+        var valTest = [
+            {   No:46, Block:["900140","900139","900138"], Hash:["0x1881899824619357312","0x93523411396520800","0x360273236818420140"],
+                // IntegerHash:["72328962680601","16984967232396","9963007037207"], Sipping:"null", UserSipping:"null", BetAmount:"100"
+                // IntegerHash:["72328962680601","16984967232396","9963007037207"], Sipping:"null", UserSipping:[1,6,7], BetAmount:"100"
+                IntegerHash:["72328962680601","16984967232396","9963007037207"], Sipping:[2,6,7], UserSipping:[1,6,7], BetAmount:"100"
+            },
+            {   
+                No:45, Block:["900137","900136","900136"], Hash:["0x1013457446834534102","0x3845230404355248132","0x3845230404355248132"],
+                // IntegerHash:["47445847853706","16607991970507","16607991970507"], Sipping:"null", UserSipping:"null", BetAmount:"null"
+                IntegerHash:["47445847853706","16607991970507","16607991970507"], Sipping:[6,7,7], UserSipping:"null", BetAmount:"null"
+            },
+            {
+                No:44, Block:["900134","900133","900132"], Hash:["0x1595149247670192501","0x1952152604647313505","0x2524123567795585284"],
+                IntegerHash:["63699839583113","74733324372587","10962059670092"], Sipping:[3,7,2], UserSipping:[1,3,9], BetAmount:"200"
+            },
+            {
+                No:43, Block:["900131","900131","900129"], Hash:["0x2136793378947816995","0x2136793378947816995","0x1851470612054628096"],
+                IntegerHash:["980268447321","980268447321","71772562285426"], Sipping:[1,1,6], UserSipping:[3,7,8], BetAmount:"300"
+            },
+            {
+                No:42, Block:["900128","900127","900127"],Hash:["0x1372573438164666430","0x1865721635641371097","0x1865721635641371097"],
+                IntegerHash:["57396359817484","72005085973244","72005085973244"], Sipping:[4,4,4], UserSipping:[1,7,4], BetAmount:"150"
+            },
+            {
+                No:41, Block:["900125","900124","900123"], Hash:["0x131072673492692130","0x680312554817162376","0x344497556420348044"],
+                IntegerHash:["35167326052793","19186827167656","96417320483748"], Sipping:[3,3,3], UserSipping:[1,1,1], BetAmount:"100"
+            },
+            {
+                No:40, Block:["900122","900121","900120"], Hash:["0x86451499653365419","0x1874519947495668699","0x1158946529031748710"],
+                IntegerHash:["15480259237657","72176561069119","51196397928284"], Sipping:[2,2,2], UserSipping:[3,3,3], BetAmount:"100"
+            },
+            {
+                No:39, Block:["900119","900118","900117"], Hash:["0x1207281106503517650","0x23017548802487964","0x369625426062575280"], 
+                IntegerHash:["53209131872467","40358819528835","10069433066419"], Sipping:[7,5,9], UserSipping:[1,7,4], BetAmount:"100"
+            },
+            {
+                No:38, Block:["900117","900116","900114"], Hash:["0x369625426062575280","0x1120543187693887778","0x127225504838686206"],
+                IntegerHash:["10069433066419","50547870498876","34026646189235"], Sipping:[1,6,7], UserSipping:[9,6,5], BetAmount:"100"
+            }
+        ]
+        
+        var rateWin = 333
+        var rateJackpots = 1000
+        var rateDraw = 1
+        var userId = 'admins1'
+        var listBet = [];
+        var bets = []
+        var lockButton = false;
+        var timeClick = 0
+        var seconds; // var seconds = 60;
+        window.oncontextmenu = (e) => { 
+            e.preventDefault();  // loại bỏ thao tác với chuột phải
+            event.stopPropagation();
+        }
+        function activePageIndex(){
+            location.href = `${appLink}/index.html`; /////// //////////////////////////////////////////////////////////////////////////////////
+        }
+        function setCSS(){
+            bets = []
+            listBet = JSON.parse(localStorage.getItem('listBet'))
+            var blockWaiting = { 
+                No: listBet[0].No+1, 
+                Block: ["null","null","null"],
+                Hash: ["null","null","null"],
+                IntegerHash: ["null","null","null"],
+                Sipping: "null",
+                UserSipping: "null",
+                BetAmount: "null"
+            }
+            listBet.unshift(blockWaiting)
+
+            // height of paginations = 260px
+            // height of padding + margin anything = 40px
+            // -270,41 -40 = -300
+            // get height of device mobile
+            $(".resultBlock > .block-transaction > .block > table").css('height', $('body').height() - 86 < 800 ? $('body').height() - 86 : 700)
+            $('.resultBlock > .block-transaction > .block > table').css('line-height', $('body').height()/9 < 75 ? '45px': '70px')
+            var heightTbody= $('body').height() - 360;
+            // var heightTbody= $('body').height() - 320; /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            var countItem = Math.floor(heightTbody/43)  // Chia de lay item, item: height = 43
+            var count = 1
+            var height = heightTbody%43
+            for(let i = 0; i < listBet.length ; i++){
+                if(count > countItem) break
+                else {
+                    bets.unshift(listBet[i])
+                    count ++
+                }
+            }
+            $('.blocks > .block > .inner > tbody').css('height', `${heightTbody - height}`)
+            $('.paginations').css('margin', `${10}px auto`)
+            $('.paginations:last-child').css('margin', `${0}px auto`)
+            $('#space').css('height', `${height-6}`)
+            writeHtml()
+        }
+        /////////////////////// Button Increment ////////////////////
+        function incrementValue(){
+            if (lockButton) return;
+            else {
+                var value = document.getElementById('number').value
+                value = reFormatter(value)
+                var valueBalance = document.getElementById('balanceChange').innerHTML;
+                valueBalance = reFormatNumber(valueBalance)
+                if(valueBalance < 1000) return
+                else {
+                    value += 1000;
+                    valueBalance -=1000 
+                    document.getElementById('number').value = value >= 1000 ? nFormatter(value) : value;
+                    document.getElementById('balanceChange').innerHTML = formatNumber(valueBalance)
+                }
+            }
+        }
+        function mousedownIncrementValue(event){
+            if(event.which != 1) return clearInterval(inC)
+            else mousedownIncrementValueTouch() 
+        }
+        function mousedownIncrementValueTouch(){
+            $('.buttonIncrement').css({'background-image': 'url("images/inc-click.png")'})
+            timeClick = Date.now()
+            inC = setInterval(function(){
+                var value = document.getElementById('number').value
+                value = reFormatter(value)
+                var valueBalance = document.getElementById('balanceChange').innerHTML;
+                valueBalance = reFormatNumber(valueBalance)
+                if(valueBalance < 1000){
+                    return clearInterval(inC)
+                    // if(valueBalance < 100) return clearInterval(inC)
+                    // else {
+                    //     value += 100;
+                    //     valueBalance -=100
+                    //     document.getElementById('number').value = value >= 1000 ? nFormatter(value) : value;
+                    //     document.getElementById('balanceChange').innerHTML = formatNumber(valueBalance)
+                    // }
+                } else {
+                    value += 1000;
+                    valueBalance -=1000
+                    document.getElementById('number').value = value >= 1000 ? nFormatter(value) : value;
+                    document.getElementById('balanceChange').innerHTML = formatNumber(valueBalance)
+                }
+            }, 50)
+        }
+        function mouseupIncrementValue(){
+            clearInterval(inC)
+            $('.buttonIncrement').css({'background-image': 'url("images/inc.png")'})
+            if(Date.now() - timeClick >= 400) lockButton = true;
+            else lockButton = false;
+            timeClick = 0
+        }
+        /////////////////////// End Increment ///////////////////////
+        
+        /////////////////////// Button Decrement ////////////////////
+        function decrementValue() {
+            if (lockButton) return;
+            else {
+                var value = document.getElementById('number').value
+                value = reFormatter(value)
+                var valueBalance = document.getElementById('balanceChange').innerHTML;
+                valueBalance = reFormatNumber(valueBalance)
+                if(value <= 0)  document.getElementById('number').value = 0;
+                else {
+                    value -= 1000;
+                    valueBalance +=1000
+                    document.getElementById('number').value = value >= 1000 ? nFormatter(value) : value;
+                }
+                document.getElementById('balanceChange').innerHTML = formatNumber(valueBalance)
+            }
+        }
+        function mousedownDecrementValue(event){
+            if(event.which != 1) return clearInterval(deC)
+            else mousedownDecrementValueTouch()
+        }
+        function mousedownDecrementValueTouch(){
+            $('.buttonDecrement').css({ 'background-image': 'url("images/dec-click.png")'})
+            timeClick = Date.now()
+            deC = setInterval(function(){
+                var value = document.getElementById('number').value
+                value = reFormatter(value)
+                var valueBalance = document.getElementById('balanceChange').innerHTML;
+                valueBalance = reFormatNumber(valueBalance)
+                if(value < 1000){
+                    return clearInterval(deC)
+                    // if(value < 100) return clearInterval(deC)
+                    // else {
+                    //     value -= 100;
+                    //     valueBalance +=100
+                    //     document.getElementById('number').value = value >= 1000 ? nFormatter(value) : value;
+                    //     document.getElementById('balanceChange').innerHTML = formatNumber(valueBalance)
+                    // }
+                } else {
+                    value -= 1000;
+                    valueBalance +=1000
+                    document.getElementById('number').value = value >= 1000 ? nFormatter(value) : value;
+                    document.getElementById('balanceChange').innerHTML = formatNumber(valueBalance)
+                }
+            }, 50)
+        }
+        function mouseupDecrementValue(){
+            clearInterval(deC)
+            $('.buttonDecrement').css({ 'background-image': 'url("images/dec.png")' })
+            if(Date.now() - timeClick >= 400) lockButton = true;
+            else lockButton = false;
+            timeClick = 0
+        }
+        ////////////////////// End Decrement ////////////////////////
+
+        ////////////////////// Button Reset /////////////////////////
+        function resetValue() {
+            document.getElementById('number').value = 0;
+            document.getElementById('balanceChange').innerHTML = document.getElementById('balance').innerHTML;
+
+            document.getElementById('inputNumberLeft').value = 0
+            document.getElementById('inputNumberCenter').value = 0
+            document.getElementById('inputNumberRight').value = 0
+            changeHtmlProceeding('reset')
+        }
+        function mousedownResetValue(event){
+            if(event.which != 1) return
+            else mousedownResetValueTouch() 
+        }
+        function mousedownResetValueTouch(){
+            $('.buttonReset').css({ 'background-image': 'url("images/reset-click.png")'})
+            resetValue()
+        }
+        function mouseupResetValue(){
+            $('.buttonReset').css({ 'background-image': 'url("images/reset.png")' })
+        }
+        ////////////////////// End Reset ////////////////////////////
+        
+        function getImageBetAndResult(className, item, column, key){
+            if(column === 1){
+                if(key !== 3){
+                    $(`.${className}`).append(`
+                        <button class="buttonValue" style="background-image: url('images/inputNumber-null.png') !important; border-radius: 50%; color: #BEBEBE;">.</button>
+                        <button class="buttonValue" style="background-image: url('images/inputNumber-null.png') !important; border-radius: 50%; color: #BEBEBE;">.</button>
+                        <button class="buttonValue" style="background-image: url('images/inputNumber-null.png') !important; border-radius: 50%; color: #BEBEBE;">.</button>
+                    `)
+                } else {
+                    if(item !== 'null'){
+                        $(`.${className}`).append( `
+                            <button class="buttonValue" style="background-image: url('images/inputNumber-left.png') !important; border-radius: 50%;"> ${item[0]}</button>
+                            <button class="buttonValue" style="background-image: url('images/inputNumber-center.png') !important; border-radius: 50%;"> ${item[1]}</button>
+                            <button class="buttonValue" style="background-image: url('images/inputNumber-right.png') !important; border-radius: 50%;"> ${item[2]}</button>
+                        `)
+                    } else if(item === 'null'){
+                        $(`.${className}`).append(`
+                            <button class="buttonValue" style="background-image: url('images/inputNumber-null.png') !important; border-radius: 50%; color: #BEBEBE;">.</button>
+                            <button class="buttonValue" style="background-image: url('images/inputNumber-null.png') !important; border-radius: 50%; color: #BEBEBE;">.</button>
+                            <button class="buttonValue" style="background-image: url('images/inputNumber-null.png') !important; border-radius: 50%; color: #BEBEBE;">.</button>
+                        `)
+                    }
+                }
+            } else if(column === 2){
+                if(item === 'null') return
+                else {
+                    $(`.${className}`).append( `
+                        <button class="buttonValue" style="background-image: url('images/inputNumber-left.png') !important; border-radius: 50%;"> ${item[0]}</button>
+                        <button class="buttonValue" style="background-image: url('images/inputNumber-center.png') !important; border-radius: 50%;"> ${item[1]}</button>
+                        <button class="buttonValue" style="background-image: url('images/inputNumber-right.png') !important; border-radius: 50%;"> ${item[2]}</button>
+                    `)
+                }
+            }
+        }
+        function getImageBetDetail(className, item){
+            if(item[0] !== '#'){
+                $(`.${className}`).append(`
+                    <button class="buttonValue" style="background-image: url('images/inputNumber-left.png') !important; border-radius: 50%; vertical-align: middle; width: 30px; height: 30px; font-size: 13px;">
+                        ${item[0]}
+                    </button>
+                    <button class="buttonValue" style="background-image: url('images/inputNumber-center.png') !important; border-radius: 50%; vertical-align: middle; width: 30px; height: 30px; font-size: 13px;">
+                        ${item[1]}
+                    </button>
+                    <button class="buttonValue" style="background-image: url('images/inputNumber-right.png') !important; border-radius: 50%; vertical-align: middle; width: 30px; height: 30px; font-size: 13px;">
+                        ${item[2]}
+                    </button>
+                `)
+            } else {
+                $(`.${className}`).append(`
+                    <button class="buttonValue" style="background-image: url('images/inputNumber-null.png') !important; border-radius: 50%; vertical-align: middle; width: 30px; height: 30px; font-size: 13px; color: #BEBEBE;">.</button>
+                    <button class="buttonValue" style="background-image: url('images/inputNumber-null.png') !important; border-radius: 50%; vertical-align: middle; width: 30px; height: 30px; font-size: 13px; color: #BEBEBE;">.</button>
+                    <button class="buttonValue" style="background-image: url('images/inputNumber-null.png') !important; border-radius: 50%; vertical-align: middle; width: 30px; height: 30px; font-size: 13px; color: #BEBEBE;">.</button>
+                `)
+            }
+        }
+        function writeHtml(){
+            $('.blocks > .block > .inner > tbody').empty()
+            for (var i = 0; i < bets.length; i++) {
+                var item = JSON.stringify(bets[i])
+                if(i == bets.length-1){
+                    $('.blocks > .block > .inner > tbody').append(` 
+                        <tr>
+                            <td class="blockId"><span style="color:black;">#${bets[i].No}</span></td>
+                            <td id="valueBet"  style="width: 30%;" class="valueBet${i}"></td>
+                            <td style="width: 30%;" class="valueResult${i}"><span style="color:#4A77D9; font-weight: 600;">Proceeding</span></td>
+                            <td class="truncatedcss"><span class="wordNoBet"><img src="images/detail.png" alt="" style="opacity: 0.5;"></span></td>
+                        </tr>
+                    `)
+                    getImageBetAndResult(`valueBet${i}`, bets[i].UserSipping, 1, `valueBet${i}`)
+                } else {
+                    if(bets[i].Sipping === "null"){
+                        $('.blocks > .block > .inner > tbody').append(` 
+                            <tr >
+                                <td class="blockId"><span>#${bets[i].No}</span></td>
+                                <td style="width: 30%;" class="valueBet${i}"></td>
+                                <td style="width: 30%;" class="valueResult${i}"><span style="color:#4A77D9; font-weight: 600;">Waiting</span></td>
+                                <td class="truncatedcss"><span class="wordNoBet"><img src="images/detail.png" alt="" style="opacity: 0.5;"></span></td>
+                            </tr>
+                        `)
+                    } else {
+                        $('.blocks > .block > .inner > tbody').append(` 
+                            <tr >
+                                <td ${checkWin(bets[i])} class="blockId"><span>#${bets[i].No}</span></td>
+                                <td ${checkWin(bets[i])} class="valueBet${i} width30"></td>
+                                <td ${checkWin(bets[i])} class="valueResult${i} width30"></td>
+                                <td class="point truncatedcss" onclick='activePage(${JSON.stringify(bets[i])})'><span class="word"><img src="images/detail.png" alt=""></span></td>
+                            </tr>
+                        `)
+                        getImageBetAndResult(`valueResult${i}`, bets[i].Sipping, 2)
+                    }
+                    getImageBetAndResult(`valueBet${i}`, bets[i].UserSipping, 1, 3)
+                }
+            }
+        }
+        function writeHtmlTimeLine(){
+            $('#lineTime').empty()
+            for (var i = 59; i > 0; i--) { 
+                $('#lineTime').append(` 
+                    <div class="timecountDown" id="timecountDown${i}"></div>
+                `)
+            }
+        }
+        function truncStringPortion(str, firstCharCount = 6, endCharCount = 6, dotCount = 3) {
+            var convertedStr="";
+            convertedStr+=str.substring(0, firstCharCount);
+            convertedStr += ".".repeat(dotCount);
+            convertedStr+=str.substring(str.length-endCharCount, str.length);
+            return convertedStr;
+        }
+        function checkWin(item){
+            if(item.UserSipping === 'null') return ''
+            else {
+                var sipping = item.Sipping[0]*100 + item.Sipping[1]*10 + item.Sipping[2] 
+                var usersipping = item.UserSipping[0]*100 + item.UserSipping[1]*10 + item.UserSipping[2] 
+                return usersipping === sipping ? `style="background: #3B7BA9; color: white;"` : ''
+            }
+        }
+        function activePage(item){
+            $(".popup-main").toggle()
+            writeHtmlDetail(item)
+        }
+        function activePageHome (){
+            $(".resultBlock >.block-transaction > .block > div:nth-child(2)").empty()
+            $(".resultBlock >.block-transaction > .block > table > tbody").empty()
+            $(".popup-main").hide()
+            localStorage.removeItem('bet');
+        }
+        function changeHtmlProceeding(active){
+            var left = parseInt(document.getElementById('inputNumberLeft').value, 10);
+            var center = parseInt(document.getElementById('inputNumberCenter').value, 10);
+            var right = parseInt(document.getElementById('inputNumberRight').value, 10);
+
+            $(`#valueBet`).empty()
+            if(active == 'betted'){
+                $(`#valueBet`).append(`
+                    <button class="buttonValue" style="background-image: url('images/inputNumber-left.png') !important; border-radius: 50%;">${left}</button>
+                    <button class="buttonValue" style="background-image: url('images/inputNumber-center.png') !important; border-radius: 50%;">${center}</button>
+                    <button class="buttonValue" style="background-image: url('images/inputNumber-right.png') !important; border-radius: 50%;">${right}</button>
+                `)
+            } else if (active == 'reset'){
+                $(`#valueBet`).append(`
+                    <button class="buttonValue" style="background-image: url('images/inputNumber-null.png') !important; border-radius: 50%; color: #BEBEBE;">.</button>
+                    <button class="buttonValue" style="background-image: url('images/inputNumber-null.png') !important; border-radius: 50%; color: #BEBEBE;">.</button>
+                    <button class="buttonValue" style="background-image: url('images/inputNumber-null.png') !important; border-radius: 50%; color: #BEBEBE;">.</button>
+                `)
+            }
+        }
+        function chooseUp(id) {
+            var value = parseInt(document.getElementById('number').value, 10);
+            var numberBetValue = parseInt(document.getElementById(id).value, 10);
+            if(value > 0)  {
+                numberBetValue += 1
+                numberBetValue = numberBetValue > 9 ? 0 : numberBetValue
+                document.getElementById(id).value = numberBetValue
+                changeHtmlProceeding('betted')
+            }
+        }
+        function chooseDown(id) {
+            var value = parseInt(document.getElementById('number').value, 10);
+            var numberBetValue = parseInt(document.getElementById(id).value, 10);
+            if(value > 0)  {
+                numberBetValue -= 1
+                numberBetValue = numberBetValue < 0 ? 9 : numberBetValue
+                document.getElementById(id).value = numberBetValue
+                changeHtmlProceeding('betted')
+            }
+        }
+        
+        function myFunction() {
+            console.log(seconds)
+            if(seconds < 60) { 
+                $(`#timecountDown${seconds}`).css('background', `#D0323F`)
+            }
+            if (seconds > 0 ) { 
+                seconds--;
+                if(seconds == 0) {
+                    var value = document.getElementById('number').value
+                    value = reFormatter(value)
+                    if(value <= 0) return resetValue()
+                    else {
+                        var leftVal = parseInt(document.getElementById('inputNumberLeft').value) 
+                        var centerVal = parseInt(document.getElementById('inputNumberCenter').value)
+                        var rightVal = parseInt(document.getElementById('inputNumberRight').value)
+                        var valueBet = [leftVal, centerVal, rightVal]
+                        $.ajax({
+                            type: 'POST',
+                            url: `${appLinkApi}/games/lottoBetting`,
+                            dataType:"JSON",
+                            data : {
+                                user : userId, 
+                                bet: JSON.stringify(valueBet), // ArraydataType
+                                balance: value, // Number,
+                            },
+                            success: (data) => {
+                                resetValue()
+                                var blockProceeding =  { No: listBet[0].No, Block: "null", Hash: "null", IntegerHash: "null", Sipping: "null", UserSipping: valueBet, BetAmount: value}
+                                listBet[0] = blockProceeding
+                                localStorage.setItem('listBet', JSON.stringify(listBet))
+                                setCSS()
+
+                                document.getElementById('number').value = 0;
+                                document.getElementById('balance').innerHTML = formatNumber(Number(data[0].balance))
+                                document.getElementById('balanceChange').innerHTML = formatNumber(Number(data[0].balance))
+                            },
+                            error: (request, status, error) => {}
+                        });
+                    }
+                }
+                if(seconds == 50) {
+                    var timeStart = new Date().getMinutes()
+                    console.log(timeStart % 3 === 1)
+                    if (timeStart % 3 === 1){
+                        getData()
+                        getBalnce()
+                        resetValue()
+                    }
+                    // getData()
+                    // getBalnce()
+                    // resetValue()
+                }
+            } else {
+                $(`#timecountDown${60}`).css('background', `#D0323F`)
+                seconds = 60
+                writeHtmlTimeLine()
+                setTimeout(function() { myFunction() }, 1);
+            }
+            // ///// old //////
+            // if(seconds < 60) { 
+            //     $(`#timecountDown${seconds}`).css('background', `#D0323F`)
+            // }
+            // if (seconds > 0 ) { 
+            //     seconds--;
+            //     if(seconds == 0) {
+            //         var value = document.getElementById('number').value
+            //         value = reFormatter(value)
+            //         if(value <= 0) return resetValue()
+            //         else {
+            //             var leftVal = parseInt(document.getElementById('inputNumberLeft').value) 
+            //             var centerVal = parseInt(document.getElementById('inputNumberCenter').value)
+            //             var rightVal = parseInt(document.getElementById('inputNumberRight').value)
+            //             var valueBet = [leftVal, centerVal, rightVal]
+            //             $.ajax({
+            //                 type: 'POST',
+            //                 url: `${appLinkApi}/lottoBetting`,
+            //                 dataType:"JSON",
+            //                 data : {
+            //                     user : userId, 
+            //                     bet: JSON.stringify(valueBet), // ArraydataType
+            //                     balance: value, // Number,
+            //                 },
+            //                 success: (data) => {
+            //                     var blockProceeding =  { No: listBet[0].No, Block: "null", Hash: "null", IntegerHash: "null", Sipping: "null", UserSipping: valueBet, BetAmount: value}
+            //                     listBet[0] = blockProceeding
+            //                     localStorage.setItem('listBet', JSON.stringify(listBet))
+            //                     setCSS()
+
+            //                     document.getElementById('number').value = 0;
+            //                     document.getElementById('balance').innerHTML = formatNumber(Number(data[0].balance))
+            //                     document.getElementById('balanceChange').innerHTML = formatNumber(Number(data[0].balance))
+            //                 },
+            //                 error: (request, status, error) => {}
+            //             });
+            //         }
+            //     }
+            //     if(seconds == 50) {
+            //         getData()
+            //         getBalnce()
+            //         resetValue()
+            //     }
+            // } else {
+            //     $(`#timecountDown${60}`).css('background', `#D0323F`)
+            //     seconds = 60
+            //     writeHtmlTimeLine()
+            //     setTimeout(function() { myFunction() }, 1);
+            // }
+        }
+        function nFormatter(num) {
+            if (num >= 1000) {
+                let result = (num / 1000).toString()+"K"
+                return result
+            } else return num.toString();
+        }
+        function reFormatter(text){
+            if(!Number.isInteger(Number(text))){
+                let result = text.split('K')[0]*1000
+                return result
+            } else  return parseInt(text)
+        }
+        // format Number
+        function formatNumber(number) {
+            number = parseInt(number);
+            return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+        // reformat Number
+        function reFormatNumber(text){
+            let result = text.replace(/,/g, '')
+            return parseInt(result)
+        }
+        function getData() {
+            // localStorage.setItem('listBet', JSON.stringify(valTest)) 
+            // setCSS()
+            $.ajax({
+                type: 'GET',
+                url: `${appLinkApi}/games/lotto`,
+                success: (data) => { 
+                    localStorage.setItem('listBet', data)
+                    setCSS()
+                },
+                error: (request, status, error) => {}
+            });
+        }
+        function getBalnce() {
+            $.ajax({
+                type: 'POST',
+                url: `${appLinkApi}/games/userBalance`,
+                dataType:"JSON",
+                data : { user : userId },
+                success: (data) => { 
+                    document.getElementById('balance').innerHTML = formatNumber(Number(data[0].balance))
+                    document.getElementById('balanceChange').innerHTML = formatNumber(Number(data[0].balance))
+                },
+                error: (request, status, error) => {}
+            });
+        }
+        function getTimestamp(){
+            $.ajax({
+                type: 'GET',
+                url: `${appLinkApi}/games/getTimestamp`,
+                success: (data) => { 
+                    seconds = new Date(data*1000).getSeconds();
+                    seconds = 59 - seconds + 1
+                    console.log(seconds)
+                    writeHtmlTimeLine()
+                    for (var i = 59; i > seconds; i--) {
+                        $(`#timecountDown${i}`).css('background', `#D0323F`)
+                    }
+                    window.setInterval(function() {  myFunction(); }, 1000);
+                },
+                error: (request, status, error) => { console.log(error) }
+            });
+        }
+        function checkLastBlockWaiting(item){
+            if(item.Sipping === 'null') return 'X'
+            else return checkWinLOTO(item)
+        }
+        function checkWinLOTO(item){
+            var sippingTemp = item.Sipping.map(String) // Convert ArrayNumber to ArrayString 
+            var sipping = parseInt(sippingTemp[0]+sippingTemp[1]+sippingTemp[2]) // Sum element off ArrayString to String, then Convert result to Number
+
+            var usersippingTemp = item.UserSipping.map(String)
+            var usersipping = parseInt(usersippingTemp[0]+usersippingTemp[1]+usersippingTemp[2])
+
+            var equalUserBetted = usersippingTemp[0] === usersippingTemp[1] && usersippingTemp[1] === usersippingTemp[2]    ? true : false // isEqual Value user betted
+            var equalSipping    = sippingTemp[0] === sippingTemp[1] && sippingTemp[1] === sippingTemp[2]                    ? true : false // isEqual Value server return
+            
+            if( usersipping === sipping ){
+                return (equalUserBetted && equalSipping) ? `+${item.BetAmount*rateJackpots}`: `+${item.BetAmount*rateWin}`
+            } else {
+                return `-${item.BetAmount}`
+            }
+        }
+        function activeValueBet(bet, index = 0){
+            $(".resultBlock >.block-transaction > .block > div:nth-child(2)").empty()
+            $(".resultBlock >.block-transaction > .block > table > tbody").empty()
+            writeHtmlDetail(bet, index)
+        }
+        function checkActiveValue(index) {
+            if(index == 0)      return $(".resultBlock >.block-transaction > .block > div:nth-child(2) > .buttonNumber:first-child").css({'background': '#E73847'})
+            else if(index == 1) return $(".resultBlock >.block-transaction > .block > div:nth-child(2) > .buttonNumber:nth-child(2)").css({'background': '#E73847'})
+            else if(index == 2) return $(".resultBlock >.block-transaction > .block > div:nth-child(2) > .buttonNumber:nth-child(3)").css({'background': '#E73847'})
+        }
+        function writeHtmlDetail(bet, index = 0){
+            $(".resultBlock >.block-transaction > .block > div:nth-child(2)").empty()
+            $(".resultBlock >.block-transaction > .block > table > tbody").empty()
+            var bet = bet
+            bet.UserSipping =  bet.UserSipping === 'null' ? ["#","#","#"] : bet.UserSipping
+            
+            // Get value of each element
+            var item = {}
+            item.Block = bet.Block[index]
+            item.Hash = bet.Hash[index]
+            item.IntegerHash = bet.IntegerHash[index]
+            item.Sipping = bet.Sipping[index]
+            
+            var indexOfBet = listBet.findIndex(el => el.No === bet.No)
+            if(indexOfBet - 1 <= 0){
+                bet.NextValue = listBet[indexOfBet - 1].UserSipping === 'null' ? ["#","#","#"] : listBet[indexOfBet - 1].UserSipping
+                bet.NextAmount = 'X'
+
+                bet.PreValue = listBet[indexOfBet + 1].UserSipping === 'null' ? ["#","#","#"] : listBet[indexOfBet + 1].UserSipping
+                bet.PreAmount = listBet[indexOfBet + 1].BetAmount === 'null' ? 'X' : checkLastBlockWaiting(listBet[indexOfBet + 1]) ///////////////
+            } 
+            else if (indexOfBet + 1 > 9){
+                bet.NextValue = listBet[indexOfBet - 1].UserSipping === 'null' ? ["#","#","#"] : listBet[indexOfBet - 1].UserSipping
+                bet.NextAmount = listBet[indexOfBet - 1].BetAmount === 'null' ? 'X' : checkLastBlockWaiting(listBet[indexOfBet - 1]) ///////////////////
+
+                bet.PreValue = ["#","#","#"]
+                bet.PreAmount = 'X'
+            } 
+            else {
+                bet.NextValue = listBet[indexOfBet - 1].UserSipping === 'null' ? ["#","#","#"] : listBet[indexOfBet - 1].UserSipping
+                bet.NextAmount = listBet[indexOfBet - 1].BetAmount === 'null' ? 'X' : checkLastBlockWaiting(listBet[indexOfBet - 1]) ///////////////
+                
+                bet.PreValue = listBet[indexOfBet + 1].UserSipping === 'null' ? ["#","#","#"] : listBet[indexOfBet + 1].UserSipping
+                bet.PreAmount = listBet[indexOfBet + 1].BetAmount === 'null' ? 'X' : checkLastBlockWaiting(listBet[indexOfBet + 1]) ////////////////
+            }
+            $(".resultBlock >.block-transaction > .block > div:nth-child(2)").append(`
+                <div class="buttonNumber" onclick='activeValueBet(${JSON.stringify(bet)}, ${0})' style="background: #DEE7E4; font-weight: 600; font-size: 20px;">${1}</div>
+                <div class="buttonNumber" onclick='activeValueBet(${JSON.stringify(bet)}, ${1})' style="background: #DEE7E4; font-weight: 600; font-size: 20px;">${2}</div>
+                <div class="buttonNumber" onclick='activeValueBet(${JSON.stringify(bet)}, ${2})' style="background: #DEE7E4; font-weight: 600; font-size: 20px;">${3}</div>
+            `)
+            // <td><div><span>${truncStringPortion(item.Hash, 10, 10)}</span></div></td>
+            checkActiveValue(index)
+            $('.resultBlock >.block-transaction > .block > table > tbody').append(`
+                <tr>
+                    <td class="blockId"><img src="images/block.png" alt=""></td>
+                    <td><div><span>${item.Block}</span></div></td>
+                </tr>
+                <tr>
+                    <td class="blockId"><img src="images/hash.png" alt=""></td>
+                    <td><div><span>${item.Hash}</span></div></td>
+                </tr>
+                <tr>
+                    <td class="blockId"><img src="images/inter.png" alt=""></td>
+                    <td><div><span>${item.IntegerHash}</span></div></td>
+                </tr>
+                <tr>
+                    <td class="blockId"><img src="images/sipping.png" alt=""></td>
+                    <td><div><span>${item.Sipping}</span></div></td>
+                </tr>
+                <tr>
+                    <td class="blockId"><img src="images/pre.png" alt=""></td>
+                    <td>
+                        <div class="tdTable tdTableFloatLeft pre"></div>
+                        <div class="tdTable"><span>${bet.PreAmount} <img src="images/ba_pc.png" alt=""></span></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="blockId"><img src="images/next.png" alt=""></td>
+                    <td>
+                        <div class="tdTable tdTableFloatLeft next"></div>
+                        <div class="tdTable"><span>${bet.NextAmount} <img src="images/ba_pc.png" alt=""></span></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="blockId"><img src="images/state.png" alt=""></td>
+                    <td>
+                        <div class="tdTable tdTableFloatLeft detail"></div>
+                        <div class="tdTable"><span>${bet.BetAmount == 'null' ? 'X': bet.BetAmount} <img src="images/ba_pc.png" alt=""></span></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="blockId"><img src="images/cup.png" alt=""></td>
+                    <td><div><span>${formatAmountBet(bet.Sipping, bet.UserSipping, bet.BetAmount)} <img src="images/ba_pc.png" alt=""></span></div></td>
+                </tr>
+                <tr style="line-height: 35px;">
+                    <td class="blockId"></td>
+                    <td><div style="border: none; background: white;"><span style="font-size: 15px; color: red;">*Win: x333 / Jackpot: x1000 </span></div></td>
+                </tr>
+            `)
+            getImageBetDetail('pre',bet.PreValue)
+            getImageBetDetail('next',bet.NextValue)
+            getImageBetDetail('detail', bet.UserSipping)
+        }
+        function formatAmountBet(Sipping, UserSipping, BetAmount){
+            if(BetAmount === 'null' || UserSipping === 'null'){
+                return "X"
+            } else {
+                var sippingTemp = Sipping.map(String) // Convert ArrayNumber to ArrayString 
+                var sipping = parseInt(sippingTemp[0]+sippingTemp[1]+sippingTemp[2]) // Sum element off ArrayString to String, then Convert result to Number
+
+                var usersippingTemp = UserSipping.map(String)
+                var usersipping = parseInt(usersippingTemp[0]+usersippingTemp[1]+usersippingTemp[2]) 
+                
+                var equalUserBetted = usersippingTemp[0] === usersippingTemp[1] && usersippingTemp[1] === usersippingTemp[2]    ? true : false // isEqual Value user betted
+                var equalSipping    = sippingTemp[0] === sippingTemp[1] && sippingTemp[1] === sippingTemp[2]                    ? true : false // isEqual Value server return
+                
+                if( usersipping === sipping ){
+                    return (equalUserBetted && equalSipping) ? `Win (+${BetAmount*rateJackpots})`: `Win (+${BetAmount*rateWin})`
+                } else {
+                    return `Lose (-${BetAmount})`
+                }
+            }
+        }
+        getTimestamp()
+        getData()
+        getBalnce()
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,5385 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+
+    font-family: 'Roboto', sans-serif;
+
+}
+.drag{
+    position: relative;
+    top: -3px;
+}
+button{
+    font-family: 'Roboto', sans-serif!important;
+}
+.heightTime{
+    height: 50px;
+    display: block;
+    margin: 5px auto;
+}
+// .heightButtonBet{  height: 120px;  position: relative;   margin: 5px auto;}
+.sharedcards{
+    img{
+        width: 13%;
+    }
+}
+div#cmds{
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+}
+.listFriend{
+    background: url(images/inviteBody.png) no-repeat; background-size: 100% 100%; padding: 5px 15px;
+}
+.buttonInviteOnline{
+    width: 30%;
+    height: 40px;
+    border: none;
+    color: white;
+    font-size: 13px;
+    text-align: center;
+    background: url(images/button-invite-online.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+.buttonInviteOffline{
+    width: 30%;
+    height: 40px;
+    border: none;
+    color: white;
+    font-size: 13px;
+    text-align: center;
+    background: url(images/button-invite-offline.png) no-repeat;
+    background-size: 100% 100%;
+}
+.bodyHwatu .action .check {
+    color: red !important;
+}
+.nameInfo{
+    width: 50%;
+    position: absolute;
+    top: 30%;
+    left: 0;
+    color: white;
+}
+.stateInfo{
+    width: 50%;
+    position: absolute;
+    top: 30%;
+    right: 0;
+    font-weight: 600;
+}
+.infOnline{
+    width: 70%;
+    height: 40px;
+    background: url(images/box-online.png) no-repeat;
+    background-size: 100% 100%;
+    float: left;
+    position: relative;
+}
+.infOffline{
+    width: 70%;
+    height: 40px;
+    background: url(images/box-offline.png) no-repeat;
+    background-size: 100% 100%;
+    float: left;
+    position: relative;
+}
+.totalValueTop{
+    padding: 5px 0; 
+    position: absolute;
+    color: #F2D6A5;
+    font-weight: 600;
+    font-size: 23px;
+    height: 24px;
+    left: 50%;
+    top: 96%;
+    transform: translate(-50%, 10%);
+}
+.totalValueBottom{
+    padding: 5px 0; 
+    position: absolute;
+    color: #F2D6A5;
+    font-weight: 600;
+    font-size: 23px;
+    height: 24px;
+    left: 50%;
+    transform: translate(-50%, -110%);
+}
+.centerElementButton{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.sum{
+    font-size: 30px;
+    color: #ffffff;
+    font-weight: 600;
+    text-align: left;
+    padding: 0 10px;
+}
+.infoTop{
+    height: 100px;
+    position: relative;
+    top: 10px;
+}
+.infoBottom{
+    height: 100px;
+    position: relative;
+}
+.messagesContent{
+    font-size: 14px;
+    line-height: 25px;
+}
+
+.poker{
+    button#games, button#logout, button#entergame, button#leave, button#ready, button#fold, button#call, button#check, button#raise {
+        font-size: 14px;
+        color: #B00811;
+        width: 60px;
+        height: 60px;
+        margin: 0 7px;
+        font-weight: 600;
+        border: none;
+        border-radius: 50%;
+        background: #ffffff12;
+        background-image: url('images/button.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+}
+
+
+
+.poker{
+    button#decrease {
+        vertical-align: middle !important;
+        font-size: 13px;
+        width: 40px;
+        height: 40px;
+        margin: 0 7px;
+        font-weight: 600;
+        border: none;
+        border-radius: 50%;
+        background: #ffffff12;
+        background-image: url('images/button-decrease.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    button#increase {
+        vertical-align: middle !important;
+        font-size: 13px;
+        width: 40px;
+        height: 40px;
+        margin: 0 7px;
+        font-weight: 600;
+        border: none;
+        border-radius: 50%;
+        background: #ffffff12;
+        background-image: url('images/button-increase.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+}
+.hwatu{
+    button#decrease{
+        vertical-align: middle !important;
+        font-size: 13px;
+        width: 40px;
+        height: 40px;
+        margin: 0 7px;
+        font-weight: 600;
+        border: none;
+        border-radius: 50%;
+        background: #ffffff12;
+        background-image: url('imagesHwatu/button-decrease.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    button#increase {
+        vertical-align: middle !important;
+        font-size: 13px;
+        width: 40px;
+        height: 40px;
+        margin: 0 7px;
+        font-weight: 600;
+        border: none;
+        border-radius: 50%;
+        background: #ffffff12;
+        background-image: url('imagesHwatu/button-increase.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+}
+.usersTop img, .usersTopReady img, .usersBottom img, .usersBottomReady img{
+    height: 80%;
+}
+.listTop{
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    .usersTop{
+        display: inline-block;
+        width: 33%; 
+        // background: url('images/noneListTop.png') no-repeat; 
+        background: url('images/noneTop.png') no-repeat; 
+        background-size: 100% 100%; 
+        position: relative;
+        
+        .betValue{
+            top: 15%;
+            height: 25%;
+            // font-size: 23px;
+        }
+        .infoTop{
+            height: 62%;
+            top: 8%;
+            .name{
+                height: 20%;
+                .userName{
+                    font-size: 23px;
+                }
+            }
+            .action{
+                height: 15%;
+            }
+            .card{
+                height: 70%;
+                position: relative;
+                .cardUser{
+                    position: absolute;
+                    width: 100%;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    
+                }
+            }
+        }
+    }
+    .usersTopReady{
+        display: inline-block;
+        width: 33%; 
+        background: url('images/noneListTop.png') no-repeat; 
+        background-size: 100% 100%; 
+        position: relative;
+        .betValue{
+
+            top: 15%;
+            height: 25%;
+            // font-size: 23px;
+        }
+        .infoTop{
+            height: 62%;
+            top: 8%;
+            .name{
+                height: 20%;
+                .userName{
+                    font-size: 23px;
+                }
+            }
+            .action{
+                height: 15%;
+            }
+            .card{
+                height: 70%;
+                position: relative;
+                .cardUser{
+                    position: absolute;
+                    width: 100%;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                   
+                }
+            }
+        }
+    }
+    .usersTopActive{
+        display: inline-block;
+        width: 33%; 
+        background: url('images/userTopActive.png') no-repeat; 
+        background-size: 100% 100%; 
+        position: relative;
+        .betValue{
+            color: #564141 !important;
+
+            top: 15%;
+            height: 25%;
+            // font-size: 23px;
+        }
+        .infoTop{
+            height: 62%;
+            top: 8%;
+            .name{
+                height: 20%;
+                .userName{
+                    color: #564141 !important;
+                    font-size: 23px;
+                }
+            }
+            .action{
+                height: 15%;
+            }
+            .card{
+                height: 70%;
+                position: relative;
+                .cardUser{
+                    position: absolute;
+                    width: 100%;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    
+                }
+            }
+        }
+    }
+    .usersTopWin{
+        display: inline-block;
+        width: 33%; 
+        background: url('images/userTopWin.png') no-repeat; 
+        background-size: 100% 100%; 
+        position: relative;
+        .betValue{
+            color: #2D0C0C !important;
+
+            top: 15%;
+            height: 25%;
+            // font-size: 23px;
+        }
+        .infoTop{
+            height: 62%;
+            top: 8%;
+            .name{
+                height: 20%;
+                .userName{
+                    color: #2D0C0C !important;
+                    font-size: 23px;
+                }
+            }
+            .action{
+                height: 15%;
+                
+            }
+            .card{
+                height: 70%;
+                position: relative;
+                .cardUser{
+                    position: absolute;
+                    width: 100%;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                   
+                }
+            }
+        }
+    }
+    .usersTopLose{
+        display: inline-block;
+        width: 33%; 
+        background: url('images/userTopLose.png') no-repeat; 
+        background-size: 100% 100%; 
+        position: relative;
+        .betValue{
+            color: #2D0C0C !important;
+
+            top: 15%;
+            height: 25%;
+            // font-size: 23px;
+        }
+        .infoTop{
+            height: 62%;
+            top: 8%;
+            .name{
+                height: 20%;
+                .userName{
+                    color: #2D0C0C !important;
+                    font-size: 23px;
+                }
+            }
+            .action{
+                height: 15%;
+            }
+            .card{
+                height: 70%;
+                position: relative;
+                .cardUser{
+                    position: absolute;
+                    width: 100%;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                   
+                }
+            }
+        }
+    }
+    .usersTopFold{
+        display: inline-block;
+        width: 33%; 
+        background: url('images/userTopFold.png') no-repeat; 
+        background-size: 100% 100%; 
+        position: relative;
+        .betValue{
+            color: #2D0C0C !important;
+            
+            top: 15%;
+            height: 25%;
+            // font-size: 23px;
+        }
+        .infoTop{
+            height: 62%;
+            top: 8%;
+            .name{
+                height: 20%;
+                .userName{
+                    color: #2D0C0C !important;
+                    font-size: 23px;
+                }
+            }
+            .action{
+                height: 15%;
+                .check{
+                    color: #2D0C0C !important;
+                }
+            }
+            .card{
+                height: 70%;
+                position: relative;
+                .cardUser{
+                    position: absolute;
+                    width: 100%;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                  
+                }
+            }
+        }
+    }
+
+    ////// Class Game Hwatu //////////////
+    .usersTopHwatu{
+        display: inline-block;
+        width: 32%; 
+        // background: url('imagesHwatu/none.png') no-repeat; 
+        background: url('imagesHwatu/noneHwatu.png') no-repeat; 
+        background-size: 100% 100%; 
+        position: relative;
+        .betValue{
+            color: #404040 !important;
+
+            top:  10%;
+            height: 25%;
+            // font-size: 23px;
+        }
+        .infoTop{
+            height: 62%;
+            top: 15%;
+            .name{
+                height: 15%;
+                .userName{
+                    color: #404040 !important;
+                    font-size: 23px;
+                }
+            }
+            .action{
+                height: 15%;
+            }
+            .card{
+                height: 60%;
+                position: relative;
+                .cardUser{
+                    position: absolute;
+                    width: 100%;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                  
+                }
+            }
+        }
+    }
+    .usersTopReadyHwatu{
+        display: inline-block;
+        width: 32%; 
+        background: url('imagesHwatu/none.png') no-repeat; 
+        background-size: 100% 100%; 
+        position: relative;
+        .betValue{
+            color: #404040 !important;
+
+            top:  10%;
+            height: 25%;
+            // font-size: 23px;
+        }
+        .infoTop{
+            height: 62%;
+            top: 15%;
+            .name{
+                height: 15%;
+                .userName{
+                    color: #404040 !important;
+                    font-size: 23px;
+                }
+            }
+            .action{
+                height: 15%;
+            }
+            .card{
+                height: 60%;
+                position: relative;
+                .cardUser{
+                    position: absolute;
+                    width: 100%;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                  
+                }
+            }
+        }
+    }
+    .usersTopActiveHwatu{
+        display: inline-block;
+        width: 32%; 
+        background: url('imagesHwatu/active.png') no-repeat; 
+        background-size: 100% 100%; 
+        position: relative;
+        .betValue{
+            color: #404040 !important;
+
+            top:  10%;
+            height: 25%;
+            // font-size: 23px;
+        }
+        .infoTop{
+            height: 62%;
+            top: 15%;
+            .name{
+                height: 15%;
+                .userName{
+                    color: #404040 !important;
+                    font-size: 23px;
+                }
+            }
+            .action{
+                height: 15%;
+            }
+            .card{
+                height: 60%;
+                position: relative;
+                .cardUser{
+                    position: absolute;
+                    width: 100%;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    
+                }
+            }
+        }
+    }
+    .usersTopWinHwatu{
+        display: inline-block;
+        width: 32%; 
+        background: url('imagesHwatu/win.png') no-repeat; 
+        background-size: 100% 100%; 
+        position: relative;
+        .betValue{
+            color: #404040 !important;
+
+            top:  10%;
+            height: 25%;
+            // font-size: 23px;
+        }
+        .infoTop{
+            height: 62%;
+            top: 15%;
+            .name{
+                height: 15%;
+                .userName{
+                    color: #404040 !important;
+                    font-size: 23px;
+                }
+            }
+            .action{
+                height: 15%;
+                
+            }
+            .card{
+                height: 60%;
+                position: relative;
+                .cardUser{
+                    position: absolute;
+                    width: 100%;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    
+                }
+            }
+        }
+        .totalValueTop{
+            color: #404040;
+        }
+    }
+    .usersTopLoseHwatu{
+        display: inline-block;
+        width: 32%; 
+        background: url('imagesHwatu/fold-close.png') no-repeat;
+        background-size: 100% 100%; 
+        position: relative;
+        .betValue{
+            color: gray !important;
+
+            top:  10%;
+            height: 25%;
+            // font-size: 23px;
+        }
+        .infoTop{
+            height: 62%;
+            top: 15%;
+            .name{
+                height: 15%;
+                .userName{
+                    color: gray !important;
+                    font-size: 23px;
+                }
+            }
+            .action{
+                height: 15%;
+                .check{
+                    color: gray !important;
+                }
+            }
+            .card{
+                height: 60%;
+                position: relative;
+                .cardUser{
+                    position: absolute;
+                    width: 100%;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    
+                }
+            }
+        }
+        .totalValueTop{
+            color: gray;
+        }
+    }
+    .usersTopFoldHwatu{
+        display: inline-block;
+        width: 32%; 
+        background: url('imagesHwatu/fold-close.png') no-repeat; 
+        background-size: 100% 100%; 
+        position: relative;
+        .betValue{
+            color: gray !important;
+            
+            top:  10%;
+            height: 25%;
+            // font-size: 23px;
+        }
+        .infoTop{
+            height: 62%;
+            top: 15%;
+            .name{
+                height: 15%;
+                .userName{
+                    color: gray !important;
+                    font-size: 23px;
+                }
+            }
+            .action{
+                height: 15%;
+                .check{
+                    color: gray !important;
+                }
+            }
+            .card{
+                height: 60%;
+                position: relative;
+                .cardUser{
+                    position: absolute;
+                    width: 100%;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                   
+                }
+            }
+        }
+        .totalValueTop{
+            color: gray;
+        }
+    }
+    
+}
+.listBottom{
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    .usersBottom{
+        display: inline-block; 
+        width: 33%; 
+        // background: url('images/noneListBottom.png') no-repeat; 
+        background: url('images/noneBottom.png') no-repeat;
+        background-size: 100% 100%; 
+        position: relative;
+
+        .betValue{
+            top: 7%;
+            height: 25%;
+            // font-size: 23px;
+        }
+        .infoBottom{
+            height: 62%;
+            .name{
+                height: 20%;
+                .userName{
+                    font-size: 23px;
+                }
+            }
+            .action{
+                height: 15%;
+            }
+            .card{
+                height: 70%;
+                position: relative;
+                .cardUser{
+                    position: absolute;
+                    width: 100%;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                   
+                }
+            }
+        }
+    }
+    .usersBottomReady{
+        display: inline-block; 
+        width: 33%; 
+        background: url('images/noneListBottom.png') no-repeat; 
+        background-size: 100% 100%; 
+        position: relative;
+        .betValue{
+            top: 7%;
+            height: 25%;
+            // font-size: 23px;
+        }
+        .infoBottom{
+            height: 62%;
+            .name{
+                height: 20%;
+                .userName{
+                    font-size: 23px;
+                }
+            }
+            .action{
+                height: 15%;
+            }
+            .card{
+                height: 70%;
+                position: relative;
+                .cardUser{
+                    position: absolute;
+                    width: 100%;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                   
+                }
+            }
+        }
+    }
+    .usersBottomActive{
+        display: inline-block; 
+        width: 33%; 
+        background: url('images/userBottomActive.png') no-repeat; 
+        background-size: 100% 100%; 
+        position: relative;
+        .betValue{
+            color: #564141 !important;
+
+            top: 7%;
+            height: 25%;
+            // font-size: 23px;
+        }
+        .infoBottom{
+            height: 62%;
+            .name{
+                height: 20%;
+                .userName{
+                    color: #564141 !important;
+                    font-size: 23px;
+                }
+            }
+            .action{
+                height: 15%;
+            }
+            .card{
+                height: 70%;
+                position: relative;
+                .cardUser{
+                    position: absolute;
+                    width: 100%;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                   
+                }
+            }
+        }
+    }
+    .usersBottomWin{
+        display: inline-block; 
+        width: 33%; 
+        background: url('images/userBottomWin.png') no-repeat; 
+        background-size: 100% 100%; 
+        position: relative;
+        .betValue{
+            color: #2D0C0C !important;
+
+            top: 7%;
+            height: 25%;
+            // font-size: 23px;
+        }
+        .infoBottom{
+            height: 62%;
+            .name{
+                height: 20%;
+                .userName{
+                    color: #2D0C0C !important;
+                    font-size: 23px;
+                }
+            }
+            .action{
+                height: 15%;
+            }
+            .card{
+                height: 70%;
+                position: relative;
+                .cardUser{
+                    position: absolute;
+                    width: 100%;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                   
+                }
+            }
+        }
+        
+    }
+    .usersBottomLose{
+        display: inline-block; 
+        width: 33%; 
+        background: url('images/userBottomLose.png') no-repeat; 
+        background-size: 100% 100%; 
+        position: relative;
+        .betValue{
+            color: #2D0C0C !important;
+
+            top: 7%;
+            height: 25%;
+            // font-size: 23px;
+        }
+        .infoBottom{
+            height: 62%;
+            .name{
+                height: 20%;
+                .userName{
+                    color: #2D0C0C !important;
+                    font-size: 23px;
+                }
+            }
+            .action{
+                height: 15%;
+            }
+            .card{
+                height: 70%;
+                position: relative;
+                .cardUser{
+                    position: absolute;
+                    width: 100%;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                   
+                }
+            }
+        }
+    }
+    .usersBottomFold{
+        display: inline-block;
+        width: 33%; 
+        background: url('images/userBottomFold.png') no-repeat; 
+        background-size: 100% 100%; 
+        position: relative;
+        .betValue{
+            color: #2D0C0C !important;
+
+            top: 7%;
+            height: 25%;
+            // font-size: 23px;
+        }
+        .infoBottom{
+            height: 62%;
+            .name{
+                height: 20%;
+                .userName{
+                    color: #2D0C0C !important;
+                    font-size: 23px;
+                }
+            }
+            .action{
+                height: 15%;
+                .check{
+                    color: #2D0C0C !important;
+                }
+            }
+            .card{
+                height: 70%;
+                position: relative;
+                .cardUser{
+                    position: absolute;
+                    width: 100%;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    
+                }
+            }
+        }
+        
+    }
+
+    ////// Class Game Hwatu //////////////
+    .usersBottomHwatu{
+        display: inline-block; 
+        width: 32%; 
+        // background: url('imagesHwatu/none.png') no-repeat; 
+        background: url('imagesHwatu/noneHwatu.png') no-repeat; 
+        background-size: 100% 100%; 
+        position: relative;
+        .betValue{
+            color: #404040 !important;
+
+            top: 10%;
+            height: 25%;
+            // font-size: 23px;
+        }
+        .infoBottom{
+            height: 62%;
+            .name{
+                height: 15%;
+                .userName{
+                    color: #404040 !important;
+                    font-size: 23px;
+                }
+            }
+            .action{
+                height: 15%;
+            }
+            .card{
+                height: 60%;
+                position: relative;
+                .cardUser{
+                    position: absolute;
+                    width: 100%;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                   
+                }
+            }
+        }
+    }
+    .usersBottomReadyHwatu{
+        display: inline-block; 
+        width: 32%; 
+        background: url('imagesHwatu/none.png') no-repeat; 
+        background-size: 100% 100%; 
+        position: relative;
+        .betValue{
+            color: #404040 !important;
+
+            top: 10%;
+            height: 25%;
+            // font-size: 23px;
+        }
+        .infoBottom{
+            height: 62%;
+            .name{
+                height: 15%;
+                .userName{
+                    color: #404040 !important;
+                    font-size: 23px;
+                }
+            }
+            .action{
+                height: 15%;
+            }
+            .card{
+                height: 60%;
+                position: relative;
+                .cardUser{
+                    position: absolute;
+                    width: 100%;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                   
+                }
+            }
+        }
+    }
+    .usersBottomActiveHwatu{
+        display: inline-block; 
+        width: 34%; 
+        background: url('imagesHwatu/active.png') no-repeat; 
+        background-size: 100% 100%; 
+        position: relative;
+        .betValue{
+            color: #404040 !important;
+
+            top: 10%;
+            height: 25%;
+            // font-size: 23px;
+        }
+        .infoBottom{
+            height: 62%;
+            .name{
+                height: 15%;
+                .userName{
+                    color: #404040 !important;
+                    font-size: 23px;
+                }
+            }
+            .action{
+                height: 15%;
+            }
+            .card{
+                height: 60%;
+                position: relative;
+                .cardUser{
+                    position: absolute;
+                    width: 100%;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                   
+                }
+            }
+        }
+    }
+    .usersBottomWinHwatu{
+        display: inline-block; 
+        width: 32%; 
+        background: url('imagesHwatu/win.png') no-repeat; 
+        background-size: 100% 100%; 
+        position: relative;
+        .betValue{
+            color: #404040 !important;
+
+            top: 10%;
+            height: 25%;
+            // font-size: 23px;
+        }
+        .infoBottom{
+            height: 62%;
+            .name{
+                height: 15%;
+                .userName{
+                    color: #404040 !important;
+                    font-size: 23px;
+                }
+            }
+            .action{
+                height: 15%;
+            }
+            .card{
+                height: 60%;
+                position: relative;
+                .cardUser{
+                    position: absolute;
+                    width: 100%;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    // img{
+                    //     width: 23%;
+                    // }
+                }
+            }
+        }
+        .totalValueBottom{
+            color: #404040;
+        }
+    } 
+    .usersBottomLoseHwatu{
+        display: inline-block; 
+        width: 32%; 
+        background: url('imagesHwatu/fold-close.png') no-repeat; 
+        background-size: 100% 100%; 
+        position: relative;
+        .betValue{
+            color: gray !important;
+
+            top: 10%;
+            height: 25%;
+            // font-size: 23px;
+        }
+        .infoBottom{
+            height: 62%;
+            .name{
+                height: 15%;
+                .userName{
+                    color: gray !important;
+                    font-size: 23px;
+                }
+            }
+            .action{
+                height: 15%;
+            }
+            .card{
+                height: 60%;
+                position: relative;
+                .cardUser{
+                    position: absolute;
+                    width: 100%;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                   
+                }
+            }
+        }
+        .totalValueBottom{
+            color: gray;
+        }
+    }
+    .usersBottomFoldHwatu{
+        display: inline-block;
+        width: 32%; 
+        background: url('imagesHwatu/fold-close.png') no-repeat; 
+        background-size: 100% 100%; 
+        position: relative;
+        .betValue{
+            color: gray !important;
+
+            top: 10%;
+            height: 25%;
+            // font-size: 23px;
+        }
+        .infoBottom{
+            height: 62%;
+            .name{
+                height: 15%;
+                .userName{
+                    color: gray !important;
+                    font-size: 23px;
+                }
+            }
+            .action{
+                height: 15%;
+                .check{
+                    color: gray !important;
+                }
+            }
+            .card{
+                height: 60%;
+                position: relative;
+                .cardUser{
+                    position: absolute;
+                    width: 100%;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                  
+                }
+            }
+        }
+        .totalValueBottom{
+            color: gray;
+        }
+    }
+}
+.tip{
+    // display: inline-block; 
+    // border-radius: 20px; 
+    // background: #a6020294; 
+    // padding: 8px 0;
+    // width: 50px;
+
+    display: inline-block;
+    border-radius: 20px;
+    background: #a6020294;
+    padding: 8px 0;
+    width: 80px;
+    height: 80%;
+    vertical-align: middle;
+    img{
+        // width: 35%;
+        // width: 40%;
+
+        height: 100%;
+    }
+}
+
+.tipHwatu{
+    display: inline-block; 
+    padding: 0;
+    width: 50px;
+    vertical-align: middle;
+    img{
+        width: 100%;
+        height: 50px;
+    }
+}
+
+.bettingValue{
+    display: inline-block;
+    border-radius: 20px; 
+    background: #a6020294; 
+    padding: 8px; 
+    color: white; 
+    margin-left: 5px;
+    font-size: 20px;
+    vertical-align: middle;
+    
+}
+
+.bettingValueHwatu{
+    display: inline-block;
+    background: url(imagesHwatu/bettingValue.png) no-repeat;
+    background-size: 100% 100%;
+    height: 100%;
+    padding: 10px;
+    font-size: 20px;
+}
+.time{
+    display: inline-block;
+    border-radius: 20px; 
+    padding: 5px; 
+    margin-left: 5px; 
+    background: #a6020294; 
+    vertical-align: middle;
+    .titleTime{
+        height: 30px; display: inline-block; font-size: 25px; padding: 0; color: #c9c4c4; margin-right: 10px; font-weight: 600; color: white;
+    }
+    #lineTime{
+        height: 30px; display: inline-block; font-size: 10px; padding: 0; vertical-align: bottom;
+    }
+}
+.timeHwatu{
+    display: inline-block;
+    background: url(imagesHwatu/timeHwatu.png) no-repeat;
+    background-size: 100% 100%;
+    border-radius: 0;
+    height: 100%;
+    padding: 10px;
+    .titleTime{
+        display: inline-block; font-size: 25px; padding: 0; color: #404040; margin-right: 10px; font-weight: 600; vertical-align: top;
+    }
+    #lineTime{
+        display: inline-block; font-size: 10px; padding: 0; vertical-align: middle;
+    }
+}
+#raise{
+    input{
+        width: 85%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.poker{
+    .parentRaiseInput{
+        width: 70% !important;
+        vertical-align: middle !important;
+        display: inline-block;
+        height: 30px;
+        position: relative;
+        background: rgba(151, 2, 4, 0.5);
+        border-radius: 15px;
+    }
+}
+
+.hwatu{
+    .parentRaiseInput{
+        width: 70% !important;
+        vertical-align: middle !important;
+        display: inline-block;
+        height: 30px;
+        position: relative;
+        background: url('imagesHwatu/input.png') no-repeat;
+        background-size: 100% 100%;
+        border-radius: 15px;
+    }
+}
+div#raise{
+    width: 100%;
+}
+.betValue{
+    padding: 5px 0; position: relative;
+    color: #F2D6A5;
+    font-weight: 600;
+    // font-size: 12px;
+    height: 24px;
+}
+.name{
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    align-content: center;
+    height: 15px;
+    .userName{
+        height: 15px;
+        font-size: 12px;
+        color: #FFFFFF;
+        font-weight: 600;
+        height: 100%;
+
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        max-width: 100%;
+        overflow: hidden;
+    } 
+}
+.action{
+    height: 15px;
+    .check{
+        font-size: 23px;
+        color: #56A0D5;
+        font-weight: 600;
+        // height: 100%;
+    }
+}
+.card{
+    height: 60px;
+    .cardUser{
+        margin: 2px 0;
+        img{
+            width: 30%;
+        }
+    }
+}
+.bodyHomes{
+    background-image: url('imagesHomes/background_home_game.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.bodyPoker{
+    background-image: url('images/background_full_poker.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    .cardsTable{
+        background-image: url('images/background_heart.png');
+        background-size: 100% 120%;
+        background-repeat: no-repeat;
+    }
+}
+.bodyHwatu{
+    background-image: url('imagesHwatu/backgroud.png');
+    background-size: 100% 115%;
+    background-repeat: no-repeat;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+button, input{
+    outline: 0;
+}
+
+
+#index{
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.blocks{
+    .block{
+        width: 100%;
+        display: block;
+        display: inline-block;
+        padding: 20px;
+        table{
+            width: 100%;
+            color: #AEB2B6;
+            line-height: 25px;
+            border-collapse: collapse;
+            border: 1px solid #E0EFF5;
+            padding: 10px;
+            thead{
+                display:table;
+                width:100%;
+                table-layout:fixed;
+                tr{
+                    height: 40px;
+                }
+            }
+            
+            tbody{
+                display:block;
+                overflow:hidden;
+                tr{
+                    display:table;
+                    width:100%;
+                    table-layout:fixed;
+                }
+            }
+            tr{
+                border-radius: 5px;
+                display:table;
+                width:100%;
+                table-layout:fixed;
+                th{
+                    font-size: 14px;
+                    color: #E73848;
+                    text-align: center;
+                    
+                }
+                td{
+                    font-size: 12px;
+                    padding: 5px;
+                    span{
+                        img{
+                            max-width: 27px;
+                        }
+                    }
+                }
+                th:first-child, td:first-child { 
+                    border-top-left-radius: 9px;
+                }
+                th:last-child, td:last-child { 
+                    border-top-right-radius: 9px;
+                    border-right: none;
+                }
+                
+            }
+        }
+        .bet{
+            height: 60px;
+            padding: 0 10px;
+        }
+        .balanceHomes{
+            padding: 0 16px;
+            margin-bottom: 16px;
+            display: block;
+            div{
+                display: inline-block;
+                position: relative;
+                button{
+                    position: absolute;
+                    transform: translate(-50%, -100%);
+                    height: 70px;
+                    color: black;
+                    width: 100%;
+                    font-weight: 600;
+                    font-size: 17px;
+                    padding: 0 10px;
+
+                    background-image: url('images/background-image.png'); 
+                    background-repeat: no-repeat; 
+                    border: none; 
+                    background-size: cover;
+                    &:hover, &:active{
+                        background-image: url('images/background-image-click.png'); 
+                        background-repeat: no-repeat; 
+                        background-size: cover;
+                        color: black;
+                    }
+                }
+                table{
+                    padding: 0;
+                    color: black;
+                    border-collapse: collapse;
+                    border-radius: 15px;
+                    border: none;
+                    box-shadow: 0px 0px 10px 5px #3838381f;
+                    tr{
+                        border-radius: 0;
+                        line-height: 20px;
+                        height: 30px;
+                        
+                        th{
+                            font-size: 20px;
+                            border-radius: 0;
+                            color : white;
+                            background: #5f1d4b;
+                            color: black;
+                            padding: 0;
+                            line-height: 65px;
+                        }
+                        td{
+                            // background: #ffffff;
+                            color : white;
+                            background: #5f1d4b;
+                            font-size: 20px;
+                            border-radius: 0;
+                            padding: 0;
+                            line-height: 45px;
+                        }
+                    }
+
+
+                    tr:first-child{
+                        // border-bottom: 1px solid grey;
+                        // border-bottom: 3px solid #8080803d;
+                        width: 100%;
+                    }
+                    // tr:first-child{
+                    //     // border-bottom: 1px solid grey;
+                    //     // border-bottom: 3px solid #8080803d;
+                    // }
+                    th:first-child{ 
+                        border-top-left-radius: 9px;
+                        // border-right: 1px solid grey;
+                        border-right: 3px solid #8080803d;
+                    }
+                    td:first-child {
+                        border-bottom-left-radius: 9px;
+                        border-bottom-left-radius: 9px;
+                        border-right: 2px solid #2f002e;
+                        border-top-left-radius: 9px;
+                        height: 50px;
+                        display: flex;
+                        /* justify-content: center; */
+                        padding-left: 15px;
+                        text-align: left;
+                        align-items: center;
+                        font-size: 14px;
+                    }
+                    th:last-child { 
+                        border-top-right-radius: 9px;
+                        // border-left: 1px solid grey;
+                        border-left: 3px solid #8080803d;
+                    }
+                    td:last-child{
+                        border-bottom-right-radius: 9px;
+                        border-left: 2px solid #2f002e;
+                        text-align: right;
+                        padding-right: 20px;
+                        border-top-right-radius: 9px;
+                        justify-content: center;
+                        align-items: center;
+                        font-size: 14px;
+                        width: 70%;
+                    }
+                
+                }
+            }
+            
+        }
+        .balance{
+            // padding: 0 8px;
+            padding: 0 16px;
+            margin-bottom: 16px;
+            display: block;
+            div{
+                display: inline-block;
+                position: relative;
+                button{
+                    position: absolute;
+                    transform: translate(-50%, -100%);
+                    height: 70px;
+                    color: #fcf7f7;
+                    width: 100%;
+                    font-weight: 600;
+                    font-size: 17px;
+                    padding: 0 10px;
+
+                    background-image: url('images/background-image.png'); 
+                    background-repeat: no-repeat; 
+                    border: none; 
+                    background-size: cover;
+                    &:hover, &:active{
+                        background-image: url('images/background-image-click.png'); 
+                        background-repeat: no-repeat; 
+                        background-size: cover;
+                        color: black;
+                    }
+                }
+                table{
+                    padding: 0;
+                    color: white;
+                    border-collapse: collapse;
+                    border-radius: 15px;
+                    border: none;
+                    tr{
+                        border-radius: 0;
+                        line-height: 20px;
+                        height: 30px;
+                        th{
+                            font-size: 20px;
+                            border-radius: 0;
+                            background: rgba(151, 2, 4, 0.5);
+                            color: white;
+                            padding: 0;
+                            line-height: 65px;
+                        }
+                        td{
+                            background: rgba(151, 2, 4, 0.5);
+                            font-size: 20px;
+                            border-radius: 0;
+                            padding: 0;
+                            line-height: 45px;
+                        }
+                    }
+                    
+                    // tr:first-child{
+                    //     // border-bottom: 1px solid white;
+                    // }
+                    // tr:first-child{
+                    //     // border-bottom: 1px solid white;
+                    // }
+                    th:first-child{ 
+                        border-top-left-radius: 9px;
+                        border-right: 1px solid white;
+                    }
+                    td:first-child {
+                        border-bottom-left-radius: 9px;
+                        border-right: 1px solid white;
+                        border-top-left-radius: 9px;
+                    }
+                    th:last-child { 
+                        border-top-right-radius: 9px;
+                        border-left: 1px solid white;
+                    }
+                    td:last-child{
+                        border-bottom-right-radius: 9px;
+                        border-left: 1px solid white;
+                        border-top-right-radius: 9px;
+                    }
+                }
+            }
+            
+        }
+
+        .balanceHwatu{
+            padding: 0 8px;
+            margin-bottom: 4px;
+            display: block;
+            div{
+                display: inline-block;
+                position: relative;
+                button{
+                    position: absolute;
+                    transform: translate(-50%, -100%);
+                    height: 70px;
+                    color: #fcf7f7;
+                    width: 100%;
+                    font-weight: 600;
+                    font-size: 17px;
+                    padding: 0 10px;
+
+                    background-image: url('images/background-image.png'); 
+                    background-repeat: no-repeat; 
+                    border: none; 
+                    background-size: cover;
+                    &:hover, &:active{
+                        background-image: url('images/background-image-click.png'); 
+                        background-repeat: no-repeat; 
+                        background-size: cover;
+                        color: #404040;
+                    }
+                }
+                table{
+                    padding: 0;
+                    color: #404040;
+                    border-collapse: collapse;
+                    border-radius: 15px;
+                    border: none;
+                    tr{
+                        border-radius: 0;
+                        height: 30px;
+                        th{
+                            font-size: 20px;
+                            border-radius: 0;
+                            background: none;
+                            color: #404040;
+                            padding: 0;
+                            line-height: 65px;
+                            // border: 1px solid #D49B28;
+                        }
+                        td{
+                            background: none;
+                            font-size: 20px;
+                            border-radius: 0;
+                            padding: 0;
+                            line-height: 45px;
+                            // border: 1px solid #D49B28;
+                            // border-top: none;
+                        }
+                    }
+                }
+            }
+            
+        }
+    }
+}
+
+.resultBlock{
+    .block-transaction{
+        display: block;
+        .block{
+            width: 100%;
+            float: left;
+        }
+        .block{
+            padding: 0;
+            table{
+                width: 100%;
+                color: #AEB2B6;
+                line-height: 75px; 
+                tr{
+                    
+                    th{
+                        font-size: 13px;
+                        color: black;
+                    }
+                    th:first-child{
+                        float: left;
+                        
+                    }
+                    td{
+                        font-size: 13px;
+                        text-align: unset;
+                        color: black;
+                        
+                        div{
+                            width: 95%;
+                            vertical-align: middle;
+                            line-height: 35px;
+                            border: solid 1px #E0EFF5;
+                            border-radius: 15px;
+                            position: relative;
+                            span{
+                                font-size: 15px;
+                                img{
+                                    position: absolute;
+                                    right: 6px;
+                                    top: 27%;
+                                    max-width: 19px;
+                                }
+                            }
+                        }
+                    }
+                    td:first-child{
+                        text-align: left;
+                        padding-left: 40px;
+                        font-size: 15px;
+                        font-weight: 800;
+                        width: 35% ;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.inputNumber{
+    width: 40%; 
+    display: inline-block;
+    height: 100px;
+    position: relative;
+    top: -45%;
+    div{
+        width: 30%;
+        display: inline-block;
+        position: relative;
+        .up{
+            position: absolute;
+            left: 50%;
+            top: 35%;
+            transform: translate(-45%, -100%);
+            font-size: 40px;
+        }
+        .down{
+            position: absolute;
+            left: 50%;
+            bottom: 40%;
+            transform: translate(-45%, 90%);
+            font-size: 40px;
+        }
+        input{
+            height: 40px; 
+            width: 40px;
+            border-radius: 50%;
+            text-align: center !important;
+            padding: 0 !important;
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+        }
+    }
+}
+.inputNumberLeft{
+    background-image: url("images/inputNumber-left.png") !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: none !important;
+    box-shadow: none !important;
+    transform: none !important;
+}
+.inputNumberCenter{
+    background-image: url("images/inputNumber-center.png") !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: none !important;
+    box-shadow: none !important;
+    transform: none !important;
+}
+.inputNumberRight{
+    background-image: url("images/inputNumber-right.png") !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: none !important;
+    box-shadow: none !important;
+    transform: none !important;
+}
+
+.paginations{
+    margin: 10px auto;
+    text-align: center;
+    button{
+        font-size: 19px;
+        margin-left: 5px;
+    }
+    #unit{
+        position: absolute;
+        right: 10%;
+        top: 35%;
+        max-width: 28px;
+    }
+    .buttonReset{
+        height: 104px; position: relative; width: 29px; right: 0px;  
+        background-image: url("images/reset.png");
+        background-repeat: no-repeat;
+        border: none;
+    }
+    .buttonIncrement{
+        height: 50px; position: absolute; width: 29px; left: -3px; top: -59px; color: white; 
+        background-image: url("images/inc.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        border: none;
+    }
+    .buttonDecrement{
+        height: 50px; position: absolute; width: 29px; left: -3px; top: -5px; color: white; 
+        background-image: url("images/dec.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        border: none;
+    }
+    .buttonOdd{
+        height: 73px; width: 79px; 
+        background: none;
+        background-image: url("images/button_odd.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        border: none ;
+        box-shadow: none;
+        transform: none;
+        position: relative;
+        top: -10px;
+    }
+    .buttonEven{
+        height: 73px; width: 79px; 
+        background: none;
+        background-image: url("images/button_even.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        border: none ;
+        box-shadow: none;
+        transform: none;
+        position: relative;
+        top: -10px;
+    }
+    
+    .buttonScissors {
+        height: 111px;
+        width: 49px;
+        background: none;
+        background-image: url("images/button_Scissors.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        border: none;
+        box-shadow: none;
+        transform: none;
+        position: relative;
+        top: 5px; 
+    }
+    .buttonRock {
+        height: 111px;
+        width: 49px;
+        background: none;
+        background-image: url("images/button_Rock.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        border: none;
+        box-shadow: none;
+        transform: none;
+        position: relative;
+        top: 5px; 
+    }
+    .buttonPaper {
+        height: 111px;
+        width: 49px;
+        background: none;
+        background-image: url("images/button_Paper.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        border: none;
+        box-shadow: none;
+        transform: none;
+        position: relative;
+        top: 5px; }
+    
+}
+.setWidth{
+    width: 35%;
+}
+.timecountDown{
+    width: 5px;
+    display: inline-block;
+    height: 25px;
+    margin: 2px;
+    font-size: 0px;
+    border-radius: 1.5px;
+}
+
+.popup-listFriend{
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 999;
+    width: 100%;
+    padding: 20px;
+    display: none;
+    
+    .content{
+        z-index: 9999;
+    }
+}
+
+.popup-join{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    z-index: 999;
+    width: 450px;
+    display: none;
+    transform: translate(-50%, -50%);
+    .content{
+        border-radius: 20px;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+    }
+    .notify-content{
+        padding: 15px; background: white; border-radius: 15px;
+        .item {
+            line-height: 50px;
+            text-align: center;
+            span{
+                font-size: 25px;
+                color: #3E3030;
+                font-weight: 600;
+            }
+            div{
+                font-size: 25px;
+            }
+            button{
+                width: 90px;
+                height: 45px;
+                border: none;
+                border-radius: 13px;
+                margin: 0 10px;
+                color: white;
+                background-color: #7E0102;
+                font-size: 20px;
+            }
+        }
+    }
+}
+
+.popup-err{
+    z-index: 999;
+    display: none;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    left: 50%;
+    top: 38%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    height: 168px;
+    .content{
+        background: white;
+        border-radius: 20px;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        .container{
+            height: 100%;
+            .header {
+                height: 25%;
+                text-align: center;
+                color: black;
+                font-size: 20px;
+                justify-content: center;
+                align-items: center;
+                justify-items: center;
+                display: flex;
+                border-bottom: 2px solid #ddd;
+                font-weight: bold;
+            }
+            #message {
+                height: 50%;
+                text-align: center;
+                color: black;
+                font-size: 15px;
+                display: flex;
+                justify-content: center;
+                padding-top: 10px;
+            }
+            .footer{
+                height: 25%;
+                text-align: center;
+                color: black;
+                font-size: 20px;
+                justify-content: center;
+                align-items: center;
+                justify-items: center;
+                display: flex;
+                button{
+                    background-image: url('./images/background-btn-close.png');
+                    background-size: 100% 100%;
+                    border-radius: 15px;
+                    padding: 7px 30px;
+                }
+            }
+        }
+    }
+}
+
+.popup-tip{
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 999;
+    width: 100%;
+    height: 100%;
+    display: none;
+    .content{
+        background: white;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        
+        #pokerTip{
+            tr{
+                th{
+                    p{
+                        // font-weight: normal;
+                        // color: white;
+                        // background: #AE0000;
+                        // margin: 0;
+                        // height: 90px;
+                        // font-size: 30px;
+                        // padding: 20px;
+                        // border-bottom: 20px solid #2D0C0C;
+
+                        font-weight: normal;
+                        color: white;
+                        background: #AE0000;
+                        margin: 0;
+                        height: 84px;
+                        font-size: 30px;
+                        font-family: 'Noto Sans KR', sans-serif;
+                        padding: 10px 16px;
+                        border-bottom: 10px solid #2D0C0C;
+                        span{
+                            vertical-align: middle;
+                        }
+                        button {
+                            float: right;
+                            border: none;
+                            background: none;
+                            height: 100%;
+                            img{
+                                vertical-align: middle;
+                                width: 30px;
+                            }
+                        }
+                    }
+                    img {
+                        vertical-align: middle;
+                        width: 30px;
+                    }
+                }
+                
+            }
+            tbody{
+                td{
+                    padding: 16px;
+                    padding-bottom: 0;
+                }
+            }
+        }
+
+        #pokerTip {
+            .treeLeaf {
+                position: relative;
+                background-image: url('images/imageTip/tip_bg.png');
+                background-size: 100% 100%;
+                background-repeat: no-repeat;
+                padding: 40px;
+                padding-bottom: 0;
+                font-family: 'Noto Sans KR', sans-serif;
+                div {
+                    // width: 50%;
+                    width: 55%;
+                    text-align: left;
+                    color: #2D0C0C;
+                    font-size: 25px; //////////////////
+                    span:first-child {
+                        font-size: 50px; //////////////////
+                        font-weight: bold;
+                    }
+                    span {
+                        font-size: 25px; ////////////////////
+                        font-weight: bold;
+                    }
+                    
+                }
+                .leafText {
+                    // width: 60%;
+                    width: 60%;
+                    margin-top: 5%; ///////////////////////
+                    margin-bottom: 15%; ///////////////////////
+                    line-height: 40px; ///////////////////
+                    color: #2D0C0C;
+                    font-size: 25px; ///////////////////////
+                }
+                img {
+                    position: absolute;
+                    // top: 5%;
+                    top: 10%;
+                    right: 0;
+                    background-size: 100% 100%;
+                    width: 47%; ////////////////////////
+                }
+            }
+        }
+        
+    }
+}
+
+.popup-tipHwatu{
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 999;
+    width: 100%;
+    height: 100%;
+    display: none;
+    .content{
+        background: white;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        
+        #hwatuTip{
+            width: 100%;
+            tr{
+                width: 100%;
+                display: inline-table;
+                th{
+                    p{
+                        font-weight: normal;
+                        color: #2D0C0C;
+                        background: url('imagesHwatu/imageTip/background-tip.png') no-repeat;
+                        background-size: 100% 100%;
+                        margin: 0;
+
+                        height: 90px;
+                        font-size: 35px;
+                        padding: 15px;
+                        border-bottom: 20px solid #2D0C0C;
+                        span{
+
+                        }
+                        button {
+                            float: right;
+                            border: none;
+                            background: none;
+                            img{
+                                width: 30px;
+                            }
+                        }
+                    }
+                    img {
+                        width: 30px;
+                    }
+                }
+                td{
+                    padding: 40px 5%;
+                    .item{
+                        background: white;
+                        border-radius: 20px;
+                        box-shadow: 0px 0px 16px 5px #2b2b2b14;
+                    }
+                }
+            }
+        }
+        #hwatuTip {
+            .treeLeaf {
+                position: relative;
+                background-size: 100% 100%;
+                background-repeat: no-repeat;
+                padding: 40px 60px;
+                .title{
+                    position: relative; padding: 0 13%; margin: 10px 0;
+                    .title-img {
+                        position: absolute; left: 0; top: 0; width: 480px;
+                    }
+                }
+                div {
+                    text-align: left;
+                    color: #2D0C0C;
+                    span:first-child {
+                        font-size: 30px;
+                        font-weight: bold;
+                    }
+                    span {
+                        font-size: 30px;
+                        font-weight: bold;
+                    }
+                    
+                }
+                .leafText {
+                    width: 75%;
+                    padding-bottom: 10%;
+                    padding-top: 5%;
+                    line-height: 45px;
+                    color: #2D0C0C;
+                    p{
+                        font-size: 30px;
+                    }
+                }
+                img {
+                    position: absolute;
+                    top: 15%;
+                    right: 5%;
+                    background-size: 100% 100%;
+                    width: 32%;
+                }
+                .topFirstImage{
+                    position: absolute;
+                    top: 25%;
+                }
+            }
+        }
+        
+    }
+}
+
+.popup-main{
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 999;
+    width: 100%;
+    height: 100%;
+    display: none;
+    .content{
+        background: white;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+
+    }
+}
+#roomGame .topHomes { height: 70px}
+#homes{
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    // display: none;
+    .topHomes{
+        height: 70px;
+
+        display: flex;
+        align-items: center;
+        div{
+            // width: 50%;
+            // margin: 0 7%;
+            width: 50%;
+            margin: 0 16px;
+            span{
+                float: left;
+                font-size: 24px;
+                font-weight: bold;
+                color: grey;
+            }
+            img{
+                width: 40px;
+                float: right;
+            }
+        }
+    }
+    .boxs{
+        display: block;
+        margin: 0 auto;
+        width: 85%;
+    }
+    .blocks{
+        width: 100%;
+        position: absolute;
+        left: 50%;
+        top: 100%;
+        transform: translate(-50%, -100%);
+    }
+    
+}
+//=========================================================================
+//========================================================================= 321px
+@media all and (max-width: 321px) {
+    .usersTopHwatu, .usersTopReadyHwatu, .usersTopActiveHwatu, .usersTopWinHwatu, .usersTopLoseHwatu, .usersTopFoldHwatu{
+        .infoTop{
+            .card{
+                .cardUser{
+                    img{
+                        width: 26% !important;
+                    }
+                }
+            }
+        }
+    }
+
+    .usersBottomHwatu, .usersBottomReadyHwatu, .usersBottomActiveHwatu, .usersBottomWinHwatu, .usersBottomLoseHwatu, .usersBottomFoldHwatu{
+        .infoBottom{
+            .card{
+                .cardUser{
+                    img{
+                        width: 26% !important;
+                    }
+                }
+            }
+        }
+    }
+    
+    body{ width: 320px;  }
+    .infoBottom { height: 90px;
+        .card { height: 50px;  }
+    }
+    .sum{  font-size: 14px !important;  color: #ffffff;  font-weight: 600; }
+    
+    .sharedcards{
+        img{  width: 45px;  }
+    }
+    .timecountDown{  width: 2px !important; }
+    .resultBlock{ .block-transaction{ .block{ table{  tr{ td{
+                            font-size: 12px;
+                            div{ line-height: 28px;
+                                span{  font-size: 9px;
+                                    img{
+                                        position: absolute;
+                                        right: 5px;
+                                        top: 21%;
+                                        max-width: 19px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    .paginations{
+        .buttonOdd, .buttonEven {
+            width: 72px !important;
+        }
+        .buttonScissors, .buttonRock, .buttonPaper {
+            height: 90%;
+            max-width: 14%;
+            transform: none;
+            position: relative;
+            top: -3px;
+        }
+    }
+
+    .balance{
+        div{
+            button{
+                font-size: 13px !important;
+            }
+            table tr {
+                th { 
+                    font-size: 11px !important;
+                }
+            }
+        }
+    }
+
+    .blocks .block .balance div table tr td{
+        font-size: 9px !important;
+    }
+
+    .blocks .block .balanceHwatu div table tr td{
+        font-size: 10px !important;
+    }
+
+}
+//=========================================================================
+//========================================================================= 599px
+@media all and (max-width: 599px) {
+    .btnInviteHwatu{
+        width: 75px !important;
+    }
+    .drag{
+        position: relative;
+        top: -3px;
+    }
+    input[type=range]::-webkit-slider-thumb {
+        height: 18px !important;
+        width: 18px !important;
+    }
+    #roomGame .topHomes { height: 56px !important}
+    #homes{
+        width: 100%;
+        text-align: center;
+        margin: 0 auto;
+        .topHomes{
+            height: 56px;
+    
+            display: flex;
+            align-items: center;
+            div{
+                width: 50%;
+                // margin: 0 7%;
+                margin: 0 8px;
+                span{
+                    float: left;
+                    font-size: 17px;
+                    font-weight: bold;
+                    color: grey;
+                }
+                img{
+                    width: 30px;
+                    float: right;
+                }
+            }
+        }
+        .boxs{
+            display: block;
+            margin: 0 auto;
+            width: 85%;
+            .item-box{
+                display: inline-block;
+                float: left;
+                width: 33%;
+                
+            }
+        }
+        .blocks{
+            width: 100%;
+            position: absolute;
+            left: 50%;
+            top: 100%;
+            transform: translate(-50%, -100%);
+        }
+        
+    }
+
+    .popup-listFriend{
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: 999;
+        width: 100%;
+        padding: 20px;
+        display: none;
+        
+        .content{
+            z-index: 9999;
+        }
+    }
+    
+    .popup-join{
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        z-index: 999;
+        width: 80%;
+        display: none;
+        transform: translate(-50%, -50%);
+        .content{
+            border-radius: 20px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+        }
+        .notify-content{
+            padding: 10px; background: white; border-radius: 15px;
+            .item {
+                line-height: 40px;
+                text-align: center;
+                span{
+                    
+                    font-size: 14px;
+                    color: #3E3030;
+                    font-weight: 600;
+                }
+                div{
+                    font-size: 13px;
+                }
+                button{
+                    width: 60px;
+                    height: 30px;
+                    border: none;
+                    border-radius: 13px;
+                    margin: 0 10px;
+                    color: white;
+                    background-color: #7E0102;
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+    
+    .popup-err{
+        z-index: 999;
+        display: none;
+        transform: translate(-50%, -50%);
+        position: absolute;
+        left: 50%;
+        top: 38%;
+        margin-left: auto;
+        margin-right: auto;
+        width: 60%;
+        height: 168px;
+        .content{
+            background: white;
+            border-radius: 20px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            .container{
+                height: 100%;
+                .header {
+                    height: 25%;
+                    text-align: center;
+                    color: black;
+                    font-size: 20px;
+                    justify-content: center;
+                    align-items: center;
+                    justify-items: center;
+                    display: flex;
+                    border-bottom: 2px solid #ddd;
+                    font-weight: bold;;
+                }
+                #message {
+                    height: 50%;
+                    text-align: center;
+                    color: black;
+                    font-size: 15px;
+                    display: flex;
+                    justify-content: center;
+                    padding-top: 10px;
+                }
+                .footer{
+                    height: 25%;
+                    text-align: center;
+                    color: black;
+                    font-size: 20px;
+                    justify-content: center;
+                    align-items: center;
+                    justify-items: center;
+                    display: flex;
+                    button{
+                        background-image: url('./images/background-btn-close.png');
+                        background-size: 100% 100%;
+                        border-radius: 15px;
+                        padding: 7px 30px;
+                    }
+                }
+            }
+        }
+    }
+    
+    .popup-tip{
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: 999;
+        width: 100%;
+        height: 100%;
+        display: none;
+        .content{
+            background: white;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            
+            #pokerTip{
+                tr{
+                    th{
+                        p{
+                            font-weight: normal;
+                            color: white;
+                            background: #AE0000;
+                            margin: 0;
+    
+                            height: 42px;
+                            font-size: 20px;
+                            font-family: 'Noto Sans KR', sans-serif;
+                            padding: 5px 8px;
+                            border-bottom: 5px solid #2D0C0C;
+                            span{
+                                vertical-align: middle;
+                            }
+                            button {
+                                float: right;
+                                border: none;
+                                background: none;
+                                height: 100%;
+                                img{
+                                    vertical-align: middle;
+                                    width: 16px;
+                                }
+                            }
+                        }
+                        img {
+                            vertical-align: middle;
+                            width: 20px;
+                        }
+                    }
+                }
+                tbody{
+                    td{
+                        padding: 8px;
+                        padding-bottom: 0;
+                    }
+                }
+            }
+    
+            #pokerTip {
+                .treeLeaf {
+                    position: relative;
+                    background-image: url('images/imageTip/tip_bg.png');
+                    background-size: 100% 100%;
+                    background-repeat: no-repeat;
+                    padding: 20px;
+                    padding-bottom: 0;
+                    font-family: 'Noto Sans KR', sans-serif;
+                    div {
+                        // width: 50%;
+                        width: 55%;
+                        text-align: left;
+                        color: #2D0C0C;
+                        font-size: 12px;
+                        span:first-child {
+                            font-size: 32px;
+                            font-weight: bold;
+                        }
+                        span {
+                            font-size: 15px;
+                            font-weight: bold;
+                        }
+                        
+                    }
+                    .leafText {
+                        // width: 60%;
+                        width: 72%;
+                        margin: 20px 0;
+                        line-height: 20px;
+                        color: #2D0C0C;
+                        font-size: 12px;
+                    }
+                    img {
+                        position: absolute;
+                        // top: 5%;
+                        top: 10%;
+                        right: 0;
+                        background-size: 100% 100%;
+                        // width: 50%;
+                        width: 45%;
+                    }
+                }
+            }
+            
+        }
+    }
+    
+    .popup-tipHwatu{
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: 999;
+        width: 100%;
+        height: 100%;
+        display: none;
+        .content{
+            background: white;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            
+            #hwatuTip{
+                width: 100%;
+                tr{
+                    width: 100%;
+                    display: inline-table;
+                    th{
+                        p{
+                            font-weight: normal;
+                            color: #2D0C0C;
+                            background: url(imagesHwatu/imageTip/background-tip.png) no-repeat;
+                            background-size: 100% 100%;
+                            margin: 0;
+                            height: 42px;
+                            font-size: 20px;
+                            padding: 5px 8px;
+                            border-bottom: 5px solid #2D0C0C;
+                            span{
+                                vertical-align: middle;
+                            }
+                            button {
+                                float: right;
+                                border: none;
+                                background: none;
+                                height: 100%;
+                                img{
+                                    vertical-align: middle;
+                                    width: 16px;
+                                }
+                            }
+                        }
+                        img {
+                            vertical-align: middle;
+                            width: 16px;
+                        }
+                    }
+                    td{
+                        padding: 10px 20px;
+                        
+                        div{
+                            background: white;
+                            border-radius: 25px;
+                        }
+                    }
+                }
+            }
+    
+            #hwatuTip {
+                .treeLeaf {
+                    position: relative;
+                    background-size: 100% 100%;
+                    background-repeat: no-repeat;
+                    padding: 20px;
+                    .title{
+                        position: relative; padding: 7px 40px; margin: 10px 0;
+                        .title-img {
+                            position: absolute; left: 0; top: 6px; width: 100%;
+                        }
+                    }
+                    div {
+                        text-align: left;
+                        color: #2D0C0C;
+                        span:first-child {
+                            font-size: 18px;
+                            font-weight: bold;
+                        }
+                        span {
+                            font-size: 15px;
+                            font-weight: bold;
+                        }
+                        
+                    }
+                    .leafText {
+                        width: 75%;
+                        padding-bottom: 10%;
+                        padding-top: 0;
+                        line-height: 20px;
+                        color: #2D0C0C;
+                        p{
+                            font-size: 15px;
+                        }
+                    }
+                    img {
+                        position: absolute;
+                        top: 15%;
+                        right: 0px;
+                        background-size: 100% 100%;
+                        width: 40%;
+                    }
+                    .topFirstImage{
+                        position: absolute;
+                        top: 25%;
+                    }
+                }
+            }
+            
+        }
+    }
+    
+    .popup-main{
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: 999;
+        width: 100%;
+        height: 100%;
+        display: none;
+        .content{
+            background: white;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+    
+        }
+    }
+
+    .heightTime{
+        height: 30px;
+        display: block;
+        margin: 5px auto;
+    }
+  
+    .sharedcards{
+        img{
+            width: 17%;
+        }
+    }
+    .listFriend{
+        background: url(images/inviteBody.png) no-repeat; background-size: 100% 100%; padding: 5px 15px;
+    }
+    .buttonInviteOnline{
+        width: 30%;
+        height: 40px;
+        border: none;
+        color: white;
+        font-size: 13px;
+        text-align: center;
+        background: url(images/button-invite-online.png) no-repeat;
+        background-size: 100% 100%;
+    }
+    
+    .buttonInviteOffline{
+        width: 30%;
+        height: 40px;
+        border: none;
+        color: white;
+        font-size: 13px;
+        text-align: center;
+        background: url(images/button-invite-offline.png) no-repeat;
+        background-size: 100% 100%;
+    }
+    .nameInfo{
+        width: 50%;
+        position: absolute;
+        top: 30%;
+        left: 0;
+        color: white;
+    }
+    .stateInfo{
+        width: 50%;
+        position: absolute;
+        top: 30%;
+        right: 0;
+        font-weight: 600;
+    }
+    .infOnline{
+        width: 70%;
+        height: 40px;
+        background: url(images/box-online.png) no-repeat;
+        background-size: 100% 100%;
+        float: left;
+        position: relative;
+    }
+    .infOffline{
+        width: 70%;
+        height: 40px;
+        background: url(images/box-offline.png) no-repeat;
+        background-size: 100% 100%;
+        float: left;
+        position: relative;
+    }
+    .totalValueTop{
+        padding: 5px 0; 
+        position: absolute;
+        color: #F2D6A5;
+        font-weight: 600;
+        font-size: 12px;
+        height: 24px;
+        left: 50%;
+        top: 96%;
+        transform: translate(-50%, 0%);
+    }
+    .totalValueBottom{
+        padding: 5px 0; 
+        position: absolute;
+        color: #F2D6A5;
+        font-weight: 600;
+        font-size: 12px;
+        height: 24px;
+        left: 50%;
+        transform: translate(-50%, -80%);
+    }
+    .centerElementButton{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .sum{
+        font-size: 14px;
+        color: #ffffff;
+        font-weight: 600;
+        text-align: left;
+        padding: 0 10px;
+    }
+    .infoTop{
+        height: 100px;
+        position: relative;
+        top: 10px;
+    }
+    .infoBottom{
+        height: 100px;
+        position: relative;
+    }
+    .messagesContent{
+        font-size: 14px;
+        line-height: 25px;
+    }
+    
+    .poker{
+        button#games, button#logout, button#entergame, button#leave, button#ready, button#fold, button#call, button#check, button#raise {
+            font-size: 10px;
+            color: #B00811;
+            width: 45px;
+            height: 45px;
+            margin: 0 7px;
+            font-weight: 600;
+            border: none;
+            border-radius: 50%;
+            background: #ffffff12;
+            background-image: url('images/button.png');
+            background-size: 100%;
+            background-repeat: no-repeat;
+        }
+    }
+    
+    .poker{
+        button#decrease {
+            vertical-align: middle !important;
+            font-size: 13px;
+            width: 30px;
+            height: 30px;
+            margin: 0 7px;
+            font-weight: 600;
+            border: none;
+            border-radius: 50%;
+            background: #ffffff12;
+            background-image: url('images/button-decrease.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    
+        button#increase {
+            vertical-align: middle !important;
+            font-size: 13px;
+            width: 30px;
+            height: 30px;
+            margin: 0 7px;
+            font-weight: 600;
+            border: none;
+            border-radius: 50%;
+            background: #ffffff12;
+            background-image: url('images/button-increase.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    }
+    .hwatu{
+        button#decrease{
+            vertical-align: middle !important;
+            font-size: 13px;
+            width: 30px;
+            height: 30px;
+            margin: 0 7px;
+            font-weight: 600;
+            border: none;
+            border-radius: 50%;
+            background: #ffffff12;
+            background-image: url('imagesHwatu/button-decrease.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    
+        button#increase {
+            vertical-align: middle !important;
+            font-size: 13px;
+            width: 30px;
+            height: 30px;
+            margin: 0 7px;
+            font-weight: 600;
+            border: none;
+            border-radius: 50%;
+            background: #ffffff12;
+            background-image: url('imagesHwatu/button-increase.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    }
+    .usersTop img, .usersTopReady img, .usersBottom img, .usersBottomReady img{
+        height: 80%;
+    }
+    .listTop{
+        display: flex;
+        justify-content: center;
+        justify-items: center;
+        .usersTop{
+            display: inline-block;
+            width: 33%; 
+            // background: url('images/noneListTop.png') no-repeat; 
+            background: url('images/noneTop.png') no-repeat;
+            background-size: 100% 100%; 
+            position: relative;
+            .betValue{
+                top: 15%;
+                // font-size: 12px;
+            }
+            .infoTop{
+                .name{
+                    .userName{
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+        .usersTopReady{
+            display: inline-block;
+            width: 33%; 
+            background: url('images/noneListTop.png') no-repeat; 
+            background-size: 100% 100%; 
+            position: relative;
+            .betValue{
+                top: 15%;
+                // font-size: 12px;
+            }
+            .infoTop{
+                .name{
+                    .userName{
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+        .usersTopActive{
+            display: inline-block;
+            width: 33%; 
+            background: url('images/userTopActive.png') no-repeat; 
+            background-size: 100% 100%; 
+            position: relative;
+            .betValue{
+                color: #564141 !important;
+                top: 15%;
+                // font-size: 12px;
+            }
+            .infoTop{
+                .name{
+                    .userName{
+                        color: #564141 !important;
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+        .usersTopWin{
+            display: inline-block;
+            width: 33%; 
+            background: url('images/userTopWin.png') no-repeat; 
+            background-size: 100% 100%; 
+            position: relative;
+            .betValue{
+                color: #2D0C0C !important;
+                top: 15%;
+                // font-size: 12px;
+            }
+            .infoTop{
+                .name{
+                    .userName{
+                        color: #2D0C0C !important;
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+        .usersTopLose{
+            display: inline-block;
+            width: 33%; 
+            background: url('images/userTopLose.png') no-repeat; 
+            background-size: 100% 100%; 
+            position: relative;
+            .betValue{
+                color: #2D0C0C !important;
+                top: 15%;
+                // font-size: 12px;
+            }
+            .infoTop{
+                .name{
+                    .userName{
+                        color: #2D0C0C !important;
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+        .usersTopFold{
+            display: inline-block;
+            width: 33%; 
+            background: url('images/userTopFold.png') no-repeat; 
+            background-size: 100% 100%; 
+            position: relative;
+            .betValue{
+                color: #2D0C0C !important;
+                top: 15%;
+                // font-size: 12px;
+            }
+            .infoTop{
+                .name{
+                    .userName{
+                        color: #2D0C0C !important;
+                        font-size: 12px;
+                    }
+                }
+                .action{
+                    .check{
+                        color: #2D0C0C !important;
+                    }
+                }
+            }
+        }
+    
+        ////// Class Game Hwatu //////////////
+        .usersTopHwatu{
+            display: inline-block;
+            width: 32%; 
+            // background: url('imagesHwatu/none.png') no-repeat; 
+            background: url('imagesHwatu/noneHwatu.png') no-repeat; 
+            background-size: 100% 100%; 
+            position: relative;
+            .betValue{
+                color: #404040 !important;
+    
+                top:  10%;
+                height: 25%;
+                // font-size: 12px;
+            }
+            .infoTop{
+                height: 62%;
+                top: 15%;
+                .name{
+                    height: 15%;
+                    .userName{
+                        color: #404040 !important;
+                        font-size: 12px;
+                    }
+                }
+                .action{
+                    height: 15%;
+                }
+                .card{
+                    height: 60%;
+                    .cardUser{
+                        img{
+                            width: 28%;
+                        }
+                    }
+                }
+            }
+        }
+        .usersTopReadyHwatu{
+            display: inline-block;
+            width: 32%; 
+            background: url('imagesHwatu/none.png') no-repeat; 
+            background-size: 100% 100%; 
+            position: relative;
+            .betValue{
+                color: #404040 !important;
+    
+                top:  10%;
+                height: 25%;
+                // font-size: 12px;
+            }
+            .infoTop{
+                height: 62%;
+                top: 15%;
+                .name{
+                    height: 15%;
+                    .userName{
+                        color: #404040 !important;
+                        font-size: 12px;
+                    }
+                }
+                .action{
+                    height: 15%;
+                }
+                .card{
+                    height: 60%;
+                    .cardUser{
+                        img{
+                            width: 28%;
+                        }
+                    }
+                }
+            }
+        }
+        .usersTopActiveHwatu{
+            display: inline-block;
+            width: 32%; 
+            background: url('imagesHwatu/active.png') no-repeat; 
+            background-size: 100% 100%; 
+            position: relative;
+            .betValue{
+                color: #404040 !important;
+    
+                top:  10%;
+                height: 25%;
+                // font-size: 12px;
+            }
+            .infoTop{
+                height: 62%;
+                top: 15%;
+                .name{
+                    height: 15%;
+                    .userName{
+                        color: #404040 !important;
+                        font-size: 12px;
+                    }
+                }
+                .action{
+                    height: 15%;
+                }
+                .card{
+                    height: 60%;
+                    .cardUser{
+                        img{
+                            width: 28%;
+                        }
+                    }
+                }
+            }
+        }
+        .usersTopWinHwatu{
+            display: inline-block;
+            width: 32%; 
+            background: url('imagesHwatu/win.png') no-repeat; 
+            background-size: 100% 100%; 
+            position: relative;
+            .betValue{
+                color: #404040 !important;
+    
+                top:  10%;
+                height: 25%;
+                // font-size: 12px;
+            }
+            .infoTop{
+                height: 62%;
+                top: 15%;
+                .name{
+                    height: 15%;
+                    .userName{
+                        color: #404040 !important;
+                        font-size: 12px;
+                    }
+                }
+                .action{
+                    height: 15%;
+                    
+                }
+                .card{
+                    height: 60%;
+                    .cardUser{
+                        img{
+                            width: 28%;
+                        }
+                    }
+                }
+            }
+            .totalValueTop{
+                color: #404040;
+            }
+        }
+        .usersTopLoseHwatu{
+            display: inline-block;
+            width: 32%; 
+            background: url('imagesHwatu/fold-close.png') no-repeat;
+            background-size: 100% 100%; 
+            position: relative;
+            .betValue{
+                color: gray !important;
+    
+                top:  10%;
+                height: 25%;
+                // font-size: 12px;
+            }
+            .infoTop{
+                height: 62%;
+                top: 15%;
+                .name{
+                    height: 15%;
+                    .userName{
+                        color: gray !important;
+                        font-size: 12px;
+                    }
+                }
+                .action{
+                    height: 15%;
+                    .check{
+                        color: gray !important;
+                    }
+                }
+                .card{
+                    height: 60%;
+                    .cardUser{
+                        img{
+                            width: 28%;
+                        }
+                    }
+                }
+            }
+            .totalValueTop{
+                color: gray;
+            }
+        }
+        .usersTopFoldHwatu{
+            display: inline-block;
+            width: 32%; 
+            background: url('imagesHwatu/fold-close.png') no-repeat; 
+            background-size: 100% 100%; 
+            position: relative;
+            .betValue{
+                color: gray !important;
+                
+                top:  10%;
+                height: 25%;
+                // font-size: 12px;
+            }
+            .infoTop{
+                height: 62%;
+                top: 15%;
+                .name{
+                    height: 15%;
+                    .userName{
+                        color: gray !important;
+                        font-size: 12px;
+                    }
+                }
+                .action{
+                    height: 15%;
+                    .check{
+                        color: gray !important;
+                    }
+                }
+                .card{
+                    height: 60%;
+                    .cardUser{
+                        img{
+                            width: 28%;
+                        }
+                    }
+                }
+            }
+            .totalValueTop{
+                color: gray;
+            }
+        }
+        
+    }
+    .listBottom{
+        display: flex;
+        justify-content: center;
+        justify-items: center;
+        .usersBottom{
+            display: inline-block; 
+            width: 33%; 
+            // background: url('images/noneListBottom.png') no-repeat; 
+            background: url('images/noneBottom.png') no-repeat;
+            background-size: 100% 100%; 
+            position: relative;
+    
+            .betValue{
+                top: 5%;
+                // font-size: 12px;
+            }
+            .infoBottom{
+                .name{
+                    .userName{
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+        .usersBottomReady{
+            display: inline-block; 
+            width: 33%; 
+            background: url('images/noneListBottom.png') no-repeat; 
+            background-size: 100% 100%; 
+            position: relative;
+            .betValue{
+                top: 5%;
+                // font-size: 12px;
+            }
+            .infoBottom{
+                .name{
+                    .userName{
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+        .usersBottomActive{
+            display: inline-block; 
+            width: 33%; 
+            background: url('images/userBottomActive.png') no-repeat; 
+            background-size: 100% 100%; 
+            position: relative;
+            .betValue{
+                color: #564141 !important;
+    
+                top: 5%;
+                // font-size: 12px;
+            }
+            .infoBottom{
+                .name{
+                    .userName{
+                        color: #564141 !important;
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+        .usersBottomWin{
+            display: inline-block; 
+            width: 33%; 
+            background: url('images/userBottomWin.png') no-repeat; 
+            background-size: 100% 100%; 
+            position: relative;
+            .betValue{
+                color: #2D0C0C !important;
+    
+                top: 5%;
+                // font-size: 12px;
+            }
+            .infoBottom{
+                .name{
+                    .userName{
+                        color: #2D0C0C !important;
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+        .usersBottomLose{
+            display: inline-block; 
+            width: 33%; 
+            background: url('images/userBottomLose.png') no-repeat; 
+            background-size: 100% 100%; 
+            position: relative;
+            .betValue{
+                color: #2D0C0C !important;
+    
+                top: 5%;
+                // font-size: 12px;
+            }
+            .infoBottom{
+                .name{
+                    .userName{
+                        color: #2D0C0C !important;
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+        .usersBottomFold{
+            display: inline-block;
+            width: 33%; 
+            background: url('images/userBottomFold.png') no-repeat; 
+            background-size: 100% 100%; 
+            position: relative;
+            .betValue{
+                color: #2D0C0C !important;
+    
+                top: 5%;
+                // font-size: 12px;
+            }
+            .infoBottom{
+                .name{
+                    .userName{
+                        color: #2D0C0C !important;
+                        font-size: 12px;
+                    }
+                }
+                .action{
+                    .check{
+                        color: #2D0C0C !important;
+                    }
+                }
+            }
+        }
+    
+        ////// Class Game Hwatu //////////////
+        .usersBottomHwatu{
+            display: inline-block; 
+            width: 32%; 
+            // background: url('imagesHwatu/none.png') no-repeat; 
+            background: url('imagesHwatu/noneHwatu.png') no-repeat; 
+            background-size: 100% 100%; 
+            position: relative;
+            .betValue{
+                color: #404040 !important;
+    
+                top: 10%;
+                height: 25%;
+                // font-size: 12px;
+            }
+            .infoBottom{
+                height: 62%;
+                .name{
+                    height: 15%;
+                    .userName{
+                        color: #404040 !important;
+                        font-size: 12px;
+                    }
+                }
+                .action{
+                    height: 15%;
+                }
+                .card{
+                    height: 60%;
+                    .cardUser{
+                        img{
+                            width: 28%;
+                        }
+                    }
+                }
+            }
+        }
+        .usersBottomReadyHwatu{
+            display: inline-block; 
+            width: 32%; 
+            background: url('imagesHwatu/none.png') no-repeat; 
+            background-size: 100% 100%; 
+            position: relative;
+            .betValue{
+                color: #404040 !important;
+    
+                top: 10%;
+                height: 25%;
+                // font-size: 12px;
+            }
+            .infoBottom{
+                height: 62%;
+                .name{
+                    height: 15%;
+                    .userName{
+                        color: #404040 !important;
+                        font-size: 12px;
+                    }
+                }
+                .action{
+                    height: 15%;
+                }
+                .card{
+                    height: 60%;
+                    .cardUser{
+                        img{
+                            width: 28%;
+                        }
+                    }
+                }
+            }
+        }
+        .usersBottomActiveHwatu{
+            display: inline-block; 
+            width: 34%; 
+            background: url('imagesHwatu/active.png') no-repeat; 
+            background-size: 100% 100%; 
+            position: relative;
+            .betValue{
+                color: #404040 !important;
+    
+                top: 10%;
+                height: 25%;
+                // font-size: 12px;
+            }
+            .infoBottom{
+                height: 62%;
+                .name{
+                    height: 15%;
+                    .userName{
+                        color: #404040 !important;
+                        font-size: 12px;
+                    }
+                }
+                .action{
+                    height: 15%;
+                }
+                .card{
+                    height: 60%;
+                    .cardUser{
+                        img{
+                            width: 28%;
+                        }
+                    }
+                }
+            }
+        }
+        .usersBottomWinHwatu{
+            display: inline-block; 
+            width: 32%; 
+            background: url('imagesHwatu/win.png') no-repeat; 
+            background-size: 100% 100%; 
+            position: relative;
+            .betValue{
+                color: #404040 !important;
+    
+                top: 10%;
+                height: 25%;
+                // font-size: 12px;
+            }
+            .infoBottom{
+                height: 62%;
+                .name{
+                    height: 15%;
+                    .userName{
+                        color: #404040 !important;
+                        font-size: 12px;
+                    }
+                }
+                .action{
+                    height: 15%;
+                }
+                .card{
+                    height: 60%;
+                    .cardUser{
+                        img{
+                            width: 28%;
+                        }
+                    }
+                }
+            }
+            .totalValueBottom{
+                color: #404040;
+            }
+        }
+        .usersBottomLoseHwatu{
+            display: inline-block; 
+            width: 32%; 
+            background: url('imagesHwatu/fold-close.png') no-repeat; 
+            background-size: 100% 100%; 
+            position: relative;
+            .betValue{
+                color: gray !important;
+    
+                top: 10%;
+                height: 25%;
+                // font-size: 12px;
+            }
+            .infoBottom{
+                height: 62%;
+                .name{
+                    height: 15%;
+                    .userName{
+                        color: gray !important;
+                        font-size: 12px;
+                    }
+                }
+                .action{
+                    height: 15%;
+                }
+                .card{
+                    height: 60%;
+                    .cardUser{
+                        img{
+                            width: 28%;
+                        }
+                    }
+                }
+            }
+            .totalValueBottom{
+                color: gray;
+            }
+        }
+        .usersBottomFoldHwatu{
+            display: inline-block;
+            width: 32%; 
+            background: url('imagesHwatu/fold-close.png') no-repeat; 
+            background-size: 100% 100%; 
+            position: relative;
+            .betValue{
+                color: gray !important;
+    
+                top: 10%;
+                height: 25%;
+                // font-size: 12px;
+            }
+            .infoBottom{
+                height: 62%;
+                .name{
+                    height: 15%;
+                    .userName{
+                        color: gray !important;
+                        font-size: 12px;
+                    }
+                }
+                .action{
+                    height: 15%;
+                    .check{
+                        color: gray !important;
+                    }
+                }
+                .card{
+                    height: 60%;
+                    .cardUser{
+                        img{
+                            width: 28%;
+                        }
+                    }
+                }
+            }
+            .totalValueBottom{
+                color: gray;
+            }
+        }
+    }
+    .tip{
+        // display: inline-block; 
+        // border-radius: 20px; 
+        // background: #a6020294; 
+        // padding: 3.4px 0;
+        width: 60px;
+
+        display: inline-block;
+        border-radius: 20px;
+        background: #a6020294;
+        padding: -0.6px 0;
+        height: 87%;
+        padding: 5px 0;
+        img{
+            // width: 35%;
+            // width: 16px;
+            height: 100%;
+        }
+    }
+    
+    .tipHwatu{
+        display: inline-block; 
+        width: 30px;
+        
+        img{
+            width: 100%;
+            height: 30px;
+        }
+    }
+    
+    .bettingValue{
+        display: inline-block;
+        border-radius: 20px; 
+        background: #a6020294; 
+        padding: 6px 0; 
+        color: white; 
+        margin-left: 5px;
+        font-size: 13px;
+        vertical-align: middle;
+    }
+    
+    .bettingValueHwatu{
+        display: inline-block;
+        background: url('imagesHwatu/bettingValue.png') no-repeat; 
+        background-size: 100% 100%;
+        height: 100%;
+        height: 100%;
+        padding: 8px;
+        font-size: 13px;
+    }
+    .time{
+        display: inline-block;
+        border-radius: 20px; 
+        padding: 4.2px 5px;
+        margin-left: 5px; 
+        background: #a6020294; 
+        vertical-align: middle;
+        .titleTime{
+            height: 15px; display: inline-block; font-size: 16px; padding: 0; color: #c9c4c4; margin-right: 10px; font-weight: 600; color: white;
+        }
+        #lineTime{
+            height: 16px; display: inline-block; font-size: 10px;padding: 0; vertical-align: bottom;
+        }
+    }
+    .timeHwatu{
+        display: inline-block;
+        background: url("imagesHwatu/timeHwatu.png") no-repeat;
+        background-size: 100% 100%;
+        border-radius: 0;
+        height: 100%;
+        padding: 5px;
+        .titleTime{
+            display: inline-block; font-size: 16px; padding: 0; color: #404040; margin-right: 10px; font-weight: 600; vertical-align: top;
+        }
+        #lineTime{
+            display: inline-block; font-size: 10px;padding: 0; vertical-align: middle;
+        }
+    }
+    #raise{
+        input{
+            width: 85%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+    
+    .poker{
+        .parentRaiseInput{
+            width: 70% !important;
+            vertical-align: middle !important;
+            display: inline-block;
+            height: 24px;
+            position: relative;
+            background: rgba(151, 2, 4, 0.5);
+            border-radius: 15px;
+        }
+    }
+    
+    .hwatu{
+        .parentRaiseInput{
+            width: 70% !important;
+            vertical-align: middle !important;
+            display: inline-block;
+            height: 24px;
+            position: relative;
+            background: url('imagesHwatu/input.png') no-repeat;
+            background-size: 100% 100%;
+            border-radius: 15px;
+        }
+    }
+    div#raise{
+        width: 100%;
+    }
+    .betValue{
+        padding: 5px 0; position: relative;
+        color: #F2D6A5;
+        font-weight: 600;
+        font-size: 12px;
+        // height: 24px;
+    }
+    .name{
+        justify-content: center;
+        justify-items: center;
+        align-items: center;
+        align-content: center;
+        height: 15px;
+        .userName{
+            height: 15px;
+            font-size: 12px;
+            color: #FFFFFF;
+            font-weight: 600;
+            height: 100%;
+    
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            max-width: 100%;
+            overflow: hidden;
+        } 
+    }
+    .action{
+        height: 15px;
+        .check{
+            font-size: 15px;
+            color: #56A0D5;
+            font-weight: 600;
+            height: 100%;
+        }
+    }
+    .card{
+        height: 60px;
+        .cardUser{
+            margin: 2px 0;
+            img{
+                width: 30%;
+            }
+        }
+    }
+    button, input{
+        outline: 0;
+    }
+    
+    
+    #index{
+        width: 100%;
+        text-align: center;
+        padding: 0px;
+        margin: 0 auto;
+    }
+    
+    .blocks{
+        .block{
+            width: 100%;
+            display: block;
+            display: inline-block;
+            padding: 20px;
+            table{
+                width: 100%;
+                color: #AEB2B6;
+                line-height: 25px;
+                border-collapse: collapse;
+                border: 1px solid #E0EFF5;
+                padding: 10px;
+                thead{
+                    display:table;
+                    width:100%;
+                    table-layout:fixed;
+                    tr{
+                        height: 40px;
+                    }
+                }
+                
+                tbody{
+                    display:block;
+                    overflow:hidden;
+                    tr{
+                        display:table;
+                        width:100%;
+                        table-layout:fixed;
+                    }
+                }
+                tr{
+                    border-radius: 5px;
+                    display:table;
+                    width:100%;
+                    table-layout:fixed;
+                    th{
+                        font-size: 14px;
+                        color: #E73848;
+                        text-align: center;
+                        
+                    }
+                    td{
+                        font-size: 12px;
+                        padding: 5px;
+                        span{
+                            img{
+                                max-width: 27px;
+                            }
+                        }
+                    }
+                    th:first-child, td:first-child { 
+                        border-top-left-radius: 9px;
+                    }
+                    th:last-child, td:last-child { 
+                        border-top-right-radius: 9px;
+                        border-right: none;
+                    }
+                    
+                }
+            }
+            .bet{
+                height: 45px;
+                padding: 0 10px;
+            }
+            .balanceHomes{
+                padding: 0 8px;
+                margin-bottom: 8px;
+                display: block;
+                div{
+                    display: inline-block;
+                    position: relative;
+                    button{
+                        position: absolute;
+                        transform: translate(-50%, -100%);
+                        height: 70px;
+                        color: black;
+                        width: 100%;
+                        font-weight: 600;
+                        font-size: 17px;
+                        padding: 0 10px;
+    
+                        background-image: url('images/background-image.png'); 
+                        background-repeat: no-repeat; 
+                        border: none; 
+                        background-size: cover;
+                        &:hover, &:active{
+                            background-image: url('images/background-image-click.png'); 
+                            background-repeat: no-repeat; 
+                            background-size: cover;
+                            color: black;
+                        }
+                    }
+                    table{
+                        padding: 0;
+                        color: black;
+                        border-collapse: collapse;
+                        border-radius: 15px;
+                        border: none;
+                        box-shadow: 0px 0px 10px 5px #3838381f;
+                        tr{
+                            border-radius: 0;
+                            line-height: 20px;
+                            height: 30px;
+                            
+                            th{
+                                font-size: 12px;
+                                border-radius: 0;
+                                color: #ffffff;
+                                background: #5f1d4b;
+                                color: black;
+                                padding: 0;
+                                line-height: 40px;
+                            }
+                            td{
+                                color: #ffffff;
+                                background: #5f1d4b;
+                                font-size: 12px;
+                                border-radius: 0;
+                                padding: 0;
+                                line-height: 20px;
+                            }
+                        }
+                        
+                        tr:first-child{
+                            // border-bottom: 2px solid #8080803d;
+                            width: 100%;
+                        }
+                        // tr:first-child{
+                        //     // border-bottom: 2px solid #8080803d;
+                        // }
+                        th:first-child{ 
+                            border-top-left-radius: 9px;
+                            border-right: 2px solid #8080803d;
+                        }
+                        td:first-child {
+                            border-bottom-left-radius: 9px;
+                            border-right: 2px solid #8080803d;
+                        }
+                        th:last-child { 
+                            border-top-right-radius: 9px;
+                            // border-left: 2px solid #8080803d;
+                        }
+                        td:last-child{
+                            border-bottom-right-radius: 9px;
+                            // border-left: 2px solid #8080803d;
+                        }
+                    }
+                }
+                
+            }
+            .balance{
+                padding: 0 8px;
+                margin-bottom: 8px;
+                display: block;
+                div{
+                    display: inline-block;
+                    position: relative;
+                    button{
+                        position: absolute;
+                        transform: translate(-50%, -100%);
+                        height: 70px;
+                        color: #fcf7f7;
+                        width: 100%;
+                        font-weight: 600;
+                        font-size: 17px;
+                        padding: 0 10px;
+    
+                        background-image: url('images/background-image.png'); 
+                        background-repeat: no-repeat; 
+                        border: none; 
+                        background-size: cover;
+                        &:hover, &:active{
+                            background-image: url('images/background-image-click.png'); 
+                            background-repeat: no-repeat; 
+                            background-size: cover;
+                            color: black;
+                        }
+                    }
+                    table{
+                        padding: 0;
+                        color: white;
+                        border-collapse: collapse;
+                        border-radius: 15px;
+                        border: none;
+                        tr{
+                            border-radius: 0;
+                            line-height: 20px;
+                            height: 30px;
+                            th{
+                                font-size: 11px;
+                                border-radius: 0;
+                                background: rgba(151, 2, 4, 0.5);
+                                color: white;
+                                padding: 0;
+                                line-height: 40px;
+                            }
+                            td{
+                                background: rgba(151, 2, 4, 0.5);
+                                font-size: 12px;
+                                border-radius: 0;
+                                padding: 0;
+                                line-height: 20px;
+                            }
+                        }
+                        
+                        // tr:first-child{
+                        //     border-bottom: 1px solid white;
+                        // }
+                        // tr:first-child{
+                        //     border-bottom: 1px solid white;
+                        // }
+                        th:first-child{ 
+                            border-top-left-radius: 9px;
+                            border-right: 1px solid white;
+                        }
+                        td:first-child {
+                            border-bottom-left-radius: 9px;
+                            border-right: 1px solid white;
+                            border-top-left-radius: 9px;
+                            
+                        }
+                        th:last-child { 
+                            border-top-right-radius: 9px;
+                            border-left: 1px solid white;
+                        }
+                        td:last-child{
+                            border-bottom-right-radius: 9px;
+                            border-left: 1px solid white;
+                            border-top-right-radius: 9px;
+                        }
+                    }
+                }
+                
+            }
+            .balanceHwatu{
+                padding: 0 8px;
+                display: block;
+                div{
+                    display: inline-block;
+                    position: relative;
+                    button{
+                        position: absolute;
+                        transform: translate(-50%, -100%);
+                        height: 70px;
+                        color: #fcf7f7;
+                        width: 100%;
+                        font-weight: 600;
+                        font-size: 17px;
+                        padding: 0 10px;
+    
+                        background-image: url('images/background-image.png'); 
+                        background-repeat: no-repeat; 
+                        border: none; 
+                        background-size: cover;
+                        &:hover, &:active{
+                            background-image: url('images/background-image-click.png'); 
+                            background-repeat: no-repeat; 
+                            background-size: cover;
+                            color: #404040;
+                        }
+                    }
+                    table{
+                        padding: 0;
+                        color: #404040;
+                        border-collapse: collapse;
+                        border-radius: 15px;
+                        border: none;
+                        tr{
+                            border-radius: 0;
+                            line-height: 20px;
+                            height: 30px;
+                            th{
+                                font-size: 11px;
+                                border-radius: 0;
+                                background: none;
+                                color: #404040;
+                                padding: 0;
+                                line-height: 40px;
+                                // border: 1px solid #D49B28;
+                            }
+                            td{
+                                background: none;
+                                font-size: 12px;
+                                border-radius: 0;
+                                padding: 0;
+                                line-height: 20px;
+                                // border: 1px solid #D49B28;
+                                // border-top: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    .resultBlock{
+        .block-transaction{
+            display: block;
+            .block{
+                width: 100%;
+                float: left;
+            }
+            .block{
+                padding: 0;
+                table{
+                    width: 100%;
+                    color: #AEB2B6;
+                    line-height: 75px; 
+                    tr{
+                        
+                        th{
+                            font-size: 13px;
+                            color: black;
+                        }
+                        th:first-child{
+                            float: left;
+                            
+                        }
+                        td{
+                            font-size: 13px;
+                            text-align: unset;
+                            color: black;
+                            
+                            div{
+                                width: 95%;
+                                vertical-align: middle;
+                                line-height: 35px;
+                                border: solid 1px #E0EFF5;
+                                border-radius: 15px;
+                                position: relative;
+                                span{
+                                    font-size: 15px;
+                                    img{
+                                        position: absolute;
+                                        right: 6px;
+                                        top: 27%;
+                                        max-width: 19px;
+                                    }
+                                }
+                            }
+                        }
+                        td:first-child{
+                            text-align: left;
+                            padding-left: 40px;
+                            font-size: 15px;
+                            font-weight: 800;
+                            width: 35% ;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    .inputNumber{
+        width: 40%; 
+        display: inline-block;
+        height: 100px;
+        position: relative;
+        top: -45%;
+        div{
+            width: 30%;
+            display: inline-block;
+            position: relative;
+            .up{
+                position: absolute;
+                left: 50%;
+                top: 35%;
+                transform: translate(-45%, -100%);
+                font-size: 40px;
+            }
+            .down{
+                position: absolute;
+                left: 50%;
+                bottom: 40%;
+                transform: translate(-45%, 90%);
+                font-size: 40px;
+            }
+            input{
+                height: 40px; 
+                width: 40px;
+                border-radius: 50%;
+                text-align: center !important;
+                padding: 0 !important;
+                color: white;
+                font-size: 18px;
+                font-weight: 600;
+            }
+        }
+    }
+    .inputNumberLeft{
+        background-image: url("images/inputNumber-left.png") !important;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border: none !important;
+        box-shadow: none !important;
+        transform: none !important;
+    }
+    .inputNumberCenter{
+        background-image: url("images/inputNumber-center.png") !important;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border: none !important;
+        box-shadow: none !important;
+        transform: none !important;
+    }
+    .inputNumberRight{
+        background-image: url("images/inputNumber-right.png") !important;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border: none !important;
+        box-shadow: none !important;
+        transform: none !important;
+    }
+    
+    .paginations{
+        margin: 10px auto;
+        text-align: center;
+        button{
+            font-size: 12px;
+            margin-left: 5px;
+        }
+        #unit{
+            position: absolute;
+            right: 10%;
+            top: 35%;
+            max-width: 28px;
+        }
+        .buttonReset{
+            height: 104px; position: relative; width: 29px; right: 0px;  
+            background-image: url("images/reset.png");
+            background-repeat: no-repeat;
+            border: none;
+        }
+        .buttonIncrement{
+            height: 50px; position: absolute; width: 29px; left: -3px; top: -59px; color: white; 
+            background-image: url("images/inc.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            border: none;
+        }
+        .buttonDecrement{
+            height: 50px; position: absolute; width: 29px; left: -3px; top: -5px; color: white; 
+            background-image: url("images/dec.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            border: none;
+        }
+        .buttonOdd{
+            height: 73px; width: 79px; 
+            background: none;
+            background-image: url("images/button_odd.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            border: none ;
+            box-shadow: none;
+            transform: none;
+            position: relative;
+            top: -10px;
+        }
+        .buttonEven{
+            height: 73px; width: 79px; 
+            background: none;
+            background-image: url("images/button_even.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            border: none ;
+            box-shadow: none;
+            transform: none;
+            position: relative;
+            top: -10px;
+        }
+        
+        .buttonScissors {
+            height: 111px;
+            width: 49px;
+            background: none;
+            background-image: url("images/button_Scissors.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            border: none;
+            box-shadow: none;
+            transform: none;
+            position: relative;
+            top: 5px; 
+        }
+        .buttonRock {
+            height: 111px;
+            width: 49px;
+            background: none;
+            background-image: url("images/button_Rock.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            border: none;
+            box-shadow: none;
+            transform: none;
+            position: relative;
+            top: 5px; 
+        }
+        .buttonPaper {
+            height: 111px;
+            width: 49px;
+            background: none;
+            background-image: url("images/button_Paper.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            border: none;
+            box-shadow: none;
+            transform: none;
+            position: relative;
+            top: 5px; }
+        
+    }
+    .setWidth{
+        width: 35%;
+    }
+    .timecountDown{
+        width: 3px; 
+        display: inline-block; 
+        height: 15px;
+        margin: 0;
+        font-size: 10px;    
+        border-radius: 1.5px;
+    }
+}
+//=========================================================================
+//========================================================================= 1200px
+@media all and (max-width: 1200px) { 
+    .blocks{
+        .block{
+            padding: 0;
+            border-radius: 0;
+            table{
+                tr{
+                    td{
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+    }
+    .resultBlock{
+        .block-transaction{
+            display: block;
+            .block{
+                width: 100%;
+                float: none;
+            }
+            .block{
+                table{
+                    display: inline-table;
+                    width: 100%;
+                    tr{
+                        th{
+                            font-size: 13px;
+                            color: black;
+                            font-weight: 600;
+                        }
+                        th:first-child{
+                            float: left;
+                        }
+                        td{
+                            font-size: 11px;
+                        }
+                        td:first-child{
+                            padding-left: 15px;
+                            font-size: 13px;
+                            font-weight: 600;
+                            width: 20%;
+                            padding-left: 3%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.btnInvite{
+    border: none;
+    border-radius: 9px;
+    color: white; font-size: 12px; font-weight: bold; 
+    background: rgba(151, 2, 4, 0.5);
+    // font: Roboto;
+}
+
+input[type=range] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 1px !important;
+    padding: unset!important;
+    margin: unset !important;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+  
+input[type=range]::-webkit-slider-thumb {
+    box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+    border: 0px solid #000000;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    background: #000000;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -2px;
+
+    background-image: url('http://206.189.45.62:7000/images/keo.png');
+    // -webkit-gradient(
+    //     linear,
+    //     left top,
+    //     left bottom,
+    //     color-stop(0, #fefefe),
+    //     color-stop(0, #dddddd),
+    //     color-stop(0, #d1d1d1),
+    //     color-stop(0, #a1a1a1)
+    // );
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 30%;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: white;
+}
+
+.poker{
+    .parentRaiseInput{
+        
+    }
+}
+
+.hwatu{
+    .parentRaiseInput{
+        input[type=range] {
+            background: black;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            background-image: url('http://206.189.45.62:7000/imagesHwatu/keo.png');
+        }
+    }
+}
+//ipad pro
+@media all and (min-width: 992px) {
+    #roomGame .child-box{ width: 33% !important }
+    #nameCardWinnerHwatu .cardWinner img{ width: 80px;}
+    #nameCardWinner, #nameCardWinnerHwatu{
+        font-size: 38px;
+        top : 45% !important;
+    }
+    .nameTwoCardsBottom, .nameFiveCardsBottom {
+        top: -30px;
+        font-size: 32px;
+    }
+    .moneyUserTopHwatu, .moneyUserBottomHwatu{ font-size: 22px !important;}
+    .moneyUserBottom, .moneyUserTop { font-size: 22px !important;}
+    .heightTime{ margin-top: 33px !important; }
+    .moneyUserBottomHwatu{font-size: 24px !important; bottom: -24px !important;}
+
+    .bodyPoker .cardsTable{ background-size: 100% 130% !important;  }
+    .paginations{margin: 7px auto 5px auto}
+    .bodyHwatu .heightButtonBet{height: 96px !important; position: relative;}
+    .bodyPoker .heightButtonBet{height: 96px !important; position: relative;}
+
+    #homes .topHomes div span{ font-size: 35px;}
+    #roomGame .topHomes div span{ font-size: 35px;}
+    #homes .topHomes div img { width: 50px;}
+    #roomGame .topHomes div img { width: 50px;}
+    .line-width{ margin-left : 18px; width : 150px;  height : 3px;   background: white;  border-radius: 10px }
+    #homes .boxs .item-box{ display: inline-block; float: left; width: 33%;  height: auto;
+        button{  width: 100%;  height: 100%;  border-radius: 9px; border: none;  background: none;
+            img{  width: 100%;  }
+        }
+    }
+    .blocks .block .balanceHwatu div table tr {  width: 100%;height: 60px; display: flex; flex-direction: row;
+        td{
+            &:first-child{ background-image: url('imagesHwatu/L-ID.png');
+                background-size: 100% 100%; width: 40%; height: 60px; 
+                justify-content: center; align-items: center; display: flex
+            }
+            &:last-child{ background-image: url(imagesHwatu/R-ID.png); background-size: 100% 100%;
+                width: 60%; padding-right: 40px; height: 60px; align-items: center;  display: flex;
+                justify-items: center; justify-content: flex-end;
+            }
+        }
+    }
+    #homes .balanceHomes div table {
+        tr{table-layout: fixed; display: flex; flex-direction: row; height: 70px;}
+        td:first-child{ width : 40%; font-size: 33px !important; font-weight: bold; height: 70px !important;}
+        td:last-child{ font-size: 33px !important;font-weight: bold; padding-right: 40px;   display: flex;
+            align-items: center;justify-content: flex-end;}
+    }
+    .image-blaa{max-width: 30px; margin-left: 15px;}
+
+    .sum { font-size: 35px !important; padding-top: 45px; text-align: center;}
+    .listTop{
+        .usersTop, .usersTopReady, .usersTopActive, .usersTopWin, .usersTopLose, .usersTopFold{
+            width: 34% !important;
+            .infoTop{ height: 79%; top: 5% !important;
+                .action{ top: 3%;  position: relative;
+                .check{font-size: 32px;}}
+                .name {height: 13%;}
+            } 
+            .betValue{ font-size: 32px; height: 20% !important; top: unset !important}
+            .cardUser{ top : 52%; display: flex; justify-content: center; align-content: center;}
+            img{ width: 140px !important; margin-left: unset !important; height: 200px !important; }
+        }
+
+        .usersTopHwatu, .usersTopReadyHwatu, .usersTopActiveHwatu, .usersTopWinHwatu, .usersTopLoseHwatu, .usersTopFoldHwatu{
+            width: 34% !important;
+            .infoTop{ height: 78%; top: 10% !important;
+                .action{ top: 3%;  position: relative; 
+                    .check{font-size: 32px;}}
+            } 
+            .betValue{ font-size: 32px; height: 20% !important; top: unset !important}
+            .cardUser{ top : 52%; display: flex; justify-content: center; align-content: center;}
+            img{ width: 130px !important; margin-left: unset !important; height: 185px !important; }
+        }
+       
+    }
+    .listBottom{
+        .usersBottom, .usersBottomReady, .usersBottomActive, .usersBottomWin, .usersBottomLose, .usersBottomFold{
+            width: 34% !important;
+            .betValue { font-size: 32px;top: 7%;  height : 18% }
+            .infoBottom{ height: 80%; 
+                .action{  height: 15%; display: flex; justify-content: center; align-items: center;position: relative; top: 2%; 
+                .check{font-size: 32px;}}
+                .card { height: 70% }
+                .cardUser{ display: flex; justify-content: center; align-content: center;}
+                img{ width: 140px !important; margin-left: unset !important; height: 200px !important; }
+            }
+        }
+
+        .usersBottomHwatu, .usersBottomReadyHwatu, .usersBottomActiveHwatu, .usersBottomWinHwatu, .usersBottomLoseHwatu, .usersBottomFoldHwatu{
+            width: 34% !important;
+            .betValue { font-size: 32px; top: 7%;  height : 18% }
+            .infoBottom{ height: 80%; 
+                .action{  height: 10%; display: flex; justify-content: center; align-items: center;position: relative; top: 2%;
+                .check{font-size: 32px;} }
+                .card { height: 65% }
+                .cardUser{ display: flex; justify-content: center; align-content: center;}
+                img{ width: 130px !important; margin-left: unset !important; height: 185px !important; }
+            }
+        }
+        
+    }
+    .hwatu{ button#games, button#logout, button#entergame, button#leave, button#ready, button#fold, button#call, button#check, button#raise {
+        font-size: 14px; color: #404040; width: 115px; height: 75px;margin: 0 7px;font-weight: 600;
+        border: none; border-radius: 50%;  background: #ffffff12; background-image: url('imagesHwatu/button.png');
+        background-size: 100% 100%; background-repeat: no-repeat;
+        }
+    }
+    .blocks .block .balanceHwatu div table tr td{font-size: 30px; font-weight: bold;}
+    .btnInviteHwatu{color: #404040;  font-size: 20px;  font-weight: 600; background: white;
+        border: solid 4px #ab873c; border-radius: 13px; margin: 1px 0px; }
+    .poker { button#games, button#logout, button#entergame, button#leave, button#ready, button#fold, button#call, button#check, button#raise {
+        font-size: 17px; color: #404040; width: 75px; height: 75px;margin: 0 7px;font-weight: bold;
+        border: none; border-radius: 50%;
+        }
+    }
+    .blocks .block .balance div table tr {  width: 100%;height: 50px; display: flex; flex-direction: row;
+        td{
+            &:first-child{ width: 40%; height: 50px; 
+                justify-content: center; align-items: center; display: flex
+            }
+            &:last-child{
+                width: 60%; padding-right: 15px; height: 50px; align-items: center;  display: flex;
+                justify-items: center; justify-content: flex-end;
+            }
+        }
+    }
+}
+//ipad, tablet mini
+@media all and ( max-width: 991px) and (min-width: 768px) {
+    #roomGame .child-box{ width: 33% !important }
+    #nameCardWinnerHwatu .cardWinner img{ width: 60px;}
+    #nameCardWinner, #nameCardWinnerHwatu{
+        font-size: 34px;
+        top : 43% !important;
+    }
+    .nameTwoCardsBottom, .nameFiveCardsBottom {
+        top: -25px;
+        font-size: 28px;
+    }
+    .heightTime{ margin-top: 33px !important; }
+    
+    .moneyUserTopHwatu, .moneyUserBottomHwatu{ font-size: 17px !important;}
+    .moneyUserBottom, .moneyUserTop { font-size: 17px !important;}
+    .bodyPoker .cardsTable{ background-size: 100% 140% !important;  }
+    .paginations{margin: 5px auto}
+    .bodyHwatu .heightButtonBet{height: 100px !important; position: relative;}
+    .bodyPoker .heightButtonBet{height: 100px!important; position: relative;}
+   
+    .blocks .block .balanceHwatu div table tr {  width: 100%;height: 50px; display: flex; flex-direction: row;
+        td{
+            &:first-child{ background-image: url('imagesHwatu/L-ID.png');
+                background-size: 100% 100%; width: 40%; height: 50px; 
+                justify-content: center; align-items: center; display: flex }
+            &:last-child{ background-image: url(imagesHwatu/R-ID.png); background-size: 100% 100%;
+                width: 60%; padding-right: 40px; height: 50px; align-items: center;  display: flex;
+                justify-items: center; justify-content: flex-end; }
+        }
+    }
+   
+    #homes .topHomes div span{ font-size: 30px;}
+    #roomGame .topHomes div span{ font-size: 30px;}
+    .line-width{ margin-left : 18px; width : 120px;  height : 3px;   background: white;  border-radius: 10px } 
+    #homes .boxs .item-box{ display: inline-block; float: left; width: 33%;  height: auto;
+        button{  width: 100%;  height: 100%;  border-radius: 9px; border: none;  background: none;
+            img{  width: 100%;  }
+        }
+    }
+
+    #homes .balanceHomes div table {
+        tr{table-layout: fixed; display: flex; flex-direction: row; height: 70px;}
+        td:first-child{ width : 40%; font-size: 26px !important; font-weight: bold; height: 70px !important;}
+        td:last-child{ font-size: 26px !important;font-weight: bold; padding-right: 40px;   display: flex;
+            align-items: center;justify-content: flex-end;}
+    }
+    .image-blaa{max-width: 30px; margin-left: 15px;}
+
+    .sum { font-size: 26px !important; padding-top: 35px; text-align: center;}
+    .listTop{
+        .usersTop, .usersTopReady, .usersTopActive, .usersTopWin, .usersTopLose, .usersTopFold{
+            width: 34% !important;
+            .infoTop{ height: 79%; top: 5% !important;
+                .action{ top: 3%;  position: relative;}
+                .name {height: 13%;}
+            } 
+            .betValue{ font-size: 22px; height: 20% !important; top: unset !important}
+            .cardUser{ top : 52%; display: flex; justify-content: center; align-content: center;}
+            img{ width: 115px !important; margin-left: unset !important; height: 145px !important; }
+        }
+    
+        .usersTopHwatu, .usersTopReadyHwatu, .usersTopActiveHwatu, .usersTopWinHwatu, .usersTopLoseHwatu, .usersTopFoldHwatu{
+            width: 34% !important;
+            .infoTop{ height: 78%; top: 10% !important;
+                .action{ top: 3%;  position: relative;}
+            } 
+            .betValue{ font-size: 22px; height: 20% !important; top: unset !important}
+            .cardUser{ top : 52%; display: flex; justify-content: center; align-content: center;}
+            img{ width: 95px !important; margin-left: unset !important; height: 125px !important; }
+        }
+       
+    }
+    .listBottom{
+        .usersBottom, .usersBottomReady, .usersBottomActive, .usersBottomWin, .usersBottomLose, .usersBottomFold{
+            width: 34% !important;
+            .betValue {  font-size: 24px; top: 7%;  height : 18% }
+            .infoBottom{ height: 80%; 
+                .action{  height: 15%; display: flex; justify-content: center; align-items: center;position: relative; top: 2%; }
+                .card { height: 70% }
+                .cardUser{ display: flex; justify-content: center; align-content: center;}
+                img{ width: 115px !important; margin-left: unset !important; height: 145px !important; }
+            }
+        }
+        .usersBottomHwatu, .usersBottomReadyHwatu, .usersBottomActiveHwatu, .usersBottomWinHwatu, .usersBottomLoseHwatu, .usersBottomFoldHwatu{
+            width: 34% !important;
+            .betValue { font-size: 24px; top: 7%;  height : 18% }
+            .infoBottom{ height: 80%; 
+                .action{  height: 10%; display: flex; justify-content: center; align-items: center;position: relative; top: 2%; }
+                .card { height: 65% }
+                .cardUser{ display: flex; justify-content: center; align-content: center;}
+                img{ width: 95px !important; margin-left: unset !important; height: 125px !important; }
+            }
+        }
+        
+    }
+    .hwatu{ button#games, button#logout, button#entergame, button#leave, button#ready, button#fold, button#call, button#check, button#raise {
+        font-size: 14px; color: #404040; width: 100px; height: 65px;margin: 0 7px;font-weight: 600;
+        border: none; border-radius: 50%;  background: #ffffff12; background-image: url('imagesHwatu/button.png');
+        background-size: 100% 100%; background-repeat: no-repeat;
+        }
+    }
+    .blocks .block .balanceHwatu div table tr td{font-size: 24px; font-weight: bold;}
+    .btnInviteHwatu{color: #404040;  font-size: 20px;  font-weight: 600; background: white;
+        border: solid 4px #ab873c; border-radius: 13px; margin: 1px 0px; }
+    .poker { button#games, button#logout, button#entergame, button#leave, button#ready, button#fold, button#call, button#check, button#raise {
+        font-size: 17px; color: #404040; width: 65px; height: 65px;margin: 0 7px;font-weight: bold;
+        border: none; border-radius: 50%;
+        }
+    }
+    .blocks .block .balance div table tr {  width: 100%;height: 40px; display: flex; flex-direction: row;
+        td{
+            &:first-child{ width: 40%; height: 40px; 
+                justify-content: center; align-items: center; display: flex
+            }
+            &:last-child{
+                width: 60%; padding-right: 15px; height: 40px; align-items: center;  display: flex;
+                justify-items: center; justify-content: flex-end;
+            }
+        }
+    }
+  }
+  //mobile
+  @media all and ( max-width: 767px) and (min-width: 425px) {
+    #nameCardWinnerHwatu .cardWinner img{ width: 50px;}
+    #nameCardWinner, #nameCardWinnerHwatu{
+        font-size: 30px;
+        top : 38% !important;
+    }
+    .nameTwoCardsBottom, .nameFiveCardsBottom {
+        top: -22px;
+        font-size: 24px;
+    }
+    .bodyPoker .cardsTable{ background-size: 100% 130% !important;  }
+    .bodyHwatu .heightButtonBet{height: 85px; position: relative;}
+    .bodyPoker .heightButtonBet{height: 90px; position: relative;}
+  
+    #homes .topHomes div span{ font-size: 25px;}
+    #roomGame .topHomes div span{ font-size: 25px;}
+    .line-width{ margin-left : 10px; width : 90px;  height : 3px;   background: white;  border-radius: 10px }
+    #homes .boxs .item-box{ display: inline-block; float: left;  width: 50%; height: auto;
+        button{   width: 100%; height: 100%;  border-radius: 9px;  border: none; background: none;
+            img{ width: 100%;  }
+        }
+    }
+    
+    .sum { font-size: 16px !important; padding-top: 10px; text-align: center;}
+    .blocks .block .balanceHwatu div table tr {  width: 100%;height: 45px; display: flex; flex-direction: row;
+        td{
+            &:first-child{ background-image: url('imagesHwatu/L-ID.png');
+                background-size: 100% 100%; width: 40%; height: 45px; 
+                justify-content: center; align-items: center; display: flex
+            }
+            &:last-child{ background-image: url(imagesHwatu/R-ID.png); background-size: 100% 100%;
+                width: 60%; padding-right: 40px; height: 45px; align-items: center;  display: flex;
+                justify-items: center; justify-content: flex-end;
+            }
+        }
+    }
+    #homes .balanceHomes div table {
+        tr{table-layout: fixed; display: flex; flex-direction: row; height: 60px;}
+        td:first-child{ width : 40%; font-size: 20px !important; font-weight: bold; height: 60px !important;}
+        td:last-child{ font-size: 20px !important;font-weight: bold; padding-right: 25px;   display: flex;
+            align-items: center;justify-content: flex-end;}
+    }
+    .image-blaa{max-width: 22px; margin-left: 15px;}
+    .listTop{
+        .usersTop, .usersTopReady, .usersTopActive, .usersTopWin, .usersTopLose, .usersTopFold{
+            width: 34% !important;
+            .infoTop{ height: 79%; top: 5% !important;
+                .action{ top: 3%;  position: relative;}
+                .name {height: 13%;}
+            } 
+            .card { height: 80%;}
+            .betValue{ font-size: 18px;height: 20% !important;  top: unset !important; display: flex; align-content: center;  justify-content: center;  flex-direction: column;}
+            .cardUser{ top : 52%; display: flex; justify-content: center; align-content: center;}
+            img{ width: 66px !important; margin-left: unset !important;}
+        }
+        .usersTopHwatu, .usersTopReadyHwatu, .usersTopActiveHwatu, .usersTopWinHwatu, .usersTopLoseHwatu, .usersTopFoldHwatu{
+            width: 34% !important;
+            .infoTop{ height: 78%; top: 10% !important;
+                .action{ top: 3%;  position: relative;}
+            } 
+            .betValue{ font-size: 18px;height: 20% !important; top: unset !important}
+            .cardUser{ display: flex; justify-content: center; align-content: center;}
+            img{ width: 66px !important; margin-left: unset !important;}
+        }
+    }
+    .listBottom{
+        .usersBottom, .usersBottomReady, .usersBottomActive, .usersBottomWin, .usersBottomLose, .usersBottomFold{
+            width: 34% !important;
+            .betValue { font-size: 18px; top: 7%;  height : 18% }
+            .infoBottom{ height: 80%; 
+                .action{  height: 10%; display: flex; justify-content: center; align-items: center;position: relative; top: 2%; }
+                .card { height: 78% }
+                .cardUser{ display: flex; justify-content: center; align-content: center;}
+                img{ width: 66px !important; margin-left: unset !important;}
+            }
+        }
+        
+        .usersBottomHwatu, .usersBottomReadyHwatu, .usersBottomActiveHwatu, .usersBottomWinHwatu, .usersBottomLoseHwatu, .usersBottomFoldHwatu{
+            width: 34% !important;
+            .betValue {  font-size: 18px;top: 7%;  height : 18% }
+            .infoBottom{ height: 80%; 
+                .name{ position: relative; top : 4% }
+                .action{  height: 10%; display: flex; justify-content: center; align-items: center;position: relative; top: 2%; }
+                .card { height: 65% }
+                .cardUser{ display: flex; justify-content: center; align-content: center;}
+                img{ width: 66px !important; margin-left: unset !important;}
+            }
+        }
+    }
+    .hwatu{ button#games, button#logout, button#entergame, button#leave, button#ready, button#fold, button#call, button#check, button#raise {
+        font-size: 14px; color: #404040; width: 80px; height: 60px;margin: 0 7px;font-weight: 600;
+        border: none; border-radius: 50%;  background: #ffffff12; background-image: url('imagesHwatu/button.png');
+        background-size: 100% 100%; background-repeat: no-repeat;
+        }
+    }
+    .poker { button#games, button#logout, button#entergame, button#leave, button#ready, button#fold, button#call, button#check, button#raise {
+        font-size: 12px; color: #404040; width: 53px; height: 53px;margin: 0 7px;font-weight: 600;
+        border: none; border-radius: 50%;
+        }
+    }
+    .blocks .block .balanceHwatu div table tr td{
+        font-size: 18px; font-weight: bold;
+        &:first-child{
+            text-align: left;
+            padding-left: 10px;
+        }
+    }
+    .btnInviteHwatu{color: #404040;  font-size: 20px;  font-weight: 600; background: white;
+        border: solid 4px #ab873c; border-radius: 13px; margin: 1px 0px; }
+    .blocks .block .balance div table tr {  width: 100%;height: 37px; display: flex; flex-direction: row;
+        td{
+            &:first-child{ width: 40%; height: 37px; 
+                justify-content: center; align-items: center; display: flex
+            }
+            &:last-child{
+                width: 60%; padding-right: 15px; height: 37px; align-items: center;  display: flex;
+                justify-items: center; justify-content: flex-end;
+            }
+        }
+    }
+  }
+  //mobile
+  @media all and ( max-width: 424px) and (min-width: 320px) {
+    
+    #nameCardWinnerHwatu .cardWinner img{ width: 40px;}
+    #nameCardWinner, #nameCardWinnerHwatu{
+        font-size: 28px;
+        top : 35% !important;
+    }
+    .nameTwoCardsBottom, .nameFiveCardsBottom {
+        top: -20px;
+        font-size: 20px;
+    }
+    .bodyPoker .cardsTable{ background-size: 100% 130% !important;  }
+    
+    .bodyHwatu .heightButtonBet{height: 80px; position: relative;}
+    .bodyPoker .heightButtonBet{height: 85px; position: relative;}
+  
+    .line-width{ margin-left : 10px; width : 80px;  height : 3px;   background: white;  border-radius: 10px }
+    #homes .boxs .item-box{ display: inline-block; float: left;  width: 50%; height: 30%;
+        button{   width: 100%; height: 100%;  border-radius: 9px;  border: none; background: none;
+            img{ width: 100%;  }
+        }
+    }
+    .sum { font-size: 16px !important; padding-top: 10px; text-align: center;}
+
+    #homes .balanceHomes div table {
+        tr{table-layout: fixed; display: flex; flex-direction: row; height: 55px;}
+        td:first-child{ width : 40%; font-size: 16px !important; font-weight: bold; height: 55px !important;}
+        td:last-child{ font-size: 16px !important;font-weight: bold; padding-right: 25px;   display: flex;
+            align-items: center;justify-content: flex-end;}
+    }
+    .blocks .block .balanceHwatu div table tr {  width: 100%;height: 45px; display: flex; flex-direction: row;
+        td{
+            &:first-child{ background-image: url('imagesHwatu/L-ID.png');
+                background-size: 100% 100%; width: 40%; height: 45px; 
+                justify-content: center; align-items: center; display: flex
+            }
+            &:last-child{ background-image: url("imagesHwatu/R-ID.png"); background-size: 100% 100%;
+                width: 60%; padding-right: 15px; height: 45px; align-items: center;  display: flex;
+                justify-items: center; justify-content: flex-end;
+            }
+        }
+    }
+    .image-blaa{max-width: 20px; margin-left: 15px;}
+    .listTop{
+        .usersTop, .usersTopReady, .usersTopActive, .usersTopWin, .usersTopLose, .usersTopFold{
+            width: 34% !important;
+            .infoTop{ height: 79%; top: 5% !important;
+                .action{ top: 3%;  position: relative;}
+                .check { font-size: 12px !important }
+                .name {height: 13%;}
+            } 
+            .card { height: 80%;}
+            .betValue{font-size: 14px; height: 20% !important;  top: unset !important; display: flex; align-content: center;  justify-content: center;  flex-direction: column;}
+            .cardUser{ top : 52%; display: flex; justify-content: center; align-content: center;}
+        }
+    
+        .usersTopHwatu, .usersTopReadyHwatu, .usersTopActiveHwatu, .usersTopWinHwatu, .usersTopLoseHwatu, .usersTopFoldHwatu{
+            width: 34% !important;
+            .infoTop{ height: 78%; top: 10% !important;
+                .action{ top: 3%;  position: relative;}
+                .check { font-size: 12px !important }
+            } 
+            .betValue{ font-size: 14px;height: 20% !important; top: unset !important}
+            .cardUser{ display: flex; justify-content: center; align-content: center;}
+        }
+    }
+    .listBottom{
+        .usersBottom, .usersBottomReady, .usersBottomActive, .usersBottomWin, .usersBottomLose, .usersBottomFold{
+            width: 34% !important;
+            .betValue { font-size: 14px; top: 7%;  height : 18% }
+            .infoBottom{ height: 80%; 
+                .action{  height: 10%; display: flex; justify-content: center; align-items: center;position: relative; top: 2%; }
+                .card { height: 78% }
+                .action .check { font-size: 12px !important }
+                .cardUser{ display: flex; justify-content: center; align-content: center;}
+            }
+        }
+        .usersBottomHwatu, .usersBottomReadyHwatu, .usersBottomActiveHwatu, .usersBottomWinHwatu, .usersBottomLoseHwatu, .usersBottomFoldHwatu{
+            width: 34% !important;
+            .betValue {  font-size: 14px;top: 7%; height : 18% }
+            .infoBottom{ height: 80%; 
+                .name{ position: relative; top : 4% }
+                .action{  height: 10%; display: flex; justify-content: center; align-items: center; }
+                .check { font-size: 12px !important }
+                .card { height: 65% }
+                .cardUser{ display: flex; justify-content: center; align-content: center; top : 52% !important}
+            }
+        }
+    }
+    .hwatu { button#games, button#logout, button#entergame, button#leave, button#ready, button#fold, button#call, button#check, button#raise {
+        font-size: 14px; color: #404040; width: 75px; height: 55px;margin: 0 7px;font-weight: 600;
+        border: none; border-radius: 50%;  background: #ffffff12; background-image: url('imagesHwatu/button.png');
+        background-size: 100% 100%; background-repeat: no-repeat;
+        }
+    }
+    .poker { button#games, button#logout, button#entergame, button#leave, button#ready, button#fold, button#call, button#check, button#raise {
+        font-size: 12px; color: #404040; width: 50px; height: 50px;margin: 0 7px;font-weight: 600;
+        border: none; border-radius: 50%;
+        }
+    }
+    .blocks .block .balanceHwatu div table tr td{
+        font-size: 16px; font-weight: bold;
+        &:first-child{
+            text-align: left;
+            padding-left: 10px;
+        }
+    }
+    .btnInviteHwatu{color: #404040;  font-size: 20px;  font-weight: 600; background: white;
+        border: solid 4px #ab873c; border-radius: 13px; margin: 1px 0px; }
+    .blocks .block .balance div table tr {  width: 100%;height: 35px; display: flex; flex-direction: row;
+        td{
+            &:first-child{ width: 40%; height: 35px; 
+                justify-content: center; align-items: center; display: flex
+            }
+            &:last-child{
+                width: 60%; padding-right: 15px; height: 35px; align-items: center;  display: flex;
+                justify-items: center; justify-content: flex-end;
+            }
+        }
+    }
+  
+  }
+
+
+
+
+@media all and ( max-width: 424px) and (min-width: 400px) {
+    .listTop{
+        .usersTop, .usersTopReady, .usersTopActive, .usersTopWin, .usersTopLose, .usersTopFold{
+            img{ width: 65px !important; margin-left: unset !important; height: 95px !important;}
+        }
+        .usersTopHwatu, .usersTopReadyHwatu, .usersTopActiveHwatu, .usersTopWinHwatu, .usersTopLoseHwatu, .usersTopFoldHwatu{
+            img{ width: 65px !important; margin-left: unset !important;}
+        }
+    }
+    .listBottom{
+        .usersBottom, .usersBottomReady, .usersBottomActive, .usersBottomWin, .usersBottomLose, .usersBottomFold{
+            .infoBottom{ 
+                img{ width: 65px !important; margin-left: unset !important; height: 95px !important;}
+            }
+        }
+        .usersBottomHwatu, .usersBottomReadyHwatu, .usersBottomActiveHwatu, .usersBottomWinHwatu, .usersBottomLoseHwatu, .usersBottomFoldHwatu{
+            .infoBottom{ 
+                img{ width: 65px !important; margin-left: unset !important;}
+            }
+        }
+    }
+}
+@media all and ( max-width: 399px) and (min-width: 376px) {
+    .listTop{
+        .usersTop, .usersTopReady, .usersTopActive, .usersTopWin, .usersTopLose, .usersTopFold{
+            img{ width: 60px !important; margin-left: unset !important; height: 90px !important;}
+        }
+        .usersTopHwatu, .usersTopReadyHwatu, .usersTopActiveHwatu, .usersTopWinHwatu, .usersTopLoseHwatu, .usersTopFoldHwatu{
+            img{ width: 60px !important; margin-left: unset !important;}
+        }
+    }
+    .listBottom{
+        .usersBottom, .usersBottomReady, .usersBottomActive, .usersBottomWin, .usersBottomLose, .usersBottomFold{
+            .infoBottom{ 
+                img{ width: 60px !important; margin-left: unset !important; height: 90px !important;}
+            }
+        }
+        .usersBottomHwatu, .usersBottomReadyHwatu, .usersBottomActiveHwatu, .usersBottomWinHwatu, .usersBottomLoseHwatu, .usersBottomFoldHwatu{
+            .infoBottom{ 
+                img{ width: 60px !important; margin-left: unset !important;}
+            }
+        }
+    }
+}
+@media all and ( max-width: 375px) and (min-width: 320px) {
+    .listTop{
+        .usersTop, .usersTopReady, .usersTopActive, .usersTopWin, .usersTopLose, .usersTopFold{
+            img{ width: 57px !important; margin-left: unset !important; height: 90px !important;}
+        }
+        .usersTopHwatu, .usersTopReadyHwatu, .usersTopActiveHwatu, .usersTopWinHwatu, .usersTopLoseHwatu, .usersTopFoldHwatu{
+            img{ width: 57px !important; margin-left: unset !important;}
+        }
+    }
+    .listBottom{
+        .usersBottom, .usersBottomReady, .usersBottomActive, .usersBottomWin, .usersBottomLose, .usersBottomFold{
+            .infoBottom{ 
+                img{ width: 57px !important; margin-left: unset !important; height: 90px !important;}
+            }
+        }
+        .usersBottomHwatu, .usersBottomReadyHwatu, .usersBottomActiveHwatu, .usersBottomWinHwatu, .usersBottomLoseHwatu, .usersBottomFoldHwatu{
+            .infoBottom{ 
+                img{ width: 57px !important; margin-left: unset !important;}
+            }
+        }
+    }
+}
+.moneyUserBottom{
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    position: absolute;
+    bottom: -20px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+}
+.moneyUserBottomHwatu{
+    color: #56A0D5;
+    font-size: 14px;
+    font-weight: bold;
+    position: absolute;
+    bottom: -20px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+}
+.moneyUserTop{
+    position: absolute;
+    top: -15px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+}
+.moneyUserTopHwatu{
+    position: absolute;
+    top: -13px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    color: #56A0D5;
+    font-size: 14px;
+    font-weight: bold; 
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.nameTwoCardsBottom, .nameFiveCardsBottom {
+    position: absolute;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    font-weight: bold;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.nameFiveCardsBottom{
+    color : #fff !important;
+}
+#loaderGame{
+    width : 100%; height : 100%;display: flex; justify-content: center; align-items: center;
+    .loader {
+        animation:spin 1s infinite linear;
+        border:solid 2vmin transparent;
+        border-radius:50%;
+        border-right-color:#09f;
+        border-top-color:#09f;
+        box-sizing:border-box;
+        height:20vmin;
+        left:calc(50% - 10vmin);
+        position:fixed;
+        top:calc(50% - 10vmin);
+        width:20vmin;
+        z-index:1;
+        &:before {
+          animation:spin 2s infinite linear;
+          border:solid 2vmin transparent;
+          border-radius:50%;
+          border-right-color:#3cf;
+          border-top-color:#3cf;
+          box-sizing:border-box;
+          content:"";
+          height:16vmin;
+          left:0;
+          position:absolute;
+          top:0;
+          width:16vmin;
+        }
+        &:after {
+          animation:spin 3s infinite linear;
+          border:solid 2vmin transparent;
+          border-radius:50%;
+          border-right-color:#6ff;
+          border-top-color:#6ff;
+          box-sizing:border-box;
+          content:"";
+          height:12vmin;
+          left:2vmin;
+          position:absolute;
+          top:2vmin;
+          width:12vmin;
+        }
+      }
+      
+      @keyframes spin {
+        100% {
+          transform:rotate(360deg);
+        }
+      }
+}
+#nameCardWinner{
+    position: absolute;
+   
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    color: #F2D6A5;
+    z-index: 9999;
+    -webkit-animation: leaves 2s ease-in-out infinite alternate;
+    animation: leaves 2s ease-in-out infinite alternate;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-shadow: 2px 0 0 #000, -2px 0 0 #120606, 0 2px 0 #1a0404, 0 -2px 0 #000, 1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+    font-weight: bold;
+}
+ #nameCardWinnerHwatu{
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    color: #fff;
+    z-index: 9999;
+    -webkit-animation: leaves 2s ease-in-out infinite alternate;
+    animation: leaves 2s ease-in-out infinite alternate;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-shadow: 2px 0 0 #000, -2px 0 0 #120606, 0 2px 0 #1a0404, 0 -2px 0 #000, 1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+    font-weight: bold;
+}
+#nameCardWinnerHwatu{
+    .cardWinner{  display : 'flex'; flex-direction : 'row'; }
+}
+
+@-webkit-keyframes leaves {
+    0% {
+        transform: scale(1.0);
+    }
+    100% {
+        transform: scale(1.2);
+    }
+}
+
+@keyframes leaves {
+    0% {
+        transform: scale(1.0);
+    }
+    100% {
+        transform: scale(1.2);
+    }
+}
+
+
+
+#roomGame{
+    width: 100%;
+    .boxs-game{
+        margin: 0 auto;
+        width: 85%;
+        overflow-y: scroll;
+    }
+    .topHomes{
+        display: flex;
+        align-items: center;
+        div{
+            width: 50%;
+            margin: 0 16px;
+            span{
+                float: left;
+                font-weight: bold;
+                white-space: nowrap;
+            }
+            img{
+                width: 40px;
+                float: right;
+            }
+        }
+    }
+    .child-box{
+        display: inline-block;
+        float: left;
+        width: 50%;
+        height: 30%;
+        button{
+            width: 100%;
+            height: 100%;
+            border-radius: 9px;
+            border: none;
+            background: none;
+            img {
+                width : 100%;
+            }
+        }
+    }
+    .blocks{
+        width: 100%;
+        position: absolute;
+        left: 50%;
+        top: 100%;
+        transform: translate(-50%, -100%);
+   
+    }
+}

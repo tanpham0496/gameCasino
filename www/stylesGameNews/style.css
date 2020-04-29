@@ -1,0 +1,932 @@
+html, body {
+    height: 100%;
+}
+body {
+  overflow: hidden;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none; }
+button, input {
+  outline: 0; }
+
+.word {
+  color: #4E74D6; }
+
+#header {
+  border-bottom: solid 1px #c9c4c4; }
+  #header i {
+  font-size: 18px;
+  padding: 10px;
+  vertical-align: middle; }
+  #header span {
+    vertical-align: middle;
+    font-weight: 600; }
+#main {
+  width: 100%;
+  height: 100%;
+  text-align: center; }
+.bet-main {
+  width: 100%;
+  height: 100%;
+  background: #E0EFF5; }
+  .bet-main table {
+    width: 100%;
+    line-height: 25px;
+    border-collapse: separate;
+    padding: 10px; }
+    .bet-main table tr {
+      display: table;
+      width: 100%;
+      table-layout: fixed; }
+    .bet-main table thead tr {
+      height: 35px; 
+      margin-bottom: 5px; }
+      .bet-main table tr th {
+        color: #E73848;
+        text-align: center;
+        border-right: 2px solid #E0EFF5;
+        background: #FFFFFF; }
+    .bet-main .gamelist table tbody tr:last-child {
+      background: red;
+      padding: 2px;
+      border-radius: 11px; }
+      .bet-main table body tr:last-child td {
+        border: solid 3px red; }
+      .bet-main table tr td {
+         font-weight: 700;
+          color: black;
+        font-size: 12px;
+        background: #DFE2E4;
+        padding: 5px;
+        border-top: 3px solid #E0EFF5;
+        border-bottom: 3px solid #E0EFF5;
+        border-right: 2px solid #E0EFF5; }
+      .bet-main table tr td:last-child {
+        background: white; }
+        .bet-main table tr td span img {
+          max-width: 27px; }
+        .bet-main table tr td span img.srpIcon {
+          max-width: 20px; }
+      .bet-main table tr td .buttonValue {
+        color:white; 
+        font-weight: 600; 
+        background-repeat: no-repeat;
+        background-size: cover;
+        border: none !important;
+        width: 23px;
+        height: 23px;
+        vertical-align: middle; }
+     .width30 {
+        width: 30%; }
+      .bet-main table tr th:first-child, .bet-main table tr td:first-child {
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px; }
+      .bet-main table tr th:last-child, .bet-main table tr td:last-child {
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+        border-right: none; }
+  .bet-main .betting {
+    bottom: 0px;
+    position: absolute; }
+    #lineTime {
+      height: 45px;
+      padding-top: 10px;
+      margin: 0 5px;
+      background: white;
+      font-size: 10px;
+      border-radius: 8px; }
+      .timecountDown {
+        width: 3px;
+        height: 25px;
+        margin-right: -1px;
+        background: #d0323f;
+        display: inline-block;
+        border-radius: 1.5px; }
+    .paginations>div {
+      margin: 10px 0; }
+      .paginations button {
+        border-radius: 30px;
+        font-size: 13px;
+        box-shadow: -3px 3px 5px rgba(87, 86, 86, 0.4);
+        transform: translateY(0px); }
+      .paginations input {
+        height: 100px;
+        width: 90%;
+        background: #FFFFFF;
+        border: solid 1px #0000001f;
+        border-radius: 15px;
+        color: #0F2E4E;
+        font-size: 18px;
+        text-align: right;
+        margin: 2px 4px;
+        padding-right: 35px;
+        box-shadow: -3px 3px 5px rgba(87, 86, 86, 0.4);
+        transform: translateY(0px); }
+      .paginations #unit {
+        position: absolute;
+        right: 12px;
+        top: 40px;
+        max-width: 23px; }
+      .paginations .buttonReset {
+        width: 29px;
+        height: 104px;
+        padding: 0;
+        background-image: url("images/reset.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        border: none; 
+        float: left;}
+      .paginations .setWidth {
+        width: 100px;
+        display: table-cell;
+        position: relative;
+        float: left; }
+      .paginations .buttonAmount {
+        width: 30px; 
+        margin-right: 5px;
+        float: left; }
+        .paginations .buttonIncrement {
+          height: 50px;
+          width: 29px;
+          margin-bottom: 4px;
+          background-image: url("images/inc.png");
+          background-repeat: no-repeat;
+          background-size: cover;
+          border: none; }
+        .paginations .buttonDecrement {
+          height: 50px;
+          width: 29px;
+          background-image: url("images/dec.png");
+          background-repeat: no-repeat;
+          background-size: cover;
+          border: none; }
+      .paginations .buttonOdd {
+        width: 72px;
+        height: 66px;
+        margin-top: 17px;
+        padding: 0;
+        background: none;
+        background-image: url("images/button_odd.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        border: none;
+        box-shadow: none;
+        transform: none; }
+      .paginations .buttonEven {
+        width: 72px;
+        height: 66px;
+        margin-top: 17px;
+        padding: 0;
+        background: none;
+        background-image: url("images/button_even.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        border: none;
+        box-shadow: none;
+        transform: none; }
+      .paginations .buttonScissors {
+        width: 39px;
+        height: 88px;
+        margin: 0 5px;
+        margin-top: 8px;
+        background: none;
+        background-image: url("images/button_Scissors.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        border: none;
+        box-shadow: none;
+        transform: none;
+        position: relative; }
+      .paginations .buttonRock {
+        width: 39px;
+        height: 88px;
+        margin: 0 4px;
+        margin-top: 8px;
+        background: none;
+        background-image: url("images/button_Rock.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        border: none;
+        box-shadow: none;
+        transform: none;
+        position: relative; }
+      .paginations .buttonPaper {
+        width: 39px;
+        height: 88px;
+        margin: 0 5px;
+        margin-top: 8px;
+        background: none;
+        background-image: url("images/button_Paper.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        border: none;
+        box-shadow: none;
+        transform: none;
+        position: relative; }
+    .bet-main .bet {
+      display: flex;
+      justify-content: center; }
+      .bet button {
+        float: left; }
+      .bet .inputNumber {
+      width: 45px;
+      margin-top: 2.5px;
+      text-align: left;
+      display: table-cell;
+      float: left; }
+      .bet .inputNumber:first-child {
+        margin-left: 5px; }
+        .bet .inputNumber .up {
+          padding-left: 5px;
+          font-size: 22px; }
+        .bet .inputNumber .down {
+          padding-left: 5px;
+          font-size: 16px; }
+          .bet .inputNumber .up img, .bet .inputNumber .down img {
+            width: 30px; }
+        .bet .inputNumber input {
+          height: 40px;
+          width: 40px;
+          border-radius: 100%;
+          text-align: center;
+          padding: 0;
+          margin: 0;
+          color: white;
+          font-weight: 600; }
+        .bet .inputNumber .inputNumberLeft {
+          background-image: url("images/inputNumber-left.png") !important;
+          background-repeat: no-repeat;
+          background-size: cover;
+          border: none !important;
+          box-shadow: none !important;
+          transform: none !important; }
+        .bet .inputNumber .inputNumberCenter {
+          background-image: url("images/inputNumber-center.png") !important;
+          background-repeat: no-repeat;
+          background-size: cover;
+          border: none !important;
+          box-shadow: none !important;
+          transform: none !important; }
+        .bet .inputNumber .inputNumberRight {
+          background-image: url("images/inputNumber-right.png") !important;
+          background-repeat: no-repeat;
+          background-size: cover;
+          border: none !important;
+          box-shadow: none !important;
+          transform: none !important; }
+    .bet-main .balance {
+      padding: 0 5px; }
+      .bet-main .balance table {
+        padding: 0;
+        color: black;
+        border: none; }
+        .bet-main .balance table tr {
+          height: 30px; }
+          .bet-main .balance table tr th {
+            font-size: 12px;
+            border: 1px solid #fcf7f7;
+            border-radius: 0;
+            background: #E73846;
+            color: white;
+            line-height: 35px; }
+          .bet-main .balance table th:first-child {
+            border-top-left-radius: 8px; }
+          .bet-main .balance table th:last-child {
+            border-top-right-radius: 8px; }
+          .bet-main .balance table tr td {
+            font-weight: normal;
+            border: 1px solid #fcf7f7;
+            border-radius: 0;
+            background: #E8EEEC;
+            padding: 0;
+            line-height: 20px; }
+          .bet-main .balance table td:first-child {
+            border-bottom-left-radius: 8px; }
+          .bet-main .balance table td:last-child {
+            border-bottom-right-radius: 8px; }
+            .bet-main .balance table tr td img{
+              max-width: 15px;
+              float: right;
+              margin-right: 10px;
+              margin-top: 3px; }
+            .bet-main .balance table tr td:first-child span {
+              padding-left: 0px; }
+            .bet-main .balance table tr td span {
+              padding-left: 25px; }
+.popup-main {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%; 
+  display: none; 
+  background: white;
+  z-index: 9999; }
+  .popup-main>div:first-child {
+    text-align: left;
+    border-bottom: solid 1px #c9c4c4; }
+    .popup-main>div:first-child i {
+      font-size: 18px;
+      padding: 10px;
+      vertical-align: middle; }
+    .popup-main>div:first-child span {
+      vertical-align: middle;
+      font-weight: 600; }
+  .popup-main .blockTab {
+    margin-top: 10px; }
+    .popup-main .blockTab .buttonNumber {
+      width: 32%;
+      background: #DEE7E4; 
+      font-weight: 600;
+      font-size: 20px; 
+      display: inline-block;
+      padding: 5px;
+      border-radius: 10px; }
+  .popup-main .block-transaction .block {
+    padding: 5px 10px; }
+      .popup-main .block-transaction table {
+        width: 100%; 
+        line-height: 50px; }
+        .popup-main .block-transaction table tr td:first-child {
+        width: 20%; }
+      .popup-main .block-transaction table.lottoTable {
+        line-height: 45px; }
+        .popup-main .block-transaction table.lottoTable tr:nth-child(2) {
+          font-size: 12px;
+        }
+        .block-transaction table tr td img {
+          max-width: 46px;
+          max-height: 35px; }
+          .popup-main .block-transaction table tr td div span img {
+            float: right;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: -25px;
+            max-width: 15px; }
+        .popup-main .block-transaction table tr td>div {
+          margin: 0 10px; }
+        .popup-main .block-transaction table tr td .blockData {
+          line-height: 35px;
+          background: #E0EFF5;
+          border-radius: 15px; }
+          .tdTable {
+            width: 47%;
+            background: #E0EFF5;
+            border-radius: 15px;
+            line-height: 35px;
+            display: inline-block; }
+          .tdTableFloatLeft {
+            float: left; }
+          .tdTableFloatRight {
+            float: right; }
+            .tdTable button {
+              width: 30px;
+              height: 30px;
+              background-size: cover;
+              background-repeat: no-repeat;
+              border: none !important;
+              border-radius: 100%;
+              color: white;
+              font-weight: 600; 
+              line-height: normal; }
+.homes {
+  width: 100%;
+  text-align: center; }
+  .homes .boxs {
+    border: solid 1px #d3cbcb;
+    border-radius: 25px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%; }
+    .homes .boxs .item-box {
+      padding: 15px;
+      float: left;
+      width: 33%; }
+      .homes .boxs .item-box button {
+        width: 60px;
+        height: 60px;
+        border-radius: 15px;
+        border: solid 1px;
+        background-size: cover;
+        background-repeat: no-repeat; }
+  .homes .balance {
+    position: absolute; 
+    bottom: 0px; 
+    padding: 10px 5px;
+    width: 100%; }
+    .homes .balance table{
+      width: 75%; 
+      font-size: 12px; 
+      color: black;
+      border-collapse: separate; 
+      float: left; }
+      .homes .balance table tr th {
+      text-align: center; 
+      border: 1px solid #ffffff; 
+      background: #E73846; 
+      color: white;  
+      line-height: 35px; 
+      width: 50%;  }
+      .homes .balance table tr th:first-child {
+        border-top-left-radius: 8px; }
+      .homes .balance table tr th:last-child {
+        border-top-right-radius: 8px; }
+      .homes .balance table tr td {
+      border: 1px solid #ffffff;
+      line-height: 30px;
+      background: #E8EEEC; }
+      .homes .balance table tr td:first-child {
+        border-bottom-left-radius: 8px; }
+      .homes .balance table tr td:last-child {
+        border-bottom-right-radius: 8px; }
+        .homes .balance table tr td img {
+        max-width: 15px; 
+        margin-top: 7.5px;
+        margin-left: -25px;
+        margin-right: 10px;
+        float: right; }
+    .homes .balance .buttonTopUp {
+    width: 69px; 
+    height: 69px; 
+    float: left;
+    color: #ffffff; 
+    font-weight: 600; 
+    background-image: url(images/background-image.png); 
+    background-repeat: round; 
+    background-size: cover;
+    margin-left: 5px; 
+    border-radius: 10px; 
+    border: 1px solid #ffffff; }
+    .homes .balance .buttonTopUp:hover, .homes .balance .buttonTopUp:active {
+    background-image: url("images/background-image-click.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: black; }
+@media all and (min-width: 360px) {
+  .timecountDown {
+    margin-right: -0.5px; } 
+  .paginations .setWidth {
+    width: 150px; } 
+    .paginations input {
+      padding-right: 42px;
+    }
+    .paginations #unit {
+      top: 36px;
+      right: 14px;
+      max-width: 28px; }
+    .homes .boxs .item-box button {
+      width: 70px;
+      height: 70px;
+      border-radius: 19px; }
+    .homes .balance .buttonTopUp {
+      margin-left: 12.5px; }}
+@media all and (min-width: 375px) {
+  .popup-main .block-transaction table tr td div {
+   line-height: 40px !important; }
+  .timecountDown {
+    margin-right: 0px; } 
+  .popup-main .blockTab .buttonNumber { 
+       font-size: 22px; } 
+  .tdTable button {
+    width: 35px;
+    height: 35px; }   
+  .homes .balance .buttonTopUp {
+    margin-left: 15px; } }
+@media all and (min-width: 400px) {
+  .homes .boxs .item-box button {
+    width: 75px;
+    height: 75px; }
+  .homes .balance .buttonTopUp {
+    margin-left: 20px; }}      
+@media all and (min-width: 768px) {
+  #header i, .popup-main>div:first-child i {
+    font-size: 26px;
+    padding: 15px 10px; }
+  #header span, .popup-main>div:first-child span {
+    font-size: 22px; }
+  .bet-main table {
+    font-size: 18px; }
+  .bet-main table tr td {
+    font-size: 16px; }
+  .bet-main table tr td span img {
+    max-width: 37px; }
+  .bet-main table tr td span img.srpIcon {
+    max-width: 30px; }
+  .bet-main .gamelist table tbody tr:last-child {
+    padding: 4px; }
+  .bet .inputNumber .up {
+    padding-left: 7px;
+    font-size: 28px;
+  }
+  .bet .inputNumber .down {
+    padding-left: 7px;
+    font-size: 22px;
+  }
+  .bet .inputNumber .up img, .bet .inputNumber .down img {
+    width: 45px;
+  }
+  #lineTime {
+    height: 70px;
+    padding-top: 15px; }
+  .timecountDown {
+    width: 5px;
+    height: 40px;
+    margin: 0 2px; }
+  .tdTable button {
+    width: 45px;
+    height: 45px; }
+  .popup-main .blockTab .buttonNumber {
+    width: 31%;
+    margin: 0 5px; 
+    border-radius: 15px; }
+  .popup-main .block-transaction table.lottoTable tr:nth-child(2) {
+    font-size: unset;
+  }
+  .paginations .setWidth {
+    width: 200px; }
+  .bet-main .balance table tr th {
+    font-size: 16px;
+    line-height: 50px; }
+  .bet-main .balance table tr {
+    height: 40px; }
+  .block-transaction table tr td img {
+    max-width: 69px;
+    max-height: 52.5px; } 
+  .homes .boxs .item-box button {
+    width: 125px;
+    height: 125px;
+    border-radius: 30px; }
+  .homes .boxs {
+    border-radius: 40px;
+    border: solid 2px #d3cbcb; }
+  .homes .balance {
+    padding: 15px 10px; }
+  .homes .balance table {
+    font-size: 16px; }
+    .homes .balance table tr th {
+      line-height: 50px;
+      border:2px solid #ffffff; }
+    .homes .balance table tr td {
+      line-height: 40px; 
+      border:2px solid #ffffff; }
+      .homes .balance table tr td img{
+        max-width: 20px;
+        margin-left: -30px; }
+  .homes .balance .buttonTopUp {
+    width: 94px;
+    height: 94px; 
+    font-size: 20px;
+    margin-left: 50px;
+    border-radius: 13px; }}
+@media all and (min-width: 800px) { 
+  .paginations .setWidth {
+    width: 250px; } 
+  .homes .boxs{ 
+   border-radius: 45px;  }
+  .homes .boxs .item-box button {
+    width: 150px;
+    height: 150px;
+    border-radius: 36px; }
+  .homes .balance table tr th{
+    line-height: 60px;
+        font-size: 20px; }
+  .homes .balance table tr td{
+    line-height: 50px;
+    font-size: 20px; }
+    .homes .balance table tr td img{
+      max-width: 25px;
+      margin-top: 12.5px;
+      margin-left: -35px; }
+      .homes .balance .buttonTopUp {
+        width: 114px;
+        height: 114px;
+        font-size: 22.5px;
+        margin-left: 45px;
+        border-radius: 15px; }}
+@media all and (min-width: 1024px) { 
+  .paginations .setWidth {
+    width: 300px; } 
+  .homes .boxs {
+    border-radius: 55px;
+  }
+  .homes .boxs .item-box button {
+    width: 175px;
+    height: 175px;
+    border-radius: 42px; }
+  .homes .balance table tr th{
+    line-height: 70px;
+        font-size: 24px; }
+  .homes .balance table tr td{
+    line-height: 60px;
+    font-size: 24px; }
+    .homes .balance table tr td img{
+      max-width: 30px;
+      margin-top: 12.5px;
+      margin-left: -40px; }
+      .homes .balance .buttonTopUp {
+        width: 134px;
+        height: 134px;
+        font-size: 28px;
+        margin-left: 60px;
+        border-radius: 17px; } }
+@media all and (min-height: 530px) {
+  .popup-main .block-transaction table {
+    line-height: 55px; }
+  .popup-main .block-transaction table.lottoTable {
+    line-height: 50px; } }
+@media all and (min-height: 560px) {
+  .popup-main .block-transaction table {
+    line-height: 60px; }
+  .popup-main .block-transaction table.lottoTable {
+    line-height: 55px; } }
+@media all and (min-height: 640px) {
+  .popup-main .block-transaction table {
+    line-height: 70px; } 
+  .popup-main .block-transaction table.lottoTable {
+    line-height: 65px; } }
+@media all and (min-height: 730px) {
+  .popup-main .block-transaction table {
+    line-height: 80px; } 
+  .popup-main .block-transaction table.lottoTable {
+    line-height: 75px; } }
+@media all and (min-height: 810px) {
+  .popup-main .block-transaction table {
+    line-height: 90px; } 
+  .popup-main .block-transaction table.lottoTable {
+    line-height: 85px; } }
+@media all and (min-height: 768px) {
+  .paginations>div:first-child {
+    margin: 20px 0; }
+  .bet-main table {
+    line-height: 30px; }
+  .bet-main table thead tr {
+    height: 40px; } 
+    .bet-main table tr td .buttonValue {
+      width: 28px;
+      height: 28px; } }
+@media all and (min-height: 1024px) {
+  .bet-main table {
+    line-height: 40px; }
+  .bet-main table thead tr {
+    height: 50px;
+    font-size: 20px; }
+  .bet-main .balance table tr td {
+   font-size: 16px; }
+  .bet-main .balance table tr td img {
+    max-width: 20px;
+    margin-top: 0; }
+  .bet-main .balance table tr td span {
+    padding-left: 30px; }
+  .bet-main table tr td .buttonValue {
+    width: 38px;
+    height: 38px; }
+  .paginations .buttonOdd, .paginations .buttonEven {
+    width: 108px;
+    height: 99px;
+    margin-top: 22.5px; }
+  .paginations .buttonScissors, .paginations .buttonRock, .paginations .buttonPaper {
+    width: 58.5px;
+    height: 132px;
+    margin: 16.5px 10px 0 10px; }
+  .paginations .buttonReset {
+    width: 43.5px;
+    height: 156px; }
+  .paginations input {
+    height: 150px;
+    margin-top: 3px;
+    padding-right: 54px;
+    font-size: 22px; }
+  .paginations #unit {
+    max-width: 38px;
+    right: 16px;
+    top: 60px; }
+  .paginations .buttonIncrement {
+    height: 69px;
+    width: 41px;
+    margin-bottom: 13px; }
+  .paginations .buttonDecrement {
+    height: 69px;
+    width: 41px; }
+  .bet .inputNumber {
+    width: 70px; 
+    margin-top: 10px; }
+    .bet .inputNumber input {
+      height: 60px;
+      width: 60px; } 
+  .popup-main .blockTab {
+    margin: 15px 0; }
+  .popup-main .blockTab .buttonNumber {
+    font-size: 36px; }
+  .popup-main .block-transaction table {
+    line-height: 115px;
+    font-size: 20px; }
+  .popup-main .block-transaction table.lottoTable {
+    line-height: 105px; }
+  .popup-main .block-transaction table tr td div {
+    line-height: 55px !important; }
+  .popup-main .block-transaction table tr td .blockData, .tdTable {
+    border-radius: 20px; }
+  .popup-main .block-transaction table tr td div span img {
+    max-width: 25px;
+    margin-left: -35px;
+    margin-top: 15px; } }  
+@media all and (min-height: 1280px) {
+  #header i, .popup-main>div:first-child i {
+    font-size: 32px; }
+  #header span, .popup-main>div:first-child span {
+    font-size: 26px; }
+  .bet-main table {
+    line-height: 50px; }
+  .bet-main table thead tr {
+    height: 60px;
+    font-size: 22px; }
+  .bet-main table tr td {
+    font-size: 18px; }
+  .bet-main table tr td span img {
+    max-width: 47px; }
+  .bet-main table tr td span img.srpIcon {
+    max-width: 35px; }
+  .bet-main .balance table tr {
+    height: 50px; }
+  .bet-main .balance table tr th {
+    line-height: 60px;
+    font-size: 20px; }
+  .bet-main .balance table tr td {
+    font-size: 20px; }
+  .bet-main .balance table tr td img {
+    max-width: 25px;
+    margin-top: -3px; }
+  .bet-main table tr td .buttonValue {
+    width: 48px;
+    height: 48px; }
+  .popup-main .block-transaction table {
+    line-height: 145px; 
+    font-size: 24px; }
+  .popup-main .block-transaction table.lottoTable {
+    line-height: 135px; }
+  .bet .inputNumber .up {
+    padding-left: 11px;
+    font-size: 34px;
+  }
+  .bet .inputNumber .down {
+    padding-left: 11px;
+    font-size: 26px;
+  }
+  .bet .inputNumber .up img, .bet .inputNumber .down img {
+    width: 52.5px;
+  }
+  #lineTime {
+    height: 80px;
+    padding-top: 17.5px; }
+  .timecountDown {
+    height: 45px; }
+  .tdTable button {
+    width: 55px;
+    height: 55px; }
+  .popup-main .blockTab .buttonNumber {
+    font-size: 42px; }
+  .paginations .buttonOdd, .paginations .buttonEven {
+    width: 126px;
+    height: 115.5px;
+    margin-top: 33.25px; }
+  .paginations .buttonScissors, .paginations .buttonRock, .paginations .buttonPaper {
+    width: 68.25px;
+    height: 154px;
+    margin: 14px 15px 0 15px; }
+  .bet .inputNumber {
+    width: 90px;
+    margin-top: 7.5px; }
+  .bet .inputNumber input {
+    height: 75px;
+    width: 75px; }
+  .paginations .buttonReset {
+    width: 50.75px;
+    height: 182px; }
+  .paginations input {
+    height: 175px;
+    padding-right: 63px;
+    font-size: 26px; }
+  .paginations #unit {
+    max-width: 43px;
+    right: 20px;
+    top: 70px; }
+  .paginations .buttonIncrement {
+    height: 80.75px;
+    width: 50.75px;
+    margin-bottom: 20px; }
+  .paginations .buttonDecrement {
+    height: 80.75px;
+    width: 50.75px; }
+  .block-transaction table tr td img {
+    max-width: 80.5px;
+    max-height: 61.25px; }
+  .popup-main .block-transaction table tr td div {
+    line-height: 65px !important; }
+  .popup-main .block-transaction table tr td .blockData, .tdTable {
+    border-radius: 25px; }
+  .bet-main .balance table tr td span {
+    padding-left: 35px; }
+  .popup-main .block-transaction table tr td div span img {
+    max-width: 30px;
+    margin-left: -40px;
+    margin-top: 20px; } }
+@media all and (min-height: 1360px) {
+  #header i, #header i, .popup-main>div:first-child i {
+    font-size: 44px;
+    padding: 20px 10px; }
+  #header span, #header span, .popup-main>div:first-child span {
+    font-size: 34px; }
+  .bet-main table {
+    line-height: 60px; }
+  .bet-main table thead tr {
+    height: 70px;
+    font-size: 28px; }
+  .bet-main table tr td {
+    font-size: 24px; }
+  .bet-main table tr td span img {
+    max-width: 57px; }
+  .bet-main table tr td span img.srpIcon {
+   max-width: 45px; }
+  .bet-main table tr td .buttonValue {
+    width: 58px;
+    height: 58px; }
+  .paginations .buttonOdd, .paginations .buttonEven {
+    width: 144px;
+    height: 132px;
+    margin-top: 38px; }
+  .paginations .buttonScissors, .paginations .buttonRock, .paginations .buttonPaper {
+    width: 78px;
+    height: 176px;
+    margin: 16px 15px 0 15px; }
+  .bet .inputNumber {
+    width: 100px; }
+  .bet .inputNumber input {
+    height: 80px;
+    width: 80px; }
+  .paginations .buttonReset {
+    width: 58px;
+    height: 208px; }
+  .paginations input {
+    height: 200px;
+    font-size: 30px;
+    padding-right: 58px; }
+  .paginations #unit {
+    max-width: 48px;
+    right: 20px;
+    top: 80px; }
+  .paginations .buttonIncrement {
+    height: 100px;
+    width: 58px;
+    margin-bottom: 13px; }
+  .paginations .buttonDecrement {
+    height: 100px;
+    width: 58px; }
+  .bet .inputNumber .up {
+    padding-left: 10px;
+    font-size: 40px;
+  }
+  .bet .inputNumber .down {
+    padding-left: 10px;
+    font-size: 32px;
+  }
+  .bet .inputNumber .up img, .bet .inputNumber .down img {
+    width: 60px;
+  }
+  #lineTime {
+    height: 90px;
+    padding-top: 20px; }
+  .timecountDown {
+    width: 6px;
+    height: 50px;
+    margin: 0 3px; }
+  .tdTable button {
+    width: 65px;
+    height: 65px; }
+  .popup-main .blockTab .buttonNumber {
+    font-size: 52px; }
+  .bet-main .balance table tr {
+    height: 60px; }
+  .bet-main .balance table tr th {
+    font-size: 24px;
+    line-height: 70px; }
+  .bet-main .balance table tr td {
+    font-size: 24px; }
+  .bet-main .balance table tr td span {
+    padding-left: 40px; }
+  .bet-main .balance table tr td img {
+    max-width: 30px; }
+  .popup-main .blockTab {
+    margin: 25px 0; }
+  .popup-main .block-transaction table {
+    line-height: 150px;
+    font-size: 30px; }
+  .block-transaction table tr td img {
+    max-width: 92px;
+    max-height: 70px; }
+  .popup-main .block-transaction table tr td div {
+    line-height: 80px !important; } }
+/*# sourceMappingURL=style.css.map */
