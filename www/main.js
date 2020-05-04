@@ -273,7 +273,7 @@ $(document).ready(function(){
 
 				// document.getElementById('balanceHome').innerHTML = formatNumber(Number(ret[i].coins))
 				document.getElementById('balanceChangeHome').innerHTML = formatNumber(Number(ret[i].coins))
-				document.getElementById('balanceChangeHomePoker').innerHTML = formatNumber(Number(ret[i].coins))
+				// document.getElementById('balanceChangeHomePoker').innerHTML = formatNumber(Number(ret[i].coins))
 			}
 		}
 	})
@@ -376,7 +376,13 @@ $(document).ready(function(){
 	client.on('fold', function(ret){
 		//Add_new_Tan
 		$('#carteSoudCtrl3')[0].play();
-		addMsg( ret.uid + _T_('at seat') + ret.seat + _T_('fold'));
+	});
+	client.on('leave', function(ret){
+		console.log('ret================>', ret);
+		if(ret && ret.uid === client.uid){
+			 window.location = `${apiConfig}:7000`
+		}
+		
 	});
 	client.on('check', function(ret){
 		//Add_new_Tan
@@ -508,15 +514,15 @@ $(document).ready(function(){
 		}
 	});
 
-	$('#GamePoker').on('click', function(){
-		$('#homes').css('display', 'none');
-		$('#roomGame').css('display', 'block');
-	});
+	// $('#GamePoker').on('click', function(){
+	// 	$('#homes').css('display', 'none');
+	// 	$('#roomGame').css('display', 'block');
+	// });
 
-	$('#logoutGame').on('click', function(){
-		$('#roomGame').css('display', 'none');
-		$('#homes').css('display', 'block');
-	})
+	// $('#logoutGame').on('click', function(){
+	// 	$('#roomGame').css('display', 'none');
+	// 	$('#homes').css('display', 'block');
+	// })
 
 	client.on('gameover', function(ret){
 		// console.log('resttttttttttttttttttttttt', ret)
@@ -604,30 +610,7 @@ function onBtnClicked(e) {
 	
 	
 	var method = $(this).attr('id');
-	var args = $(this).attr('arg');
-
-	switch(args){
-		case 'holdem1' : 
-			window.location = `${apiConfig}:7001`
-			return;
-		case 'holdem2' : 
-			window.location = `${apiConfig}:7002`
-			return;
-		case 'holdem3' : 
-			window.location = `${apiConfig}:7003`
-			return;
-		case 'holdem4' : 
-			window.location = `${apiConfig}:7004`
-			return;
-		case 'holdem5' : 
-			window.location = `${apiConfig}:7005`
-			return;
-		case 'holdem6' : 
-			window.location = `${apiConfig}:7006`
-			return;
-		default :
-	}
-	console.log('args ==================', args)
+	
 	switch(method) {
 		case 'fastsignup':
 			client.rpc(method, $(this).attr('arg'), parseSignUpReply);
@@ -725,15 +708,13 @@ function updateCmds( cmds ){
 	var v, div, btn, words, label, input;
 	for(var k in cmds) {
 		v = cmds[ k ];
-		// console.log('k==============',k)
+		console.log('v==============',k)
 		if(v === null) {
 			//Add_new
-			if(k !== 'entergame'){
-				$('div#'+k).remove();
-				$('button#'+k).remove();
-			}
+			$('div#'+k).remove();
+			$('button#'+k).remove();
 		} else if(v === true) {
-			if(k !== 'unseat' && k !=='games' && k !== 'logout') {
+			if(k !== 'unseat' && k !=='games' && k !== 'logout' && k !== 'enter' && k !== 'entergame' && k !== 'say' && k!=='takeseat' && k!=='unseat') {
 				btn = $('<button>').text(_T(k)).attr('id', k).attr('arg', 0).addClass('cmd'); //// Đổi games => Games 
 				$('#cmds').append(btn);
 			
@@ -814,10 +795,7 @@ function updateCmds( cmds ){
 				//off Button chat , jinhua1, jinhua2, holdem1, holdem2
 				if(v[i] !== 'chat') {
 					var t_arg = (typeof arg === 'string') ? _T(arg) : arg;
-					if( arg === 'hwatu' || arg === 'holdem1'
-						|| arg === 'holdem2'|| arg === 'holdem3'|| arg === 'holdem4'
-						|| arg === 'holdem5'|| arg === 'holdem6'
-					){
+					if( arg === 'hwatu' || arg === 'holdem2'){
 						// Add_new
 						// btn = $('<button>').text(_T(k)+' '+ t_arg).attr('id', k).attr('arg', arg).addClass('cmd');
 
@@ -926,14 +904,16 @@ function login(u, p) {
 
 			localStorage.setItem('x_userid', u);
 			localStorage.setItem('x_passwd', p);
-			addMsg(ret.token.uid + ' (' + ret.profile.name + ') ' + _T('login success'));
+			// addMsg(ret.token.uid + ' (' + ret.profile.name + ') ' + _T('login success'));
 			
-			if(ret.cmds) {
-				updateCmds(ret.cmds);
-				if('entergame' in ret.cmds) {
-					list_games();
-				}
-			}
+			console.log('========================JoinRoom=============================')
+			client.rpc('entergame','holdem2', parseReply);
+			// if(ret.cmds) {
+			// 	updateCmds(ret.cmds);
+			// 	if('entergame' in ret.cmds) {
+			// 		list_games();
+			// 	}
+			// }
 		}
 	});
 }
@@ -1099,11 +1079,11 @@ function showRoom(room) {
 				
 				// document.getElementById('balanceHome').innerHTML = formatNumber(Number(g.coins))
 				document.getElementById('balanceChangeHome').innerHTML = formatNumber(Number(g.coins))
-				document.getElementById('balanceChangeHomePoker').innerHTML = formatNumber(Number(g.coins))
+				// document.getElementById('balanceChangeHomePoker').innerHTML = formatNumber(Number(g.coins))
 
 				document.getElementById('infoUserName').innerHTML = g.uid
 				document.getElementById('infoUserNameHome').innerHTML = g.uid
-				document.getElementById('infoUserNameHomePoker').innerHTML = g.uid
+				// document.getElementById('infoUserNameHomePoker').innerHTML = g.uid
 			}
 			/////////////////////////////////////////////////////////////////////////////
 		} else {
@@ -1406,7 +1386,7 @@ Client.prototype.setUplink = function(socket) {
 
 				// document.getElementById('balanceHome').innerHTML = formatNumber(Number(user.coins))
 				document.getElementById('balanceChangeHome').innerHTML = formatNumber(Number(user.coins))
-				document.getElementById('balanceChangeHomePoker').innerHTML = formatNumber(Number(user.coins))
+				// document.getElementById('balanceChangeHomePoker').innerHTML = formatNumber(Number(user.coins))
 				
 				// Show cards all user
 				if(client.room.shared_cards.length === 5){
@@ -1527,11 +1507,11 @@ Client.prototype.setUplink = function(socket) {
 
 				// document.getElementById('balanceHome').innerHTML = formatNumber(Number(reply.ret.profile.coins))
 				document.getElementById('balanceChangeHome').innerHTML = formatNumber(Number(reply.ret.profile.coins))
-				document.getElementById('balanceChangeHomePoker').innerHTML = formatNumber(Number(reply.ret.profile.coins))
+				// document.getElementById('balanceChangeHomePoker').innerHTML = formatNumber(Number(reply.ret.profile.coins))
 
 				document.getElementById('infoUserName').innerHTML = reply.ret.profile.uid
 				document.getElementById('infoUserNameHome').innerHTML = reply.ret.profile.uid
-				document.getElementById('infoUserNameHomePoker').innerHTML = reply.ret.profile.uid
+				// document.getElementById('infoUserNameHomePoker').innerHTML = reply.ret.profile.uid
 			}
 			
 			if(reply.err) {
@@ -1686,6 +1666,7 @@ Client.prototype.removeUplink = function() {
 
 Client.prototype.rpc = function(method, args, func) {
 
+	console.log('method, args, func', {method, args, func})
 
 	var client = this;
 	var socket = client.uplink;

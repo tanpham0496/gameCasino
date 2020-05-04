@@ -37,53 +37,7 @@
                
         </div>
     </div>
-    <div id="roomGame" style="display: none;">
-        <div class="topHomes">
-            <div style="padding-top: 10px; padding-left: 3px;">
-                <span style="color : #ffffff"> Texas Hold’em poker </span>
-            </div>
-            <div id="logoutGame">
-                <img src="images/icon_logout.png" alt="">
-            </div>
-        </div>
-        <div class="line-width"> </div>
-        <div class="boxs-game">
-            <div class="child-box" id='holdem1'>  
-            </div>
-            <div class="child-box" id='holdem2'> 
-            </div>
-            <div class="child-box" id='holdem3'> 
-            </div>
-            <div class="child-box" id='holdem4'> 
-            </div>
-            <div class="child-box" id='holdem5'> 
-            </div>
-            <div class="child-box" id='holdem6'> 
-            </div>
-        </div>
-        <div class="blocks">
-            <div class="block">
-                <div class="paginations" style="margin-bottom: 0;">
-                    <div class="balanceHomes" style='display: flex;'>
-                        <div style="width: 100%;">
-                            <table>
-                               <!--  <tr>
-                                    <th>ID</th>
-                                    <th>Balance</th>
-                                    <th>Valid Balances</th>
-                                </tr> -->
-                                <tr>
-                                    <td id="infoUserNameHomePoker"></td>
-                                    <!-- <td><span id="balanceHomePoker"></span><img src="images/ba_pc.png" alt="" style="max-width: 15px; position: relative; top: 3px; right: -5%;"></td> -->
-                                    <td><span id="balanceChangeHomePoker"></span><img src="images/ba_pc.png" alt="" class="image-blaa"></td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+   
     <div id="homes">
         <div class="topHomes">
             <div style="padding-top: 10px; padding-left: 3px;">
@@ -94,30 +48,30 @@
             </div>
         </div>
         <div class="line-width"> </div>
-       <div class="boxs">
+       <div class="boxs" >
             <div id='loaderGame'>
                 <div class="loader"></div>
             </div>
-            <div class="item-box" >
+            <div class="item-box" style="display: none">
                 <button id='oddOrEven' onclick="activePageHtml('oddOrEven')" style="display: none;">
                     <img src="imagesHomes/ood-even.png" alt="">
                 </button>
             </div>
-            <div class="item-box">
+            <div class="item-box" style="display: none">
                 <button id='rcissorsRockPaper' onclick="activePageHtml('rcissorsRockPaper')" style="display: none;">
                     <img src="imagesHomes/rps.png" alt="">
                 </button>
             </div>
-            <div class="item-box">
+            <div class="item-box" style="display: none">
                 <button id='300Lotto' onclick="activePageHtml('300Lotto')" style="display: none;">
                     <img src="imagesHomes/lotto.png" alt="">
                 </button>
             </div>
 
-             <div class="item-box" id='hwatu'> 
+             <div class="item-box" id='hwatu' style="display: none"> 
             </div>
-             <div class="item-box" id="GamePoker">
-                <button id="entergame" arg="holdem1" class="cmd"><img src="imagesHomes/holdem1.png"></button>
+
+             <div class="item-box" id="holdem2" style="display: none">
             </div>
             
         </div>
@@ -885,32 +839,6 @@
             return ArrNew;
         }
 
-        function activePageHtml(item){ 
-            // $.ajax({
-            //     type: 'POST',
-            //     url: `${appLinkApi}/users/userBalance`,
-            //     dataType:"JSON",
-            //     data : {
-            //         // id : 'tanpham',
-            //         // token : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJ0YW5waGFtIiwiaWF0IjoxNTg0NzcyNDE3fQ.BQDplHY_1F7yUq0mh2yWA4PoZkb-BHcXFvXIhB12M50',
-            //         id : localStorage.getItem('userId'),
-            //         token : localStorage.getItem('token')
-            //     },
-            //     success: (data) => { 
-            //         console.log('data', data)
-            //         if(data.status) location.href = `./${item}.html`; 
-            //         else{
-            //             $(".popup-err").toggle()
-            //             $('#message').empty()
-            //             $('#message').append(` 
-            //                     <div class="messagesContent">Invalid User!</div>
-            //             `)
-            //             setTimeout(()=>{ $(".popup-err").hide() }, 5000)
-            //             }
-            //     },
-            //     error: (request, status, error) => {}
-            // });
-        }
         
         function handleNewWriteHTML(newClientSeats, client){
             if(newClientSeats.length !== 0 && client && client.room){
@@ -1352,71 +1280,9 @@
 
             $('.boxs-game').css('height', heightHome)
         }
-        
-        // function setCSS(){
-        //     var heightTbody;
-        //     var width= $('body').width();
-
-        //     if(width >= 600)  heightTbody = $('body').height() - 238;
-        //     else  heightTbody = $('body').height() - 150;
-
-        //     // background item 3:4
-        //     var widthItem = width/3/3
-        //     var heightItem = widthItem * 4
-            
-        //     var heightItemCard = Number((heightTbody - 60)*0.3)
-        //     var height = heightItemCard > heightItem ? heightItem : heightItemCard
-        //     var bottom = heightItemCard > heightItem ? heightItemCard - heightItem : 0
-        //     $('.blocks > .block > .contents').css('height', `${heightTbody - 50}`)
-        //     $('.blocks > .block > .contents > .listTop').css('height', `${heightItemCard}`)
-        //     $('.blocks > .block > .contents > .listTop > div').css('height', `${height}`)
-        //     $('.blocks > .block > .contents > .listBottom').css('height', `${heightItemCard}`)
-        //     $('.blocks > .block > .contents > .listBottom > div').css({'bottom': `-${bottom}px`, 'height': `${height}`})
-        //     $('.blocks > .block > .contents > .cardsTable').css('height', `${(heightTbody - 60)*0.4}`)
-
-        //     $('.paginations').css('margin', `${5}px auto`)
-        //     $('.paginations:last-child').css('margin', `${0}px auto`)
-        // }
 
         function setCSS(){
-            // var heightTbody;
-            // var width= $('body').width();
-            // var heightScreen = $('body').height();
-
-            // if(width >= 600) {
-            //     // heightTbody = $('body').height() - 230;
-            //     heightTbody = $('body').height() - 245;
-
-            //     // background item 3:4
-            //     var widthItem = width/3/3
-            //     var heightItem = widthItem * 4
-                
-            //     var heightItemCard = Number((heightTbody - 60)*0.3)
-            //     var height = heightItemCard > heightItem ? heightItem : heightItemCard
-            //     var bottom = heightItemCard > heightItem ? heightItemCard - heightItem : 0
-            //     $('.blocks > .block > .contents').css('height', `${heightTbody - 50}`)
-            //     $('.blocks > .block > .contents > .listTop').css('height', `${heightItemCard}`)
-            //     $('.blocks > .block > .contents > .listTop > div').css('height', `${height}`)
-            //     $('.blocks > .block > .contents > .listBottom').css('height', `${heightItemCard}`)
-            //     $('.blocks > .block > .contents > .listBottom > div').css({'bottom': `-${bottom}px`, 'height': `${height}`})
-            //     $('.blocks > .block > .contents > .cardsTable').css('height', `${(heightTbody - 60)*0.4}`)
-            // }
-            // else {
-            //     // heightTbody = $('body').height() - 142;
-            //     heightTbody = (heightScreen >= 800) ? (heightScreen-210) : (heightScreen- 150)
-                
-            //     var heightItemCard = Number((heightTbody - 60)*0.32)
-            //     var height = heightItemCard > 124 ? 124 : heightItemCard
-            //     var bottom = heightItemCard > 124 ? heightItemCard - 124 : 0
-            //     $('.blocks > .block > .contents').css('height', `${heightTbody - 50}`)
-            //     $('.blocks > .block > .contents > .listTop').css('height', `${heightItemCard}`)
-            //     $('.blocks > .block > .contents > .listTop > div').css('height', `${height}`)
-            //     $('.blocks > .block > .contents > .listBottom').css('height', `${heightItemCard}`)
-            //     $('.blocks > .block > .contents > .listBottom > div').css({'bottom': `-${bottom}px`, 'height': `${height}`})
-            //     $('.blocks > .block > .contents > .cardsTable').css('height', `${(heightTbody - 60)*0.36}`)
-            // }
-            // $('.paginations').css('margin', `${5}px auto`)
-            // $('.paginations:last-child').css('margin', `${0}px auto`)
+            
             var heightTbody;
             var width= $('body').width();
             var heightScreen = $('body').height();
