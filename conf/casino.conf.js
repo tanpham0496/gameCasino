@@ -1,11 +1,12 @@
 exports = module.exports = {
 	server: {
-		port: 7006,
+		port: 7001,
 		host: '0.0.0.0',
 		hellomsg: 'welcome to online casino => Custom by Habrod of company',
 		server: 20141201,
 		client_req: 20141130
 	},
+	Room_Id : 1,
 	redis: {
 		host: 'localhost',
 		port: 6379,

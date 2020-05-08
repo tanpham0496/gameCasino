@@ -58,16 +58,6 @@ $(document).ready(function(){
 	$("#increase").click(function(){ increment(); });
 	$("#decrease").click(function(){ decrement(); });
 
-
-	// $('#300Lotto').click(function(){
-	// 	location.href = `./300Lotto.html`; 
-	// })
-	// $('#rcissorsRockPaper').click(function(){
-	// 	location.href = `./rcissorsRockPaper.html`; 
-	// })
-	// $('#oddOrEven').click(function(){
-	// 	location.href = `./oddOrEven.html`; 
-	// })
 	$('select#lang').change(function(){
 		$( "select#lang option:selected" ).each(function() {
 			$.cookie('lang', $(this).val());
@@ -83,28 +73,24 @@ $(document).ready(function(){
 		addMsg(data.msg);
 		
 		setTimeout(function(){
-			// var uid = localStorage.getItem('userId');
-			// var token = localStorage.getItem('token');
-			// if(uid && token){
-			// 	login(uid, token);
-			// }
-			// else{
-			// 	localStorage.setItem('userId', 'loipham258');
-			// 	localStorage.setItem('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJsb2lwaGFtMjU4IiwiaWF0IjoxNTgyMTg2MzY4fQ.g6kOvUfrnT1ESDALyatvFgTbL3caW5476YkCz0V_6uw');
-			// 	uid = localStorage.getItem('userId');
-			// 	token = localStorage.getItem('token');
-			// 	login(uid, token);
-			// }
-
 			var u = localStorage.getItem('x_userid');
 			var p = localStorage.getItem('x_passwd');
 			if(u && p) {
 				login(u, p);
 			} else {
-				//socket.emit('hello', {});
 				client.rpc('fastsignup', 0, parseSignUpReply);
 			}
 		}, 1000);
+	});
+
+	socket.on('Res_Room_Full', function(ret){
+		// console.log('Res_Room_Full', ret);
+		// console.log(ret.game === 'poker' && ret.uid === client.uid)
+		if(ret.game === 'poker' && ret.uid === client.uid){
+			setTimeout(()=> {
+				window.location = `${apiConfig}:7000`;
+			},900);
+		}
 	});
 	
 	$('#listFriend').on('click', onBtnClicked);
