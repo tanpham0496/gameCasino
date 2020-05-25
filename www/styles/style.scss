@@ -5287,7 +5287,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     left: 0;
     right: 0;
     color: #F2D6A5;
-    z-index: 9999;
+    z-index: 99;
     -webkit-animation: leaves 2s ease-in-out infinite alternate;
     animation: leaves 2s ease-in-out infinite alternate;
     white-space: nowrap;
@@ -5302,7 +5302,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     left: 0;
     right: 0;
     color: #fff;
-    z-index: 9999;
+    z-index: 99;
     -webkit-animation: leaves 2s ease-in-out infinite alternate;
     animation: leaves 2s ease-in-out infinite alternate;
     white-space: nowrap;

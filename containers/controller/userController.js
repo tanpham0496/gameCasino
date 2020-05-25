@@ -12,6 +12,11 @@ router.post('/tx-create-reward', TxCreateReward);
 router.post('/tx-create-pay', TxCreatePay);
 router.post('/checkAccount', checkAccount);
 
+router.post('/getInfoRoomCasino', getInfoRoomCasino);
+router.post('/updateDataRoomCasino', updateDataRoomCasino);
+router.post('/getInfoRoomCasinoId', getInfoRoomCasinoId);
+router.post('/RemoveUserIdInCasino', RemoveUserIdInCasino);
+
 module.exports = router;
 
 // function getUserId(req, res, next) {
@@ -58,4 +63,23 @@ function TxCreatePay(req, res, next) {
 	 userService.TxCreatePay(req.body)
         .then(user => res.json(user))
         .catch(err => next(err));
+}function getInfoRoomCasino(req, res, next) {
+     userService.getInfoRoomCasino(req.body)
+        .then(user => res.json(user))
+        .catch(err => next(err));
+}function updateDataRoomCasino(req, res, next) {
+     userService.updateDataRoomCasino(req.body)
+        .then(user => res.json(user))
+        .catch(err => next(err));
 }
+function getInfoRoomCasinoId(req, res, next) {
+        userService.getInfoRoomCasinoId(req.body)
+           .then(user => res.json(user))
+           .catch(err => next(err));
+   }
+
+   function RemoveUserIdInCasino(req, res, next) {
+        userService.RemoveUserIdInCasino(req.body)
+           .then(user => res.json(user))
+           .catch(err => next(err));
+   }

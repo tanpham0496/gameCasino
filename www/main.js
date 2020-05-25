@@ -93,7 +93,7 @@ $(document).ready(function(){
 		}
 	});
 	
-	$('#listFriend').on('click', onBtnClicked);
+	// $('#listFriend').on('click', onBtnClicked);
 	$('.logout').on('click', function(res) {
 		window.ReactNativeWebView.postMessage("LogoutGames");
 	})
@@ -122,117 +122,117 @@ $(document).ready(function(){
 		}
 	})
 
-	client.on('listFriend', function(ret){
-		console.log('rettttttttttt listFriend', ret)
-		let data = ret;
+	// client.on('listFriend', function(ret){
+	// 	console.log('rettttttttttt listFriend', ret)
+	// 	let data = ret;
 
-		$(".popup-listFriend").css({ 'height': $(".contents").height(), })
+	// 	$(".popup-listFriend").css({ 'height': $(".contents").height(), })
 
-		$('.listFriend').css('height', $(".contents").height() - 103) // padding: 20px, head = 63px
+	// 	$('.listFriend').css('height', $(".contents").height() - 103) // padding: 20px, head = 63px
 		
-		// item height = 40px
-		var padding = ($(".listFriend").height() - 12)%40
-		var height = ($(".listFriend").height() - 12) -  padding
-		$('.listFriend #listFriend').css({'height' : height, 'padding-top' : '5px'}) // 12 => margin bottom 12px
+	// 	// item height = 40px
+	// 	var padding = ($(".listFriend").height() - 12)%40
+	// 	var height = ($(".listFriend").height() - 12) -  padding
+	// 	$('.listFriend #listFriend').css({'height' : height, 'padding-top' : '5px'}) // 12 => margin bottom 12px
 
-		$('.block > .listFriend > #listFriend').empty()
-		$(".popup-listFriend").toggle()
+	// 	$('.block > .listFriend > #listFriend').empty()
+	// 	$(".popup-listFriend").toggle()
 
-		var listFriend = ret.data
-		listFriend && listFriend.map((item, ind) => {
-			div = $('<div>');
-			divContent = $('<div>')
-			div.append(divContent)
-			btn = $('<button>').text(_T('Invite')).attr('id', `invite${item.uid}`).attr('arg', item.uid);
-			if(item.online == 0 || item.online == 2) {
-				divContent.addClass('infOffline')
-				divContent.append(`
-					<span class='nameInfo'>${item.uid}</span>
-					<span class='stateInfo' style='color: ${item.online == 0 ? '#CFBFBF': '#B94A0F;'}'>${item.online == 0 ? 'Offline': 'In Game'}</span>
-				`)
-				btn.addClass('buttonInviteOffline')
-			} else {
-				divContent.addClass('infOnline')
-				divContent.append(`
-					<span class='nameInfo'>${item.uid}</span>
-					<span class='stateInfo' style='color: #92BB37;'>Online</span>
-				`)
-				btn.addClass('buttonInviteOnline')
+	// 	var listFriend = ret.data
+	// 	listFriend && listFriend.map((item, ind) => {
+	// 		div = $('<div>');
+	// 		divContent = $('<div>')
+	// 		div.append(divContent)
+	// 		btn = $('<button>').text(_T('Invite')).attr('id', `invite${item.uid}`).attr('arg', item.uid);
+	// 		if(item.online == 0 || item.online == 2) {
+	// 			divContent.addClass('infOffline')
+	// 			divContent.append(`
+	// 				<span class='nameInfo'>${item.uid}</span>
+	// 				<span class='stateInfo' style='color: ${item.online == 0 ? '#CFBFBF': '#B94A0F;'}'>${item.online == 0 ? 'Offline': 'In Game'}</span>
+	// 			`)
+	// 			btn.addClass('buttonInviteOffline')
+	// 		} else {
+	// 			divContent.addClass('infOnline')
+	// 			divContent.append(`
+	// 				<span class='nameInfo'>${item.uid}</span>
+	// 				<span class='stateInfo' style='color: #92BB37;'>Online</span>
+	// 			`)
+	// 			btn.addClass('buttonInviteOnline')
 			
-				btn.on('click', function(){
-					var socket = client.uplink;
-					var callback = {
-						seq: ++ socket.rpc_seq,
-						t: Date.now()
-					};
-					socket.rpc_callbacks[ callback.seq ] = callback;
+	// 			btn.on('click', function(){
+	// 				var socket = client.uplink;
+	// 				var callback = {
+	// 					seq: ++ socket.rpc_seq,
+	// 					t: Date.now()
+	// 				};
+	// 				socket.rpc_callbacks[ callback.seq ] = callback;
 
-					const uid = $(`#invite${item.uid}`).attr('arg');
-					const userInvite = listFriend.map(item => {
-						if(item.uid === uid){
-							return item;
-						}
-						return null;		 		
-					}).filter(item => item);
+	// 				const uid = $(`#invite${item.uid}`).attr('arg');
+	// 				const userInvite = listFriend.map(item => {
+	// 					if(item.uid === uid){
+	// 						return item;
+	// 					}
+	// 					return null;		 		
+	// 				}).filter(item => item);
 
-					// old code
-					// var req = {
-					// 	seq: callback.seq,
-					// 	uid: client.uid,
-					// 	pin: client.pin,
-					// 	f: 'invite',
-					// 	args: userInvite
-					// };	
-					// socket.emit('rpc', req);
-					// $(".popup-listFriend").hide()
+	// 				// old code
+	// 				// var req = {
+	// 				// 	seq: callback.seq,
+	// 				// 	uid: client.uid,
+	// 				// 	pin: client.pin,
+	// 				// 	f: 'invite',
+	// 				// 	args: userInvite
+	// 				// };	
+	// 				// socket.emit('rpc', req);
+	// 				// $(".popup-listFriend").hide()
 
-					// new code
-					var req = {
-						seq: callback.seq,
-						uid: client.uid,
-						pin: client.pin,
-						type : client.room.type,
-						f: 'invite',
-						args: userInvite
-					};	
-					socket.emit('rpc', req);
-					$(".popup-listFriend").hide()
-				})
-			}
-			div.append(btn)
-			$('.block > .listFriend > #listFriend').append(div)
-		});
-		console.log('client_______', client)
-	});
+	// 				// new code
+	// 				var req = {
+	// 					seq: callback.seq,
+	// 					uid: client.uid,
+	// 					pin: client.pin,
+	// 					type : client.room.type,
+	// 					f: 'invite',
+	// 					args: userInvite
+	// 				};	
+	// 				socket.emit('rpc', req);
+	// 				$(".popup-listFriend").hide()
+	// 			})
+	// 		}
+	// 		div.append(btn)
+	// 		$('.block > .listFriend > #listFriend').append(div)
+	// 	});
+	// 	console.log('client_______', client)
+	// });
 
 	//add_new
-	socket.on('INVITE-FRIEND-JOIN-ROOM', function(reply){
-		console.log('reply++++++++++++++++++++++++', reply)
-		if(reply && reply.ret.roomId) {
-			$('.popup-join').css('display', 'none')
-			$('.popup-join').toggle()
-			$('.boxs').css('display', 'none')
+	// socket.on('INVITE-FRIEND-JOIN-ROOM', function(reply){
+	// 	console.log('reply++++++++++++++++++++++++', reply)
+	// 	if(reply && reply.ret.roomId) {
+	// 		$('.popup-join').css('display', 'none')
+	// 		$('.popup-join').toggle()
+	// 		$('.boxs').css('display', 'none')
 
-			// console.log('countdown', countdown)
-			document.getElementById('timeInviteHoldem2').innerHTML = '01:00'
-			clearInterval(countdown)
-			startTimer(60); // Count down
+	// 		// console.log('countdown', countdown)
+	// 		document.getElementById('timeInviteHoldem2').innerHTML = '01:00'
+	// 		clearInterval(countdown)
+	// 		startTimer(60); // Count down
 
-			document.getElementById('nameSender').innerHTML = reply.ret.senderId + " invite you to Poker game"
-			$('#JoinRoom').on('click',function(){
-				// client.rpc('JoinRoom', {name : 'holdem2', roomid : parseInt(reply.ret.roomId) } , parseReply);
-				client.rpc('JoinRoom', {name : reply.ret.type, roomid : parseInt(reply.ret.roomId) } , parseReply);
-				clearInterval(countdown)
-				$('.popup-join').hide()
-				$('.boxs').css('display', 'block')
-			});
-			$('#noJoinRoom').on('click',function(){
-				clearInterval(countdown)
-				$('.popup-join').hide()
-				$('.boxs').css('display', 'block')
-			});
-		}
-	})
+	// 		document.getElementById('nameSender').innerHTML = reply.ret.senderId + " invite you to Poker game"
+	// 		$('#JoinRoom').on('click',function(){
+	// 			// client.rpc('JoinRoom', {name : 'holdem2', roomid : parseInt(reply.ret.roomId) } , parseReply);
+	// 			client.rpc('JoinRoom', {name : reply.ret.type, roomid : parseInt(reply.ret.roomId) } , parseReply);
+	// 			clearInterval(countdown)
+	// 			$('.popup-join').hide()
+	// 			$('.boxs').css('display', 'block')
+	// 		});
+	// 		$('#noJoinRoom').on('click',function(){
+	// 			clearInterval(countdown)
+	// 			$('.popup-join').hide()
+	// 			$('.boxs').css('display', 'block')
+	// 		});
+	// 	}
+	// })
 	client.on('prompt', updateCmds);
 	
 	client.on('shout', function(ret){
@@ -497,6 +497,19 @@ $(document).ready(function(){
 				},9000);
 			}
 			
+		}
+		if(ret.nameCardOfWinnerHwatu && ret.cause){
+			$('.blocks > .block > .contents > .cardsTable').append(`
+				<div id="nameCardWinnerHwatu">
+					<div class="nameCardOfWinner">${ret.nameCardOfWinnerHwatu}</div>
+					<div class="nameCardOfWinner">${ret.cause}</div>
+				</div>
+			`);
+			if(document.getElementById('nameCardWinnerHwatu')){
+				setTimeout(() => {
+					$('#nameCardWinnerHwatu').remove();
+				},3000);
+			}
 		}
 	});
 

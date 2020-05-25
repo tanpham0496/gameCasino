@@ -37,9 +37,10 @@ process.on('SIGINT', function () {
 
 mongoose.Promise = global.Promise;
 module.exports = {
-	User : require('../containers/model/userModel'),
+	   User : require('../containers/model/userModel'),
     BlocksCasino : require('../containers/model/blockMatchModel'),
     games: require('../containers/model/ThreeGameStake/game_model'),
     blockGames : require('../containers/model/ThreeGameStake/block_model'),
-    betting : require('../containers/model/ThreeGameStake/bet_model')
+    betting : require('../containers/model/ThreeGameStake/bet_model'),
+    RoomCasino : require('../containers/model/roomModel.js')
 }

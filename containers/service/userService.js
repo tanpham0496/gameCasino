@@ -16,8 +16,120 @@ module.exports = {
 	TxCreateReward,
 	TxCreatePay,
 	getFriendListIntoBlaaChat,
-	sipping
+	sipping,
+	getInfoRoomCasino,
+	updateDataRoomCasino,
+	getInfoRoomCasinoId,
+	RemoveUserIdInCasino
 }
+
+async function getInfoRoomCasinoId({roomNum, typeGame}){
+	try{
+		if(!roomNum || !typeGame) return { status : false, message : 'Not enough params'}
+		const checkExistRoom = await db.RoomCasino.findOne({roomNum : roomNum, type : typeGame});
+		if(_.isEmpty(checkExistRoom)){
+			return { statue : true , data : []}
+		}
+		else{
+			return { status : true, data : checkExistRoom };
+		}
+	}
+	catch(e){
+		// ;
+		return{ status : false, message : e}
+	}
+}
+async function RemoveUserIdInCasino({roomNum, typeGame, userId}){
+	try{
+		if(!roomNum || !typeGame || !userId) return { status : false, message : 'Not enough params'}
+		const data = await db.RoomCasino.findOneAndUpdate(
+			{roomNum : roomNum, type : typeGame},
+			{$pull : {'listUser' : userId}},
+			{new : true}
+		);
+		if(data){
+			return { status : true, message : 'leave room'}
+		}
+		else{
+			return { status : false, message : 'Leave Room not success'}
+		}
+	}
+	catch(e){
+		return {status : false, message : 'error'}
+	}
+}
+
+async function updateDataRoomCasino({roomNum, userId, status, typeGame, join}){
+	try{
+		let data;
+		const checkExistRoom = await db.RoomCasino.findOne({roomNum : roomNum});
+		if(_.isEmpty(checkExistRoom)){
+			data = await db.RoomCasino.create({
+				roomNum : roomNum,
+				listUser : [userId],
+				type : typeGame,
+			});
+			if(data){
+				return { status : true, message : 'create new room'}
+			}
+			else{
+				return { status : false, message : 'not create success!'}
+			}
+		}
+		else{
+			if(join === 1){
+				data = await db.RoomCasino.findOneAndUpdate(
+					{roomNum : roomNum, type : typeGame},
+					{$addToSet : {'listUser' : userId}},
+					{new : true}
+				);
+				if(data){
+					return { status : true, message : 'Join room'}
+				}
+				else{
+					return { status : false, message : 'Join Room not success!'}
+				}
+			}
+			if(join===0){
+				data = await db.RoomCasino.findOneAndUpdate(
+					{roomNum : roomNum, type : typeGame},
+					{$pull : {'listUser' : userId}},
+					{new : true}
+				);
+				if(data){
+					return { status : true, message : 'leave room'}
+				}
+				else{
+					return { status : false, message : 'Leave Room not success'}
+				}
+			}
+			
+		}
+
+		return{ status : true}
+
+	}catch(e){
+		return { statue : false, message : e};
+	}
+}
+
+async function getInfoRoomCasino({roomNum, typeGame}){
+	try{
+		if(!roomNum || !typeGame) return { status : false, message : 'Not enough params'}
+		const checkExistRoom = await db.RoomCasino.findOne({roomNum : roomNum, type : typeGame});
+		if(_.isEmpty(checkExistRoom)){
+			return { statue : true , data : []}
+		}
+		else{
+			return { status : true, data : checkExistRoom };
+		}
+	}
+	catch(e){
+		return{ status : false, message : e}
+	}
+}
+
+
 async function sipping({_user}){
 	try{
 		if(_user) { //인자 값 확인
@@ -62,19 +174,18 @@ async function createProfile({uid, name, avatar, coins, score, exp, level}) {
 		
 		const checkUserExist = await db.User.findOne({uid : uid, name : name}).lean();
 		if(_.isNull(checkUserExist)) {
-			// console.log('Create======user')
+			// 
 			const user = await db.User.create({uid : uid, name : name, avatar : avatar, 
 				coins : coins, score : score, exp : exp, level : level});
 			return user;
 		}
 		else{
-			// console.log('GET=========USER=========>>>ID')
+			// 
 			const user = await db.User.findOne({uid : uid, name : name}).lean();
 			return user;
 		}
 	}
 	catch(e) {
-		console.log('Error',e);
 		return {status : false, mess : e}
 	}
 
@@ -88,7 +199,6 @@ async function getProfile({uid, name}) {
 		return user;
 	}
 	catch(e) {
-		console.log('Error',e);
 		return { status : false, message : e}
 	}
 }
@@ -108,20 +218,19 @@ async function saveData({uid, name, coins, score,avatar, exp, level}) {
 				exp : exp,
 				level : level
 			})
-			// console.log('data ===>> Created');
+			// ;
 			if(!data) return { status : false, mess : "Created User not success!"}
 		}
 		else{
 			data = await db.User.findOneAndUpdate({uid : uid, name : name},
 				{$set : {coins : coins , score : score , exp : exp, level : level} }, 
 				{new : true}).lean();
-			// console.log('data====>>>Update')
+			// 
 			if(!data) return { status : false, mess : "Update User not success!"}
 		}
 		return { status : true, data};
 	}
 	catch(e) {
-		console.log('Error : ', e );
 		return { status : false, mess : e}
 	}
 }
@@ -133,20 +242,19 @@ async function handleOnlineAndOffline({uid, stt}){
 		if(!_.isNull(checkUserExist)) { 
 			const data = await db.User.findOneAndUpdate({uid : uid },{$set : {online : stt}},{new : true}).lean();
 			if(!data) return{ status : false, message : "can't success update"}
-			// console.log('data__________',data)
+			// 
 			return { status : true }
 		}
 
 	}
 	catch(e){
-		console.log('Error', e);
 		return { status : false, message : e}
 	}
 }
 // Get list friend temporary
 async function getFriendList ({uid}) {
 	try{
-		// console.log('uid : ', uid);
+		// ;
 		if(!uid) return { status : false, message : 'Cannot found userId'}
 		let friendList = await db.User.find({});
 		if(!friendList) return { status : false}
@@ -167,7 +275,6 @@ async function getFriendList ({uid}) {
 		return {status : true, data }
 	}
 	catch(e){
-		console.log('Error : ', e);
 		return { status : false, message : e}
 	}
 }
@@ -182,7 +289,6 @@ async function checkUserInviteJoomRoom({uid, online}) {
 		return { status : true} 
 	}
 	catch(e){
-		console.log('Error : ', e);
 		return { status : false, message : e}
 	}
 }
@@ -216,7 +322,7 @@ async function userBalance({id, token}){
 		}
 	}
 	catch(e) {
-		console.log('Error : ', e);
+		// ;
 	}
 }
 // admin send money to user
@@ -226,14 +332,14 @@ async function TxCreateReward({amount, userId}) {
 		const $ = require('../../lib/arguments').get({amount: amount, receiver: userId });
 		const rewardData = encryptor.encryptObjectBySeckey({amount: $.amount, receiver: $.receiver}, APP_SECKEY);
 		const rewardResult = await axios.post('http://167.99.69.209:7777/btamin/tx-create-reward',{app: APP_NAME, data: rewardData});
-		// console.log('rewardResult',rewardResult)
+		// 
 		if(rewardResult.data.success) {
 			return { status : true, data : rewardResult.data}
 		}
 		return rewardResult
 	}
 	catch(e){
-		console.log("Error : ", e);
+		// ;
 	}
 }
 //user send money to admin
@@ -249,7 +355,7 @@ async function TxCreatePay({amount, userId, userToken}) {
 		}
 	}
 	catch(e){
-		console.log("Error : ", e);
+		// ;
 	}
 }
 async function getFriendListIntoBlaaChat({id, token}){
