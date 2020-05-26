@@ -3,7 +3,9 @@ const ObjectId = require('mongoose').Types.ObjectId;
 var _ = require('lodash');
 const axios = require("axios");
 const encryptor = require('../../lib/encryptor');
+var conf = require('../../conf/casino.conf.js');
 require('../../conf/lottoSrpOeConfig');
+require('dotenv').config();
 module.exports = {
 	createProfile,
 	getProfile,
@@ -13,29 +15,38 @@ module.exports = {
 	checkUserInviteJoomRoom,
 	userBalance,
 	checkAccount,
-	TxCreateReward,
-	TxCreatePay,
+	TxCreateRewardPoker,
+	TxCreatePayPoker,
 	getFriendListIntoBlaaChat,
-	sipping,
+	sendMoneyToWinnerGame,
+	getExperienUser,
+	handleRiseExperien,
+
+	TxCreateRewardHwatu,
+	TxCreatePayHwatu,
+
 	getInfoRoomCasino,
 	updateDataRoomCasino,
+
 	getInfoRoomCasinoId,
 	RemoveUserIdInCasino
-}
 
+}
 async function getInfoRoomCasinoId({roomNum, typeGame}){
 	try{
 		if(!roomNum || !typeGame) return { status : false, message : 'Not enough params'}
 		const checkExistRoom = await db.RoomCasino.findOne({roomNum : roomNum, type : typeGame});
+		// console.log('checkExistRoom', checkExistRoom)
 		if(_.isEmpty(checkExistRoom)){
 			return { statue : true , data : []}
 		}
 		else{
+			// console.log('checkExistRoom=========> data', checkExistRoom);
 			return { status : true, data : checkExistRoom };
 		}
 	}
 	catch(e){
-		// ;
+		// console.log('Error : ', e);
 		return{ status : false, message : e}
 	}
 }
@@ -55,6 +66,7 @@ async function RemoveUserIdInCasino({roomNum, typeGame, userId}){
 		}
 	}
 	catch(e){
+		// console.log('e',e);
 		return {status : false, message : 'error'}
 	}
 }
@@ -62,13 +74,15 @@ async function RemoveUserIdInCasino({roomNum, typeGame, userId}){
 async function updateDataRoomCasino({roomNum, userId, status, typeGame, join}){
 	try{
 		let data;
-		const checkExistRoom = await db.RoomCasino.findOne({roomNum : roomNum});
+		const checkExistRoom = await db.RoomCasino.findOne({roomNum : roomNum, type : typeGame});
+		// console.log('_.isEmpty(checkExistRoom)', _.isEmpty(checkExistRoom))
 		if(_.isEmpty(checkExistRoom)){
 			data = await db.RoomCasino.create({
 				roomNum : roomNum,
 				listUser : [userId],
 				type : typeGame,
 			});
+			// console.log('data=====> new', data);
 			if(data){
 				return { status : true, message : 'create new room'}
 			}
@@ -83,6 +97,7 @@ async function updateDataRoomCasino({roomNum, userId, status, typeGame, join}){
 					{$addToSet : {'listUser' : userId}},
 					{new : true}
 				);
+				// console.log('data=====> join', data);
 				if(data){
 					return { status : true, message : 'Join room'}
 				}
@@ -109,63 +124,27 @@ async function updateDataRoomCasino({roomNum, userId, status, typeGame, join}){
 		return{ status : true}
 
 	}catch(e){
+		// console.log('Error : ', e);
 		return { statue : false, message : e};
 	}
 }
 
-async function getInfoRoomCasino({roomNum, typeGame}){
+async function getInfoRoomCasino({typeGame}){
 	try{
-		if(!roomNum || !typeGame) return { status : false, message : 'Not enough params'}
-		const checkExistRoom = await db.RoomCasino.findOne({roomNum : roomNum, type : typeGame});
+		if(!typeGame) return { status : false, message : 'Not enough params'}
+		const checkExistRoom = await db.RoomCasino.find({type : typeGame});
+		// console.log('_.isEmpty(che?ckExistRoom)', _.isEmpty(checkExistRoom))
 		if(_.isEmpty(checkExistRoom)){
 			return { statue : true , data : []}
 		}
 		else{
+			// console.log('checkExistRoom=========> data', checkExistRoom);
 			return { status : true, data : checkExistRoom };
 		}
 	}
 	catch(e){
+		// console.log('Error : ', e);
 		return{ status : false, message : e}
-	}
-}
-
-
-async function sipping({_user}){
-	try{
-		if(_user) { //인자 값 확인
-			const gameCount =  await db.games.find({game_type: 1}) // 홀짝게임 전체개수 가져오기
-			const games = await db.games.find({game_type: 1}).sort({_id:-1}).limit(15) //최근 게임 15개 가져오기
-			let gameList = new Array()
-			for(let i=0;i<games.length;i++) {
-				const userBet = await db.betting.findOne({game_id:games[i]._id, user_id: _user}) //유저배팅내역
-				let userBetting = 'null'
-				let userAmount = 'null'
-				if(userBet){
-					if(userBet.betOption == 'Odd'){
-						userBetting = 1//유저베팅 홀
-					} else if(userBet.betOption == 'Even') { 
-						userBetting = 0 //유저배팅 짝
-					}
-					userAmount = userBet.amount //유저 배팅금액
-				}
-				const blockData = await db.block.findOne({block:games[i].block_id}) //게임의 블록 가져오기 
-				if(!blockData) { 
-					// 결과 없는 게임
-					gameList.push({No : gameCount-i, Block : games[i].block_id, Hash : 'null', IntegerHash: 'null',BetResult : 'null',BetUser : userBetting ,BetAmount : userAmount} )
-				} 
-				else {
-					//결과 있는 게임
-					gameList.push({No : gameCount-i, Block : games[i].block_id, Hash : blockData.hash, IntegerHash: blockData.hash_int, BetResult : blockData.hash_int%2,BetUser : userBetting ,BetAmount : userAmount} )
-				}
-			}
-			return { status : true, gameList}
-		} else {
-			// res.json({"err":"Invalid API Call"}) //인자 값 없음
-			return { status : true, message : 'Invalid API Call'}
-		}
-	}
-	catch(e){
-		return { status : false, message : e}
 	}
 }
 async function createProfile({uid, name, avatar, coins, score, exp, level}) {
@@ -174,18 +153,17 @@ async function createProfile({uid, name, avatar, coins, score, exp, level}) {
 		
 		const checkUserExist = await db.User.findOne({uid : uid, name : name}).lean();
 		if(_.isNull(checkUserExist)) {
-			// 
 			const user = await db.User.create({uid : uid, name : name, avatar : avatar, 
 				coins : coins, score : score, exp : exp, level : level});
 			return user;
 		}
 		else{
-			// 
 			const user = await db.User.findOne({uid : uid, name : name}).lean();
 			return user;
 		}
 	}
 	catch(e) {
+		// console.log('Error',e);
 		return {status : false, mess : e}
 	}
 
@@ -199,6 +177,7 @@ async function getProfile({uid, name}) {
 		return user;
 	}
 	catch(e) {
+		// console.log('Error',e);
 		return { status : false, message : e}
 	}
 }
@@ -218,19 +197,19 @@ async function saveData({uid, name, coins, score,avatar, exp, level}) {
 				exp : exp,
 				level : level
 			})
-			// ;
+			// console.log('data ===>> Created');
 			if(!data) return { status : false, mess : "Created User not success!"}
 		}
 		else{
 			data = await db.User.findOneAndUpdate({uid : uid, name : name},
 				{$set : {coins : coins , score : score , exp : exp, level : level} }, 
 				{new : true}).lean();
-			// 
 			if(!data) return { status : false, mess : "Update User not success!"}
 		}
 		return { status : true, data};
 	}
 	catch(e) {
+		// console.log('Error: ', e );
 		return { status : false, mess : e}
 	}
 }
@@ -242,19 +221,19 @@ async function handleOnlineAndOffline({uid, stt}){
 		if(!_.isNull(checkUserExist)) { 
 			const data = await db.User.findOneAndUpdate({uid : uid },{$set : {online : stt}},{new : true}).lean();
 			if(!data) return{ status : false, message : "can't success update"}
-			// 
 			return { status : true }
 		}
 
 	}
 	catch(e){
+		// console.log('Error', e);
 		return { status : false, message : e}
 	}
 }
 // Get list friend temporary
 async function getFriendList ({uid}) {
 	try{
-		// ;
+		// console.log('uid : ', uid);
 		if(!uid) return { status : false, message : 'Cannot found userId'}
 		let friendList = await db.User.find({});
 		if(!friendList) return { status : false}
@@ -272,9 +251,11 @@ async function getFriendList ({uid}) {
 				return null;
 			}).filter(item => item);
 		}
+		// console.log('data=================>', data);
 		return {status : true, data }
 	}
 	catch(e){
+		// console.log('Error : ', e);
 		return { status : false, message : e}
 	}
 }
@@ -289,20 +270,18 @@ async function checkUserInviteJoomRoom({uid, online}) {
 		return { status : true} 
 	}
 	catch(e){
+		// console.log('Error : ', e);
 		return { status : false, message : e}
 	}
 }
 async function checkAccount({id, token}){
 	try{
-		if(!id && !token) return {status : false, message : 'Not enough param'}
-		const $ = require('../../lib/arguments').get({account: id, token: token}); 
-		const data = encryptor.encryptObjectBySeckey({account: $.account, token: $.token}, APP_SECKEY);
-		const checkAccount = await axios.post('http://167.99.69.209:7777/btamin/account-check',{app: APP_NAME, data: data})
-		if(checkAccount.data.success) {
+		if(!id || !token) return {status : false, message : 'Not enough param'}
+		const inputData = encryptor.encryptObjectBySeckey({account: id, token: token}, APP_SECKEY);
+		const outputData = await axios.post('http://213.136.68.203:41002/btamin/account-check',{app: APP_NAME, data: inputData})
+		if(outputData.data.success)
 			return { status : true };
-		} else {
-			return { status : false, message :"Invalid data"}
-		}
+		return { status : false, message :outputData.data}
 	}
 	catch(e){
 		return { status : false, message : e}
@@ -311,72 +290,167 @@ async function checkAccount({id, token}){
 
 async function userBalance({id, token}){
 	try {
-		if(!id && !token) return {status : false, message : 'Not enough param'}
-		const $ = require('../../lib/arguments').get({account: id, token: token}); 
-		const balanceData = encryptor.encryptObjectBySeckey({account: $.account, token: $.token},"1b49117613dff13a966596b18db2afb7");
-		const balanceResult = await axios.post('http://213.136.68.203:41002/btamin/account-balance',{app: "blood-poker", data: balanceData})
-		if(balanceResult.data.success) {
-			return { status : true, balance : balanceResult.data.data.balance};
-		} else {
-			return { status : false, message :"Invalid data"}
-		}
+		if(!id || !token) return {status : false, message : 'Not enough param'}
+		const inputData = encryptor.encryptObjectBySeckey({account: id, token: token}, process.env.RefeseckeyPoker);
+		const outputData = await axios.post(`${conf.casino_game.ApiBtamin}/btamin/account-balance`,{app: process.env.APP_POKER, data: inputData});
+		// console.log('balanceResult.data', outputData.data);
+		if(outputData.data.success) 
+			return { status : true, balance : outputData.data.data.balance};
+		return { status : false, message :outputData.data}
 	}
 	catch(e) {
-		// ;
+		// console.log('Error : ', e);
 	}
 }
-// admin send money to user
-async function TxCreateReward({amount, userId}) {
+// admin send money to user => admin send money to loser in game
+async function TxCreateRewardPoker({amount, userId}) {
 	try{
-		if(!amount && !userId) return {status : false, message : 'Not enough param'}
-		const $ = require('../../lib/arguments').get({amount: amount, receiver: userId });
-		const rewardData = encryptor.encryptObjectBySeckey({amount: $.amount, receiver: $.receiver}, APP_SECKEY);
-		const rewardResult = await axios.post('http://167.99.69.209:7777/btamin/tx-create-reward',{app: APP_NAME, data: rewardData});
-		// 
-		if(rewardResult.data.success) {
-			return { status : true, data : rewardResult.data}
-		}
-		return rewardResult
+		// console.log('{amount, userId}', {amount, userId})
+		if(!amount || !userId) return {status : false, message : 'Not enough param'}
+		const inputData = encryptor.encryptObjectBySeckey({amount: amount, receiver: userId}, process.env.RefeseckeyPoker );// poker satda
+		const outputData = await axios.post(`${conf.casino_game.ApiBtamin}/btamin/tx-create-reward`,{app: process.env.APP_POKER, data: inputData});
+
+		// console.log('rewardResult',rewardResult)
+		if(outputData.data.success)
+			return { status : true, data : outputData.data}
+		return { status : false, message : outputData.data}
 	}
 	catch(e){
-		// ;
+		console.log("Error : ", e);
+	}
+}
+
+//user send money to admin
+async function TxCreatePayPoker({amount, userId, userToken}) {
+	try{
+		 // user_id : _user // user_token : _token
+		const inputData = encryptor.encryptObjectBySeckey({amount: amount, account: userId, token: userToken}, process.env.RefeseckeyPoker );
+		const outputData = await axios.post(`${conf.casino_game.ApiBtamin}/btamin/tx-create-pay`,{app: process.env.APP_POKER, data: inputData})
+
+		if(outputData.data.success)
+			return { status : true, data : outputData.data}
+		return { status : false, message : outputData.data}
+	}
+	catch(e){
+		// console.log("Error : ", e);
+	}
+}
+
+// admin send money to user
+async function TxCreateRewardHwatu({amount, userId}) {
+	try{
+		if(!amount || !userId) return {status : false, message : 'Not enough param'}
+		const inputData = encryptor.encryptObjectBySeckey({amount: amount, receiver: userId}, process.env.RefeseckeyHwatu );// poker satda
+		const outputData = await axios.post(`${conf.casino_game.ApiBtamin}/btamin/tx-create-reward`,{app: process.env.APP_HWATU, data: inputData});
+		// console.log('rewardResult',rewardResult)
+		if(outputData.data.success)
+			return { status : true, data : outputData.data}
+		return { status : false, message : outputData.data}
+	}
+	catch(e){
+		// console.log("Error : ", e);
 	}
 }
 //user send money to admin
-async function TxCreatePay({amount, userId, userToken}) {
+async function TxCreatePayHwatu({amount, userId, userToken}) {
 	try{
-		$ = require('../../lib/arguments').get({amount: amount, account: userId, token: userToken}); // user_id : _user // user_token : _token
-		const paymentData = encryptor.encryptObjectBySeckey({amount: $.amount, account: $.account, token: $.token}, APP_SECKEY);
-		const paymentResult = await axios.post('http://167.99.69.209:7777/btamin/tx-create-pay',{app: APP_NAME, data: paymentData})
-		if(paymentResult.data.success) {
-			return { status : true, data : paymentResult.data}
+		const inputData = encryptor.encryptObjectBySeckey({amount: amount, account: userId, token: userToken}, process.env.RefeseckeyHwatu );
+		const outputData = await axios.post(`${conf.casino_game.ApiBtamin}/btamin/tx-create-pay`,{app: process.env.APP_HWATU, data: inputData});
+
+		if(outputData.data.success) {
+			return { status : true, data : outputData.data}
 		} else {
-			return { status : false, message : "User send money to Admin that's not success"}
+			return { status : false, message : outputData.data}
 		}
 	}
 	catch(e){
-		// ;
+		// console.log("Error : ", e);
 	}
 }
-async function getFriendListIntoBlaaChat({id, token}){
+async function getFriendListIntoBlaaChat({userId, accessToken}){
 	try{
-		if(!id && !token) return {status : false, message : 'Not enough param'}
+		if(!userId || !accessToken) return {status : false, message : 'Not enough param'}
+		var listFriend = [];
 		let configHeaders = {
 			headers: {
-				'X-Auth-Token': token,
-				'X-User-Id': id
+				'Content-Type': 'application/json',
+				'Authorization': 'Bearer ' + accessToken
 			}
 		}
-		const getListFriend = await axios.get("https://tt1.blood.land/api/v1/users.presence", configHeaders);
-	    if(response.data.status){
-	    	return{ status : true, data : response.data.user }
+		
+		const getListFriend = await axios.post(`${conf.casino_game.ApiBlaaServer}/v1/user/getFriendList`, {userId :userId, accessToken : accessToken}, configHeaders);
+		if(!getListFriend.data.success || !Array.isArray(getListFriend.data.data)){
+			return { status : false, message : 'Get ListFriend in blaaServer not success!' }
+		}
+   
+	    for(let i = 0 ; i < getListFriend.data.data.length ; i++){
+	    	const friend = await db.User.findOne({uid : getListFriend.data.data[i]}).select('_id uid coins online').lean();
+	    	if(!_.isEmpty(friend) ){
+	    		listFriend.push(friend[0])
+	    	}
+			
 	    }
-	    else{
-	    	return { status : false, message : 'Get ListFriend not success!' }
-	    }
-	    
+	    if(listFriend.length === getListFriend.data.data.length){
+	    	// console.log('listFriend', listFriend)
+    		return { status : true, listFriend}
+    	}
+    	else{
+    	 	return { status : false, listFriend : [], message : "call api getFriendListIntoBlaaChat not success" }
+    	}
+		
 	}
 	catch(e){
 		return { status : false, message : e}
 	}
 }
+
+async function sendMoneyToWinnerGame({id, token, amount, nameGame}) {
+	 try{
+	 	// console.log('{id, token, amount, nameGame}', {id, token, amount, nameGame})
+	 	if(!id || !token || !amount || !nameGame) return {status : false, message : 'Not enough param'};
+	 	const refescekey = nameGame === 'poker' ? process.env.RefeseckeyPoker : process.env.RefeseckeyHwatu;
+	 	const AppName = nameGame === 'poker' ? process.env.APP_POKER : process.env.APP_HWATU;
+		var inputData = encryptor.encryptObjectBySeckey({account: id, token: token, amount: amount},refescekey);// 36b6887d831401af5d63e67be11d7803
+		let outputData = await axios.post(`${conf.casino_game.ApiBtaminSendWinner}/btamin/reward-gamewin`,{app: AppName, data: inputData});
+		// console.log('outputData =================',outputData)
+
+		if(outputData.data.success) 
+			return { status : true }
+		return {status : false, message : outputData.data}
+	}
+	catch(e){
+		return {status : false, message : e}
+	}
+}
+
+
+async function getExperienUser({id}){
+	try{
+		if(!id) return {status : false, message : "Not found userId"}
+		var inputData = encryptor.encryptObjectBySeckey({account: id}, process.env.RefeseckeyPoker ); //5bdb4e8250debe487e3077f6271c41e0 = expSeckey
+		let outputData = await axios.post(`${conf.casino_game.ApiExperien}/exp/exp-account-exp`,{app: process.env.APP_POKER, data: inputData})
+
+		if(outputData.data.success) 
+			return { status : true, data : outputData.data.data}
+		return { status : false, message : outputData.data}
+	}
+	catch(e){
+		return { status : false, message : e}
+	}
+}
+async function handleRiseExperien({id, exp}){
+	try{
+		if(!id || !exp) return {status : false, message : "Not found userId"}
+		var $ = require('../../lib/arguments').get({account: id, exp: exp, expType: 5});
+		var inputData = encryptor.encryptObjectBySeckey({account: $.account, exp: parseInt(exp*0.025), expType: $.expType}, process.env.RefeseckeyPoker );
+		let outputData = await axios.post(`${conf.casino_game.ApiExperien}/exp/exp-up`,{app: process.env.APP_POKER, data: inputData})
+		
+		if(outputData.data.success) 
+			return { status : true, Balance : outputData.data}
+		return { status : false, message : outputData.data}
+	}
+	catch(e){
+		return { status : false, message : e}
+	}
+}
+

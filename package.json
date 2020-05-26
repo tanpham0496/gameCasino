@@ -32,6 +32,7 @@
     "aes256": "^1.0.4",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
     "express": "^4.10.4",
     "local-storage": "^2.0.0",
     "lodash": "^4.17.15",
