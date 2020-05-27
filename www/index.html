@@ -1009,9 +1009,76 @@
             }
             setCSS()
         }
+        function writeHTMLDrawGame_Hwatu(newClientSeats, client, msg, listBettingInGame){
+            $('.listTop').empty()
+            $('.listBottom').empty()
+            for (var i = 0; i < 3; i++) {
+                $('.listTop').append(`
+                    <div class="${
+                        (listBettingInGame.filter(item => item.uid == newClientSeats[i].uid).length !==0 && listBettingInGame.filter(item => item.uid == newClientSeats[i].uid)[0].draw == 'true')
+                        ? 'usersTopWinHwatu': newClientSeats[i].uid !== null ? 'usersTopLoseHwatu':'usersTopHwatu'}" id="active${i}">
+                        <div class="infoTop">
+                            <div class="name">
+                                <!-- <div class="userName" ${newClientSeats[i].uid === client.uid ? 'id="userName"':''}>${newClientSeats[i].uid !== null ? newClientSeats[i].uid :''}</div> -->
+                                <div class="userName" ${newClientSeats[i].uid === client.uid ? 'id="userName"':''}>${newClientSeats[i].uid !== null ? (newClientSeats[i].uid === client.uid ? 'Me' : newClientSeats[i].uid) : ''}</div>
+                            </div>
+                            <div class="card">
+                                <div class="cardUser" id="mycards${i}">
+                                    <img src="${newClientSeats[i].uid !== null ? 'imgCards_hwatu/0_0.png':''}" alt="">
+                                    <img src="${newClientSeats[i].uid !== null ? 'imgCards_hwatu/0_0.png':''}" alt="">
+                                </div>
+                            </div>
+                            <div class="action">
+                                <div class="check" id="actionSeat${i}"></div>
+                            </div>
+                        </div>
+                        <div class="betValue"><span id="seat${newClientSeats[i].seat}"></span></div>
+                        <div class="totalValueTop">
+                            <span id="totalValueSeat${i}">
+                                ${(listBettingInGame.filter(item => item.uid == newClientSeats[i].uid).length !==0 && listBettingInGame.filter(item => item.uid == newClientSeats[i].uid)[0].draw == 'true')
+                                    ? '+' + nFormatter(Number(listBettingInGame.filter(item => item.uid == newClientSeats[i].uid)[0].coins )) : newClientSeats[i].uid === null 
+                                    ? '' : client.room.chips[newClientSeats[i].seat] && listBettingInGame.filter(item => item.uid == newClientSeats[i].uid).length !==0
+                                    ? '-' + nFormatter(Number( listBettingInGame.filter(item => item.uid == newClientSeats[i].uid)[0].coins )) : ''}
+                            </span>
+                        </div>
+                    </div>
+                `)
+            }
+            for (var i = 3; i < newClientSeats.length; i++) {
+                $('.listBottom').append(`
+                    <div class="${(listBettingInGame.filter(item => item.uid == newClientSeats[i].uid).length !==0 && listBettingInGame.filter(item => item.uid == newClientSeats[i].uid)[0].draw == 'true')
+                        ? 'usersBottomWinHwatu': newClientSeats[i].uid  !== null ? 'usersBottomLoseHwatu': 'usersBottomHwatu'}" id="active${i}">
+                        <div class="totalValueBottom">
+                            <span id="totalValueSeat${i}">
+                                ${(listBettingInGame.filter(item => item.uid == newClientSeats[i].uid).length !==0 && listBettingInGame.filter(item => item.uid == newClientSeats[i].uid)[0].draw == 'true')
+                                    ? '+' + nFormatter(Number(listBettingInGame.filter(item => item.uid == client.uid)[0].coins )) : newClientSeats[i].uid === null 
+                                    ? '' : client.room.chips[newClientSeats[i].seat] && listBettingInGame.filter(item => item.uid == newClientSeats[i].uid).length !==0 
+                                    ? '-' + nFormatter(Number( listBettingInGame.filter(item => item.uid == newClientSeats[i].uid)[0].coins )) : ''}
+                            </span>
+                        </div>
+                        <div class="betValue"><span id="seat${newClientSeats[i].seat}"></span></div>
+                        <div class="infoBottom">
+                            <div class="action">
+                                <div class="check" id="actionSeat${i}"></div>
+                            </div>
+                            <div class="card">
+                                <div class="cardUser" id="mycards${i}">
+                                    <img src="${newClientSeats[i].uid  !== null ? 'imgCards_hwatu/0_0.png':''}" alt="">
+                                    <img src="${newClientSeats[i].uid  !== null ? 'imgCards_hwatu/0_0.png':''}" alt="">
+                                </div>
+                            </div>
+                            <div class="name">
+                                <!-- <div class="userName" ${newClientSeats[i].uid === client.uid ? 'id="userName"':''}>${newClientSeats[i].uid !== null ? newClientSeats[i].uid :''}</div> -->
+                                <div class="userName" ${newClientSeats[i].uid === client.uid ? 'id="userName"':''}>${newClientSeats[i].uid !== null ? (newClientSeats[i].uid === client.uid ? 'Me' : newClientSeats[i].uid) :''}</div>
+                            </div>
+                        </div>
+                    </div>
+                `)
+            }
+            setCSSHwatu()
+        }
 
         function writeHTMLEndGame_Hwatu(newClientSeats, client, msg, listBettingInGame){
-            var percentReceive = (100 - parseInt(client.profile.gameFeeIdxMS)/10)/100;
             $('.listTop').empty()
             $('.listBottom').empty()
             for (var i = 0; i < 3; i++) {
@@ -1036,7 +1103,7 @@
                         <div class="totalValueTop">
                             <span id="totalValueSeat${i}">
                                 ${newClientSeats[i].uid === msg.uid && listBettingInGame.filter(item => item.uid == msg.uid).length !==0
-                                    ? '+' + nFormatter(Number(listBettingInGame.filter(item => item.uid == msg.uid)[0].coins * percentReceive)) : newClientSeats[i].uid === null 
+                                    ? '+' + nFormatter(Number(listBettingInGame.filter(item => item.uid == msg.uid)[0].coins )) : newClientSeats[i].uid === null 
                                     ? '' : client.room.chips[newClientSeats[i].seat] && listBettingInGame.filter(item => item.uid == newClientSeats[i].uid).length !==0
                                     ? '-' + nFormatter(Number( listBettingInGame.filter(item => item.uid == newClientSeats[i].uid)[0].coins )) : ''}
                             </span>
@@ -1050,7 +1117,7 @@
                         <div class="totalValueBottom">
                             <span id="totalValueSeat${i}">
                                 ${newClientSeats[i].uid === msg.uid && listBettingInGame.filter(item => item.uid == msg.uid).length !==0
-                                    ? '+' + nFormatter(Number(listBettingInGame.filter(item => item.uid == msg.uid)[0].coins * percentReceive)) : newClientSeats[i].uid === null 
+                                    ? '+' + nFormatter(Number(listBettingInGame.filter(item => item.uid == msg.uid)[0].coins )) : newClientSeats[i].uid === null 
                                     ? '' : client.room.chips[newClientSeats[i].seat] && listBettingInGame.filter(item => item.uid == newClientSeats[i].uid).length !==0 
                                     ? '-' + nFormatter(Number( listBettingInGame.filter(item => item.uid == newClientSeats[i].uid)[0].coins )) : ''}
                             </span>

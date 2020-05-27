@@ -498,17 +498,17 @@ $(document).ready(function(){
 			}
 			
 		}
-		if(ret.nameCardOfWinnerHwatu && ret.cause){
+		if(ret.showWinner){
 			$('.blocks > .block > .contents > .cardsTable').append(`
 				<div id="nameCardWinnerHwatu">
-					<div class="nameCardOfWinner">${ret.nameCardOfWinnerHwatu}</div>
-					<div class="nameCardOfWinner">${ret.cause}</div>
+					<div class="nameCardOfWinner">${ret.nameCardReGameHwatu}</div>
+					<div class="nameCardOfWinner">${ret.showWinner.toString()}</div>
 				</div>
 			`);
 			if(document.getElementById('nameCardWinnerHwatu')){
 				setTimeout(() => {
 					$('#nameCardWinnerHwatu').remove();
-				},3000);
+				},9000);
 			}
 		}
 	});
@@ -1327,12 +1327,25 @@ Client.prototype.setUplink = function(socket) {
 				var listCoins = client && client.room && client.room.listCoins;
 				var newClientSeats = locationOfMeIntoCenter(arr,client.uid, listCoins);
 				var listBettingInGame = msg.args.listBettingInGame ? msg.args.listBettingInGame : [];
-				console.log('------------msg---------->>> win', msg);
 				if(client.room.type == 'holdem2' && !msg.moreWinner){
 					writeHTMLEndGame(newClientSeats, client, msg, listBettingInGame)
 				} else {
 					writeHTMLEndGame_Hwatu(newClientSeats, client, msg, listBettingInGame)
 				}
+				
+				localStorage.setItem('Win', 'Win');
+				$('#carteSoudCtrl2')[0].play();
+				localStorage.removeItem('JustOnlySound');
+				localStorage.removeItem('cardsChange');
+			}
+			if(msg.e === 'DrawHwatu') {
+				console.log('DrawHwatu=================>', msg)
+				var arr = client && client.room && client.room.seats;
+				var listCoins = client && client.room && client.room.listCoins;
+				var newClientSeats = locationOfMeIntoCenter(arr,client.uid, listCoins);
+				var listBettingInGame = msg.args.listBettingInGame ? msg.args.listBettingInGame : [];
+			
+				writeHTMLDrawGame_Hwatu(newClientSeats, client, msg, listBettingInGame)
 				
 				localStorage.setItem('Win', 'Win');
 				$('#carteSoudCtrl2')[0].play();
