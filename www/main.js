@@ -1061,7 +1061,9 @@ function showRoom(room) {
 			}
 
 			if(chips && chips[i] && chips[i] > 0) {
-				valueChip = chips[i]
+				valueChip = chips[i];
+
+				console.log('valueChip ===========>', valueChip)
 				// $(`span#seat${i}`).html( nFormatter(Number(valueChip)) )
 
 				if(restartGame){
@@ -1327,10 +1329,11 @@ Client.prototype.setUplink = function(socket) {
 				var listCoins = client && client.room && client.room.listCoins;
 				var newClientSeats = locationOfMeIntoCenter(arr,client.uid, listCoins);
 				var listBettingInGame = msg.args.listBettingInGame ? msg.args.listBettingInGame : [];
+				var listChipGameOver = msg.args.listChipGameOver ? msg.args.listChipGameOver : [];
 				if(client.room.type == 'holdem2' && !msg.moreWinner){
 					writeHTMLEndGame(newClientSeats, client, msg, listBettingInGame)
 				} else {
-					writeHTMLEndGame_Hwatu(newClientSeats, client, msg, listBettingInGame)
+					writeHTMLEndGame_Hwatu(newClientSeats, client, msg, listBettingInGame, listChipGameOver)
 				}
 				
 				localStorage.setItem('Win', 'Win');

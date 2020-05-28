@@ -1051,7 +1051,7 @@
                         <div class="totalValueBottom">
                             <span id="totalValueSeat${i}">
                                 ${(listBettingInGame.filter(item => item.uid == newClientSeats[i].uid).length !==0 && listBettingInGame.filter(item => item.uid == newClientSeats[i].uid)[0].draw == 'true')
-                                    ? '+' + nFormatter(Number(listBettingInGame.filter(item => item.uid == client.uid)[0].coins )) : newClientSeats[i].uid === null 
+                                    ? '+' + nFormatter(Number(listBettingInGame.filter(item => item.uid == newClientSeats[i].uid)[0].coins )) : newClientSeats[i].uid === null 
                                     ? '' : client.room.chips[newClientSeats[i].seat] && listBettingInGame.filter(item => item.uid == newClientSeats[i].uid).length !==0 
                                     ? '-' + nFormatter(Number( listBettingInGame.filter(item => item.uid == newClientSeats[i].uid)[0].coins )) : ''}
                             </span>
@@ -1063,8 +1063,8 @@
                             </div>
                             <div class="card">
                                 <div class="cardUser" id="mycards${i}">
-                                    <img src="${newClientSeats[i].uid  !== null ? 'imgCards_hwatu/0_0.png':''}" alt="">
-                                    <img src="${newClientSeats[i].uid  !== null ? 'imgCards_hwatu/0_0.png':''}" alt="">
+                                     <img src="${newClientSeats[i].uid  !== null ? 'imgCards_hwatu/0_0.png':''}" alt="">
+                                     <img src="${newClientSeats[i].uid  !== null ? 'imgCards_hwatu/0_0.png':''}" alt="">
                                 </div>
                             </div>
                             <div class="name">
@@ -1078,7 +1078,7 @@
             setCSSHwatu()
         }
 
-        function writeHTMLEndGame_Hwatu(newClientSeats, client, msg, listBettingInGame){
+        function writeHTMLEndGame_Hwatu(newClientSeats, client, msg, listBettingInGame, listChipGameOver){
             $('.listTop').empty()
             $('.listBottom').empty()
             for (var i = 0; i < 3; i++) {
@@ -1099,7 +1099,10 @@
                                 <div class="check" id="actionSeat${i}"></div>
                             </div>
                         </div>
-                        <div class="betValue"><span id="seat${newClientSeats[i].seat}"></span></div>
+                        <div class="betValue"><span id="seatGameOver${newClientSeats[i].seat}">
+                            ${client.room.chips[newClientSeats[i].seat] && listChipGameOver.filter(item => item.uid == newClientSeats[i].uid).length !==0 
+                                    ? nFormatter(Number( listChipGameOver.filter(item => item.uid == newClientSeats[i].uid)[0].chips )) : ''}
+                        </span></div>
                         <div class="totalValueTop">
                             <span id="totalValueSeat${i}">
                                 ${newClientSeats[i].uid === msg.uid && listBettingInGame.filter(item => item.uid == msg.uid).length !==0
@@ -1122,15 +1125,18 @@
                                     ? '-' + nFormatter(Number( listBettingInGame.filter(item => item.uid == newClientSeats[i].uid)[0].coins )) : ''}
                             </span>
                         </div>
-                        <div class="betValue"><span id="seat${newClientSeats[i].seat}"></span></div>
+                        <div class="betValue"><span id="seatGameOver${newClientSeats[i].seat}">
+                         ${client.room.chips[newClientSeats[i].seat] && listChipGameOver.filter(item => item.uid == newClientSeats[i].uid).length !==0 
+                                    ? nFormatter(Number( listChipGameOver.filter(item => item.uid == newClientSeats[i].uid)[0].chips )) : ''}
+                        </span></div>
                         <div class="infoBottom">
                             <div class="action">
                                 <div class="check" id="actionSeat${i}"></div>
                             </div>
                             <div class="card">
                                 <div class="cardUser" id="mycards${i}">
-                                    <img src="${newClientSeats[i].uid  !== null ? 'imgCards_hwatu/0_0.png':''}" alt="">
-                                    <img src="${newClientSeats[i].uid  !== null ? 'imgCards_hwatu/0_0.png':''}" alt="">
+                                    <img src="${newClientSeats[i].uid !== null ? 'imgCards_hwatu/0_0.png':''}" alt="">
+                                    <img src="${newClientSeats[i].uid !== null ? 'imgCards_hwatu/0_0.png':''}" alt="">
                                 </div>
                             </div>
                             <div class="name">
@@ -1447,11 +1453,18 @@
         }
 
         // format Number to Number of "K"
+        // function nFormatter(num) {
+        //     if (num >= 1000) {
+        //         let result = (num / 1000).toString()+"K"
+        //         return result
+        //     } else return num.toString();
+        // }
+
         function nFormatter(num) {
-            if (num >= 1000) {
-                let result = (num / 1000).toString()+"K"
+            // if (num >= 1000) {
+                let result = (num / 1000).toFixed(2).toString()+"K"
                 return result
-            } else return num.toString();
+            // } else return num.toString();
         }
         
         // re Format Number of "K" to Number
