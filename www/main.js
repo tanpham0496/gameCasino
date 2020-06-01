@@ -116,8 +116,10 @@ $(document).ready(function(){
 			var req = {
 				uid: localStorage.getItem('userId'),
 				token: localStorage.getItem('token'),
-				money : ret.money
+				money : ret.money,
+				nameGame : ret.nameGame
 			};
+			console.log('sendMoneyToWinner', req)
 			socket.emit('SEND_MONEY_TO_WINNER', req);
 		}
 	})

@@ -20,34 +20,12 @@ exports = module.exports = {
 		level: 1
 	},
 	games: {
-		// 'holdem2': {
-		// 	name: 'texas holdem',
-		// 	desc: 'texas holdem, rule: pot limit',
-		// 	game: 'holdem_game.js',
-		// 	options: {
-		// 		roomId : 2,
-		// 		max_seats: 6,
-		// 		no_joker: true,
-		// 		no_number: [],
-		// 		ready_countdown: 15,
-		// 		turn_countdown: 15,
-		// 		show_result : 10,
-		// 		show_leave_on_start: 10,
-		// 		limit_rule: 1,		// 0: limit, 1: pot limit, 2: no limit
-		// 		limit: 1000,		// big blind
-		// 		bettingMax : 10000, //default max 10,000,000
-		// 		limit_cap: -1,		// -1, means no limit
-		// 		takeBitamin : 20000,
-		// 	},
-		// 	min: 2,
-		// 	max: 6
-		// },
-		'hwatu': {
+		'holdem2': {
 			name: 'texas holdem',
 			desc: 'texas holdem, rule: pot limit',
-			game: 'hwatu_game.js',
+			game: 'holdem_game.js',
 			options: {
-				roomId : 7,
+				roomId : 2,
 				max_seats: 6,
 				no_joker: true,
 				no_number: [],
@@ -56,12 +34,34 @@ exports = module.exports = {
 				show_result : 10,
 				show_leave_on_start: 10,
 				limit_rule: 1,		// 0: limit, 1: pot limit, 2: no limit
-				limit: 1000,			// big blind
-				bettingMax : 10000,
+				limit: 1000,		// big blind
+				bettingMax : 10000, //default max 10,000,000
 				limit_cap: -1,		// -1, means no limit
+				takeBitamin : 20000,
 			},
 			min: 2,
 			max: 6
 		},
+		// 'hwatu': {
+		// 	name: 'texas holdem',
+		// 	desc: 'texas holdem, rule: pot limit',
+		// 	game: 'hwatu_game.js',
+		// 	options: {
+		// 		roomId : 7,
+		// 		max_seats: 6,
+		// 		no_joker: true,
+		// 		no_number: [],
+		// 		ready_countdown: 15,
+		// 		turn_countdown: 15,
+		// 		show_result : 10,
+		// 		show_leave_on_start: 10,
+		// 		limit_rule: 1,		// 0: limit, 1: pot limit, 2: no limit
+		// 		limit: 1000,			// big blind
+		// 		bettingMax : 10000,
+		// 		limit_cap: -1,		// -1, means no limit
+		// 	},
+		// 	min: 2,
+		// 	max: 6
+		// },
 	},
 };
